@@ -14,20 +14,20 @@ db = Database()  # new
 db.bind(provider='sqlite', filename='db.db', create_db=True)  # new #new2filename=DB_PATH,
 
 
-class SW_Units(db.Entity):
+class SW_Units(db.Entity):#Единицы измерения
     name = Required(str)
 
 
-class SW_Groups(db.Entity):
+class SW_Groups(db.Entity):#группы товаров
     name = Required(str)
 
 
-class SW_Cells(db.Entity):
+class SW_Cells(db.Entity):#ячейки хранения товаров
     name = Required(str)
     barcode = Optional(str)
 
 
-class SW_Goods(db.Entity):
+class SW_Goods(db.Entity):#товары
     name = Required(str)
     product_number = Optional(str)
     barcode = Optional(str)
