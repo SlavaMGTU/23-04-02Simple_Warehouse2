@@ -1,0 +1,1584 @@
+{
+    "ClientConfiguration": {
+        "ConfigurationName": "Простой склад",
+        "ConfigurationDescription": "Автономное решение для простейшего учета",
+        "ConfigurationVersion": "0.9.2",
+        "Processes": [
+            {
+                "type": "Process",
+                "ProcessName": "Справочник товаров",
+                "PlanFactHeader": "План-факт",
+                "DefineOnBackPressed": true,
+                "hidden": false,
+                "login_screen": false,
+                "SC": false,
+                "Operations": [
+                    {
+                        "type": "Operation",
+                        "Name": "Меню НСИ",
+                        "Timer": false,
+                        "hideToolBarScreen": false,
+                        "noScroll": true,
+                        "handleKeyUp": false,
+                        "noConfirmation": true,
+                        "hideBottomBarScreen": true,
+                        "onlineOnStart": false,
+                        "send_when_opened": true,
+                        "onlineOnInput": false,
+                        "DefOnlineOnCreate": "",
+                        "DefOnlineOnInput": "",
+                        "DefOnCreate": "_menu_on_start",
+                        "DefOnInput": "_menu_input",
+                        "Elements": [
+                            {
+                                "Value": "",
+                                "Variable": "",
+                                "type": "LinearLayout",
+                                "weight": "0",
+                                "height": "match_parent",
+                                "width": "match_parent",
+                                "orientation": "vertical",
+                                "Elements": [
+                                    {
+                                        "type": "CButtons",
+                                        "height": "match_parent",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "Добавить товар;Добавить ячейку;Добавить группу товаров;Добавить единицу измерения",
+                                        "Variable": "menu"
+                                    }
+                                ]
+                            }
+                        ],
+                        "onlineOnAfterStart": false
+                    },
+                    {
+                        "Name": "ДиалогЕдиницы",
+                        "type": "Operation",
+                        "Elements": [
+                            {
+                                "Value": "",
+                                "Variable": "",
+                                "type": "LinearLayout",
+                                "weight": "0",
+                                "height": "wrap_content",
+                                "width": "match_parent",
+                                "orientation": "vertical",
+                                "Elements": [
+                                    {
+                                        "type": "TextView",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "Название",
+                                        "Variable": "",
+                                        "TextBold": true,
+                                        "BackgroundColor": "",
+                                        "TextSize": "17",
+                                        "TextColor": "#696969"
+                                    },
+                                    {
+                                        "type": "EditTextText",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "@name",
+                                        "Variable": "name",
+                                        "gravity_horizontal": "left",
+                                        "TextSize": "17"
+                                    }
+                                ]
+                            }
+                        ],
+                        "Timer": false,
+                        "hideToolBarScreen": false,
+                        "noScroll": false,
+                        "handleKeyUp": false,
+                        "hideBottomBarScreen": true,
+                        "onlineOnStart": false,
+                        "onlineOnInput": false,
+                        "onlineOnAfterStart": false
+                    },
+                    {
+                        "Name": "Добавить товар",
+                        "type": "Operation",
+                        "Elements": [
+                            {
+                                "Value": "",
+                                "Variable": "",
+                                "type": "LinearLayout",
+                                "weight": "0",
+                                "height": "match_parent",
+                                "width": "match_parent",
+                                "orientation": "vertical",
+                                "Elements": [
+                                    {
+                                        "type": "LinearLayout",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "Добавить",
+                                        "Variable": "btn_add",
+                                        "orientation": "horizontal",
+                                        "Elements": [
+                                            {
+                                                "type": "Button",
+                                                "height": "wrap_content",
+                                                "width": "match_parent",
+                                                "weight": "1",
+                                                "Value": "#f055",
+                                                "Variable": "btn_add",
+                                                "TextSize": "25",
+                                                "BackgroundColor": "#3CB371"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "CardsLayout",
+                                        "height": "match_parent",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "@list",
+                                        "Variable": ""
+                                    }
+                                ],
+                                "BackgroundColor": "",
+                                "StrokeWidth": "",
+                                "Padding": ""
+                            },
+                            {
+                                "Value": "",
+                                "Variable": "barcode_search",
+                                "type": "barcode"
+                            }
+                        ],
+                        "Timer": false,
+                        "hideToolBarScreen": false,
+                        "noScroll": false,
+                        "handleKeyUp": false,
+                        "hideBottomBarScreen": true,
+                        "onlineOnStart": false,
+                        "onlineOnInput": false,
+                        "DefOnCreate": "_goods_on_start",
+                        "DefOnInput": "_goods_input",
+                        "noConfirmation": true,
+                        "send_when_opened": true,
+                        "onlineOnAfterStart": false
+                    },
+                    {
+                        "Name": "ТоварыЗапись",
+                        "type": "Operation",
+                        "Elements": [
+                            {
+                                "Value": "",
+                                "Variable": "",
+                                "type": "LinearLayout",
+                                "weight": "0",
+                                "height": "match_parent",
+                                "width": "match_parent",
+                                "orientation": "vertical",
+                                "Elements": [
+                                    {
+                                        "type": "TextView",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "Удалить карточку товара",
+                                        "Variable": "",
+                                        "gravity_horizontal": "right",
+                                        "TextSize": "",
+                                        "TextBold": true,
+                                        "TextItalic": true
+                                    },
+                                    {
+                                        "type": "Button",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "Сохранить...",
+                                        "Variable": "btn_save",
+                                        "BackgroundColor": "#E4D00A"
+                                    },
+                                    {
+                                        "type": "ModernEditText",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "@fill_name",
+                                        "Variable": "name"
+                                    },
+                                    {
+                                        "type": "ModernEditText",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "@fill_product_number",
+                                        "Variable": "product_number"
+                                    },
+                                    {
+                                        "type": "ModernEditText",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "@fill_price",
+                                        "Variable": "price",
+                                        "TextBold": true
+                                    },
+                                    {
+                                        "type": "TextView",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "Единица",
+                                        "Variable": "",
+                                        "TextBold": false
+                                    },
+                                    {
+                                        "type": "SpinnerLayout",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "@units",
+                                        "Variable": "unit"
+                                    },
+                                    {
+                                        "type": "ModernEditText",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "@fill_barcode",
+                                        "Variable": "barcode"
+                                    },
+                                    {
+                                        "type": "TextView",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "Группа",
+                                        "Variable": ""
+                                    },
+                                    {
+                                        "type": "SpinnerLayout",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "@groups",
+                                        "Variable": "group"
+                                    },
+                                    {
+                                        "type": "TextView",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "1",
+                                        "Value": "Сделать фото... Выбрать из галереи...",
+                                        "Variable": "",
+                                        "height_value": "0",
+                                        "gravity_horizontal": "left"
+                                    }
+                                ],
+                                "BackgroundColor": "",
+                                "StrokeWidth": "",
+                                "Padding": ""
+                            },
+                            {
+                                "Value": "#f2ed",
+                                "Variable": "menu_del",
+                                "type": "MenuItem"
+                            },
+                            {
+                                "Value": "@photoGallery",
+                                "Variable": "photoGallery",
+                                "type": "HorizontalGallery"
+                            },
+                            {
+                                "Value": "",
+                                "Variable": "photo",
+                                "type": "photoGallery"
+                            },
+                            {
+                                "Value": "",
+                                "Variable": "barcode_nom",
+                                "type": "barcode"
+                            },
+                            {
+                                "Value": "",
+                                "Variable": "photo",
+                                "type": "photo"
+                            }
+                        ],
+                        "Timer": false,
+                        "hideToolBarScreen": false,
+                        "noScroll": true,
+                        "handleKeyUp": false,
+                        "hideBottomBarScreen": true,
+                        "onlineOnStart": false,
+                        "onlineOnInput": false,
+                        "DefOnCreate": "_goods_record_on_start",
+                        "DefOnInput": "_goods_record_input",
+                        "noConfirmation": true,
+                        "send_when_opened": true,
+                        "onlineOnAfterStart": false
+                    },
+                    {
+                        "Name": "ДиалогГруппы",
+                        "type": "Operation",
+                        "Elements": [
+                            {
+                                "Value": "",
+                                "Variable": "",
+                                "type": "LinearLayout",
+                                "weight": "0",
+                                "height": "wrap_content",
+                                "width": "match_parent",
+                                "orientation": "vertical",
+                                "Elements": [
+                                    {
+                                        "type": "TextView",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "Название",
+                                        "Variable": "",
+                                        "TextBold": true,
+                                        "BackgroundColor": "",
+                                        "TextSize": "17",
+                                        "TextColor": "#696969"
+                                    },
+                                    {
+                                        "type": "EditTextText",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "@name",
+                                        "Variable": "name",
+                                        "gravity_horizontal": "left",
+                                        "TextSize": "17"
+                                    }
+                                ]
+                            }
+                        ],
+                        "Timer": false,
+                        "hideToolBarScreen": false,
+                        "noScroll": false,
+                        "handleKeyUp": false,
+                        "hideBottomBarScreen": true,
+                        "onlineOnStart": false,
+                        "onlineOnInput": false,
+                        "onlineOnAfterStart": false
+                    },
+                    {
+                        "Name": "Добавить ячейку",
+                        "type": "Operation",
+                        "Elements": [
+                            {
+                                "Value": "",
+                                "Variable": "",
+                                "type": "LinearLayout",
+                                "weight": "0",
+                                "height": "match_parent",
+                                "width": "match_parent",
+                                "orientation": "vertical",
+                                "Elements": [
+                                    {
+                                        "type": "LinearLayout",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "Добавить",
+                                        "Variable": "btn_add",
+                                        "orientation": "horizontal",
+                                        "Elements": [
+                                            {
+                                                "type": "Button",
+                                                "height": "wrap_content",
+                                                "width": "match_parent",
+                                                "weight": "1",
+                                                "Value": "#f055",
+                                                "Variable": "btn_add",
+                                                "TextSize": "25",
+                                                "BackgroundColor": "#3CB371"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "CardsLayout",
+                                        "height": "match_parent",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "@list",
+                                        "Variable": ""
+                                    }
+                                ]
+                            }
+                        ],
+                        "Timer": false,
+                        "hideToolBarScreen": false,
+                        "noScroll": false,
+                        "handleKeyUp": false,
+                        "hideBottomBarScreen": true,
+                        "onlineOnStart": false,
+                        "onlineOnInput": false,
+                        "DefOnCreate": "_cells_on_start",
+                        "DefOnInput": "_cells_input",
+                        "send_when_opened": true,
+                        "onlineOnAfterStart": false,
+                        "DefOnlineOnCreate": ""
+                    },
+                    {
+                        "Name": "ЯчейкиЗапись",
+                        "type": "Operation",
+                        "Elements": [
+                            {
+                                "Value": "",
+                                "Variable": "",
+                                "type": "LinearLayout",
+                                "weight": "0",
+                                "height": "match_parent",
+                                "width": "match_parent",
+                                "orientation": "vertical",
+                                "Elements": [
+                                    {
+                                        "type": "Button",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "Сохранить...",
+                                        "Variable": "btn_save",
+                                        "BackgroundColor": "#E4D00A"
+                                    },
+                                    {
+                                        "type": "ModernEditText",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "@fill_name",
+                                        "Variable": "name"
+                                    },
+                                    {
+                                        "type": "ModernEditText",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "@fill_barcode",
+                                        "Variable": "barcode"
+                                    }
+                                ]
+                            },
+                            {
+                                "Value": "#f2ed",
+                                "Variable": "menu_del",
+                                "type": "MenuItem"
+                            },
+                            {
+                                "Value": "",
+                                "Variable": "barcode_cell",
+                                "type": "barcode"
+                            }
+                        ],
+                        "Timer": false,
+                        "hideToolBarScreen": false,
+                        "noScroll": true,
+                        "handleKeyUp": false,
+                        "hideBottomBarScreen": true,
+                        "onlineOnStart": false,
+                        "onlineOnInput": false,
+                        "DefOnCreate": "cells_record_on_start",
+                        "DefOnInput": "cells_record_input",
+                        "noConfirmation": true,
+                        "send_when_opened": true,
+                        "onlineOnAfterStart": false
+                    },
+                    {
+                        "Name": "Добавить группу товаров",
+                        "type": "Operation",
+                        "Elements": [
+                            {
+                                "Value": "",
+                                "Variable": "",
+                                "type": "LinearLayout",
+                                "weight": "0",
+                                "height": "match_parent",
+                                "width": "match_parent",
+                                "orientation": "vertical",
+                                "Elements": [
+                                    {
+                                        "type": "LinearLayout",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "Добавить",
+                                        "Variable": "btn_add",
+                                        "orientation": "horizontal",
+                                        "Elements": [
+                                            {
+                                                "type": "Button",
+                                                "height": "wrap_content",
+                                                "width": "match_parent",
+                                                "weight": "1",
+                                                "Value": "#f055",
+                                                "Variable": "btn_add",
+                                                "TextSize": "25",
+                                                "BackgroundColor": "#3CB371"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "TableLayout",
+                                        "height": "match_parent",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "@list",
+                                        "Variable": ""
+                                    }
+                                ]
+                            }
+                        ],
+                        "Timer": false,
+                        "hideToolBarScreen": false,
+                        "noScroll": true,
+                        "handleKeyUp": false,
+                        "hideBottomBarScreen": true,
+                        "onlineOnStart": false,
+                        "onlineOnInput": false,
+                        "DefOnInput": "_groups_input",
+                        "DefOnCreate": "_groups_on_start",
+                        "send_when_opened": true,
+                        "onlineOnAfterStart": false
+                    },
+                    {
+                        "Name": "Добавить единицу измерения",
+                        "type": "Operation",
+                        "Elements": [
+                            {
+                                "Value": "",
+                                "Variable": "",
+                                "type": "LinearLayout",
+                                "weight": "0",
+                                "height": "match_parent",
+                                "width": "match_parent",
+                                "orientation": "vertical",
+                                "Elements": [
+                                    {
+                                        "type": "LinearLayout",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "Добавить",
+                                        "Variable": "btn_add",
+                                        "orientation": "horizontal",
+                                        "Elements": [
+                                            {
+                                                "type": "Button",
+                                                "height": "wrap_content",
+                                                "width": "match_parent",
+                                                "weight": "1",
+                                                "Value": "#f055",
+                                                "Variable": "btn_add",
+                                                "TextSize": "25",
+                                                "BackgroundColor": "#3CB371"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "TableLayout",
+                                        "height": "match_parent",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "@list",
+                                        "Variable": ""
+                                    }
+                                ]
+                            }
+                        ],
+                        "Timer": false,
+                        "hideToolBarScreen": false,
+                        "noScroll": true,
+                        "handleKeyUp": false,
+                        "hideBottomBarScreen": true,
+                        "onlineOnStart": false,
+                        "onlineOnInput": false,
+                        "DefOnInput": "_units_input",
+                        "DefOnCreate": "_units_on_start",
+                        "send_when_opened": true,
+                        "onlineOnAfterStart": false
+                    }
+                ]
+            },
+            {
+                "ProcessName": "Приемка",
+                "type": "Process",
+                "Operations": [
+                    {
+                        "Name": "Выбор ячейки",
+                        "type": "Operation",
+                        "Elements": [
+                            {
+                                "Value": "",
+                                "Variable": "",
+                                "type": "LinearLayout",
+                                "weight": "0",
+                                "height": "match_parent",
+                                "width": "match_parent",
+                                "orientation": "vertical",
+                                "Elements": [
+                                    {
+                                        "type": "TextView",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "Сканируйте или выберите ячейку",
+                                        "Variable": "",
+                                        "BackgroundColor": "#3B5958",
+                                        "TextSize": "20",
+                                        "TextColor": "#FFFFFF",
+                                        "TextBold": true
+                                    },
+                                    {
+                                        "type": "SpinnerLayout",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "@cells",
+                                        "Variable": "cell"
+                                    }
+                                ],
+                                "BackgroundColor": "",
+                                "StrokeWidth": "",
+                                "Padding": ""
+                            },
+                            {
+                                "Value": "",
+                                "Variable": "barcode_cell",
+                                "type": "barcode"
+                            },
+                            {
+                                "Value": "",
+                                "Variable": "",
+                                "type": "LinearLayout",
+                                "weight": "0",
+                                "height": "wrap_content",
+                                "width": "wrap_content",
+                                "orientation": "vertical",
+                                "Elements": [
+                                    {
+                                        "type": "TextView",
+                                        "height": "match_parent",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": " ",
+                                        "Variable": "",
+                                        "TextSize": "72"
+                                    },
+                                    {
+                                        "type": "TextView",
+                                        "height": "match_parent",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": " ",
+                                        "Variable": "",
+                                        "TextSize": "72"
+                                    },
+                                    {
+                                        "type": "TextView",
+                                        "height": "match_parent",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": " ",
+                                        "Variable": "",
+                                        "TextSize": "72"
+                                    },
+                                    {
+                                        "type": "TextView",
+                                        "height": "match_parent",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": " ",
+                                        "Variable": "",
+                                        "TextSize": "53"
+                                    },
+                                    {
+                                        "type": "TextView",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "Сканируйте штрихкод камерой устройства",
+                                        "Variable": "",
+                                        "TextSize": "15",
+                                        "gravity_horizontal": "right",
+                                        "TextBold": true,
+                                        "TextItalic": true
+                                    }
+                                ],
+                                "BackgroundColor": "",
+                                "StrokeWidth": "",
+                                "Padding": ""
+                            }
+                        ],
+                        "Timer": false,
+                        "hideToolBarScreen": false,
+                        "noScroll": false,
+                        "handleKeyUp": false,
+                        "hideBottomBarScreen": true,
+                        "onlineOnStart": false,
+                        "onlineOnInput": false,
+                        "DefOnCreate": "_income_cell_on_start",
+                        "DefOnInput": "_income_cell_on_input",
+                        "send_when_opened": true,
+                        "onlineOnAfterStart": false
+                    },
+                    {
+                        "Name": "Выбор товара",
+                        "type": "Operation",
+                        "Elements": [
+                            {
+                                "Value": "",
+                                "Variable": "",
+                                "type": "LinearLayout",
+                                "weight": "0",
+                                "height": "match_parent",
+                                "width": "match_parent",
+                                "orientation": "vertical",
+                                "Elements": [
+                                    {
+                                        "type": "TextView",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "Сканируйте товар",
+                                        "Variable": "",
+                                        "BackgroundColor": "#3B5958",
+                                        "TextSize": "20",
+                                        "TextColor": "#FFFFFF",
+                                        "TextBold": true
+                                    },
+                                    {
+                                        "type": "TextView",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "Ячейка",
+                                        "Variable": "",
+                                        "TextSize": "20"
+                                    },
+                                    {
+                                        "type": "TextView",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "@cell",
+                                        "Variable": "",
+                                        "TextBold": true,
+                                        "TextSize": "22"
+                                    },
+                                    {
+                                        "type": "TextView",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "Товары в ячейке",
+                                        "Variable": ""
+                                    },
+                                    {
+                                        "type": "TableLayout",
+                                        "height": "match_parent",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "@table_object",
+                                        "Variable": ""
+                                    }
+                                ],
+                                "BackgroundColor": "",
+                                "StrokeWidth": "",
+                                "Padding": ""
+                            },
+                            {
+                                "Value": "",
+                                "Variable": "barcode",
+                                "type": "barcode"
+                            }
+                        ],
+                        "Timer": false,
+                        "hideToolBarScreen": false,
+                        "noScroll": false,
+                        "handleKeyUp": false,
+                        "hideBottomBarScreen": true,
+                        "onlineOnStart": false,
+                        "onlineOnInput": false,
+                        "DefOnCreate": "",
+                        "DefOnInput": "_income_nom_input",
+                        "onlineOnAfterStart": false
+                    },
+                    {
+                        "Name": "Ввод количества",
+                        "type": "Operation",
+                        "Elements": [
+                            {
+                                "Value": "",
+                                "Variable": "",
+                                "type": "LinearLayout",
+                                "weight": "0",
+                                "height": "match_parent",
+                                "width": "match_parent",
+                                "orientation": "vertical",
+                                "Elements": [
+                                    {
+                                        "type": "TextView",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "Укажите количество",
+                                        "Variable": "",
+                                        "BackgroundColor": "#3B5958",
+                                        "TextSize": "20",
+                                        "TextColor": "#FFFFFF",
+                                        "TextBold": true
+                                    },
+                                    {
+                                        "type": "TextView",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "Ячейка",
+                                        "Variable": "",
+                                        "TextSize": "20"
+                                    },
+                                    {
+                                        "type": "TextView",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "@cell",
+                                        "Variable": "",
+                                        "TextBold": true,
+                                        "TextSize": "22"
+                                    },
+                                    {
+                                        "type": "TextView",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "Товар",
+                                        "Variable": "",
+                                        "TextSize": "20"
+                                    },
+                                    {
+                                        "type": "TextView",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "@nom",
+                                        "Variable": "",
+                                        "TextBold": true,
+                                        "TextSize": "22"
+                                    },
+                                    {
+                                        "type": "LinearLayout",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "",
+                                        "Variable": "",
+                                        "orientation": "horizontal",
+                                        "Elements": [
+                                            {
+                                                "type": "TextView",
+                                                "height": "wrap_content",
+                                                "width": "match_parent",
+                                                "weight": "1",
+                                                "Value": "Кол-во",
+                                                "Variable": ""
+                                            },
+                                            {
+                                                "type": "EditTextNumeric",
+                                                "height": "wrap_content",
+                                                "width": "match_parent",
+                                                "weight": "1",
+                                                "Value": "@qty",
+                                                "Variable": "qty",
+                                                "BackgroundColor": "#F7ECEB",
+                                                "TextBold": true
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ],
+                        "Timer": false,
+                        "hideToolBarScreen": false,
+                        "noScroll": false,
+                        "handleKeyUp": false,
+                        "hideBottomBarScreen": true,
+                        "onlineOnStart": false,
+                        "onlineOnInput": false,
+                        "DefOnInput": "_income_qty_input",
+                        "onlineOnAfterStart": false
+                    }
+                ],
+                "PlanFactHeader": "Состав"
+            },
+            {
+                "ProcessName": "Отгрузка",
+                "type": "Process",
+                "Operations": [
+                    {
+                        "Name": "Выбор ячейки",
+                        "type": "Operation",
+                        "Elements": [
+                            {
+                                "Value": "",
+                                "Variable": "",
+                                "type": "LinearLayout",
+                                "weight": "0",
+                                "height": "match_parent",
+                                "width": "match_parent",
+                                "orientation": "vertical",
+                                "Elements": [
+                                    {
+                                        "type": "TextView",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "Сканируйте или выберите ячейку",
+                                        "Variable": "",
+                                        "BackgroundColor": "#3B5958",
+                                        "TextSize": "20",
+                                        "TextColor": "#FFFFFF",
+                                        "TextBold": true
+                                    },
+                                    {
+                                        "type": "SpinnerLayout",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "@cells",
+                                        "Variable": "cell"
+                                    }
+                                ]
+                            },
+                            {
+                                "Value": "",
+                                "Variable": "barcode_cell",
+                                "type": "barcode"
+                            }
+                        ],
+                        "Timer": false,
+                        "hideToolBarScreen": false,
+                        "noScroll": false,
+                        "handleKeyUp": false,
+                        "hideBottomBarScreen": true,
+                        "onlineOnStart": false,
+                        "onlineOnInput": false,
+                        "DefOnCreate": "_income_cell_on_start",
+                        "DefOnInput": "_income_cell_on_input",
+                        "send_when_opened": true,
+                        "onlineOnAfterStart": false
+                    },
+                    {
+                        "Name": "Выбор товара",
+                        "type": "Operation",
+                        "Elements": [
+                            {
+                                "Value": "",
+                                "Variable": "",
+                                "type": "LinearLayout",
+                                "weight": "0",
+                                "height": "match_parent",
+                                "width": "match_parent",
+                                "orientation": "vertical",
+                                "Elements": [
+                                    {
+                                        "type": "TextView",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "Сканируйте товар",
+                                        "Variable": "",
+                                        "BackgroundColor": "#3B5958",
+                                        "TextSize": "20",
+                                        "TextColor": "#FFFFFF",
+                                        "TextBold": true
+                                    },
+                                    {
+                                        "type": "TextView",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "Ячейка",
+                                        "Variable": "",
+                                        "TextSize": "20"
+                                    },
+                                    {
+                                        "type": "TextView",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "@cell",
+                                        "Variable": "",
+                                        "TextBold": true,
+                                        "TextSize": "22"
+                                    },
+                                    {
+                                        "type": "TextView",
+                                        "height": "match_parent",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "Товары в ячейке",
+                                        "Variable": ""
+                                    },
+                                    {
+                                        "type": "TableLayout",
+                                        "height": "match_parent",
+                                        "width": "match_parent",
+                                        "weight": 0,
+                                        "Value": "@table_object",
+                                        "Variable": ""
+                                    }
+                                ],
+                                "BackgroundColor": "",
+                                "StrokeWidth": "",
+                                "Padding": ""
+                            },
+                            {
+                                "Value": "",
+                                "Variable": "barcode",
+                                "type": "barcode"
+                            }
+                        ],
+                        "Timer": false,
+                        "hideToolBarScreen": false,
+                        "noScroll": false,
+                        "handleKeyUp": false,
+                        "hideBottomBarScreen": true,
+                        "onlineOnStart": false,
+                        "onlineOnInput": false,
+                        "DefOnCreate": "",
+                        "DefOnInput": "_income_nom_input",
+                        "onlineOnAfterStart": false
+                    },
+                    {
+                        "Name": "Ввод количества",
+                        "type": "Operation",
+                        "Elements": [
+                            {
+                                "Value": "",
+                                "Variable": "",
+                                "type": "LinearLayout",
+                                "weight": "0",
+                                "height": "match_parent",
+                                "width": "match_parent",
+                                "orientation": "vertical",
+                                "Elements": [
+                                    {
+                                        "type": "TextView",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "Укажите количество",
+                                        "Variable": "",
+                                        "BackgroundColor": "#3B5958",
+                                        "TextSize": "20",
+                                        "TextColor": "#FFFFFF",
+                                        "TextBold": true
+                                    },
+                                    {
+                                        "type": "TextView",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "Ячейка",
+                                        "Variable": "",
+                                        "TextSize": "20"
+                                    },
+                                    {
+                                        "type": "TextView",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "@cell",
+                                        "Variable": "",
+                                        "TextBold": true,
+                                        "TextSize": "22"
+                                    },
+                                    {
+                                        "type": "TextView",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "Товар",
+                                        "Variable": "",
+                                        "TextSize": "20"
+                                    },
+                                    {
+                                        "type": "TextView",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "@nom",
+                                        "Variable": "",
+                                        "TextBold": true,
+                                        "TextSize": "22"
+                                    },
+                                    {
+                                        "type": "LinearLayout",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "",
+                                        "Variable": "",
+                                        "orientation": "horizontal",
+                                        "Elements": [
+                                            {
+                                                "type": "TextView",
+                                                "height": "wrap_content",
+                                                "width": "match_parent",
+                                                "weight": "1",
+                                                "Value": "Кол-во",
+                                                "Variable": ""
+                                            },
+                                            {
+                                                "type": "EditTextNumeric",
+                                                "height": "wrap_content",
+                                                "width": "match_parent",
+                                                "weight": "1",
+                                                "Value": "@qty",
+                                                "Variable": "qty",
+                                                "BackgroundColor": "#F7ECEB",
+                                                "TextBold": true
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ],
+                        "Timer": false,
+                        "hideToolBarScreen": false,
+                        "noScroll": false,
+                        "handleKeyUp": false,
+                        "hideBottomBarScreen": true,
+                        "onlineOnStart": false,
+                        "onlineOnInput": false,
+                        "DefOnInput": "_outcome_qty_input",
+                        "onlineOnAfterStart": false
+                    }
+                ],
+                "PlanFactHeader": "Состав"
+            },
+            {
+                "ProcessName": "Остатки",
+                "type": "Process",
+                "Operations": [
+                    {
+                        "Name": "Остатки",
+                        "type": "Operation",
+                        "Elements": [
+                            {
+                                "Value": "",
+                                "Variable": "",
+                                "type": "LinearLayout",
+                                "weight": "0",
+                                "height": "match_parent",
+                                "width": "match_parent",
+                                "orientation": "vertical",
+                                "Elements": [
+                                    {
+                                        "type": "TextView",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "Сканируйте ячейку или товар чтобы посмотреть остатки",
+                                        "Variable": "",
+                                        "TextSize": "20",
+                                        "BackgroundColor": "#3B5958",
+                                        "TextColor": "#FFFFFF"
+                                    },
+                                    {
+                                        "type": "TableLayout",
+                                        "height": "match_parent",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "@table",
+                                        "Variable": ""
+                                    }
+                                ]
+                            },
+                            {
+                                "Value": "",
+                                "Variable": "barcode",
+                                "type": "barcode"
+                            }
+                        ],
+                        "Timer": false,
+                        "hideToolBarScreen": false,
+                        "noScroll": false,
+                        "handleKeyUp": false,
+                        "hideBottomBarScreen": true,
+                        "onlineOnStart": false,
+                        "onlineOnInput": false,
+                        "DefOnCreate": "_stock_on_create",
+                        "DefOnInput": "_stock_input",
+                        "noConfirmation": true,
+                        "send_when_opened": true,
+                        "onlineOnAfterStart": false
+                    },
+                    {
+                        "Name": "Остатки по объекту",
+                        "type": "Operation",
+                        "Elements": [
+                            {
+                                "Value": "",
+                                "Variable": "",
+                                "type": "LinearLayout",
+                                "weight": "0",
+                                "height": "match_parent",
+                                "width": "match_parent",
+                                "orientation": "vertical",
+                                "Elements": [
+                                    {
+                                        "type": "TextView",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "Объект",
+                                        "Variable": "",
+                                        "TextSize": "20"
+                                    },
+                                    {
+                                        "type": "TextView",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "@object",
+                                        "Variable": "",
+                                        "TextBold": true,
+                                        "TextSize": "22"
+                                    },
+                                    {
+                                        "type": "TableLayout",
+                                        "height": "match_parent",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "@table_object",
+                                        "Variable": ""
+                                    }
+                                ]
+                            }
+                        ],
+                        "Timer": false,
+                        "hideToolBarScreen": false,
+                        "noScroll": false,
+                        "handleKeyUp": false,
+                        "hideBottomBarScreen": true,
+                        "onlineOnStart": false,
+                        "onlineOnInput": false,
+                        "noConfirmation": true,
+                        "DefOnInput": "_stock_object_input",
+                        "onlineOnAfterStart": false
+                    }
+                ]
+            },
+            {
+                "ProcessName": "Инвентаризация Active CV",
+                "type": "Process",
+                "Operations": [
+                    {
+                        "Name": "Документы",
+                        "type": "Operation",
+                        "Elements": [
+                            {
+                                "Value": "",
+                                "Variable": "",
+                                "type": "LinearLayout",
+                                "weight": "0",
+                                "height": "match_parent",
+                                "width": "match_parent",
+                                "orientation": "vertical",
+                                "Elements": [
+                                    {
+                                        "type": "TextView",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "Создайте новый или продолжите существующий документ",
+                                        "Variable": "",
+                                        "BackgroundColor": "#3B5958",
+                                        "TextSize": "20",
+                                        "TextColor": "#FFFFFF",
+                                        "TextBold": true
+                                    },
+                                    {
+                                        "type": "Button",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "Создать инвентаризацию",
+                                        "Variable": "btn_new",
+                                        "BackgroundColor": "#3CB371"
+                                    },
+                                    {
+                                        "type": "CardsLayout",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "@inventory",
+                                        "Variable": "doc"
+                                    }
+                                ]
+                            }
+                        ],
+                        "Timer": false,
+                        "hideToolBarScreen": false,
+                        "noScroll": false,
+                        "handleKeyUp": false,
+                        "hideBottomBarScreen": true,
+                        "onlineOnStart": false,
+                        "onlineOnInput": false,
+                        "DefOnCreate": "_inventory_on_start",
+                        "DefOnInput": "_inventory_input",
+                        "send_when_opened": true,
+                        "onlineOnAfterStart": false
+                    },
+                    {
+                        "Name": "Новая инвентаризация",
+                        "type": "Operation",
+                        "Elements": [
+                            {
+                                "Value": "",
+                                "Variable": "",
+                                "type": "LinearLayout",
+                                "weight": "0",
+                                "height": "match_parent",
+                                "width": "match_parent",
+                                "orientation": "vertical",
+                                "Elements": [
+                                    {
+                                        "type": "TextView",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "Комментарий/Название",
+                                        "Variable": ""
+                                    },
+                                    {
+                                        "type": "EditTextText",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "",
+                                        "Variable": "name"
+                                    }
+                                ]
+                            }
+                        ],
+                        "Timer": false,
+                        "hideToolBarScreen": false,
+                        "noScroll": false,
+                        "handleKeyUp": false,
+                        "hideBottomBarScreen": true,
+                        "onlineOnStart": false,
+                        "onlineOnInput": false,
+                        "DefOnInput": "_newinv_input",
+                        "onlineOnAfterStart": false
+                    },
+                    {
+                        "Name": "ДиалогВводКоличества",
+                        "type": "Operation",
+                        "Elements": [
+                            {
+                                "Value": "",
+                                "Variable": "",
+                                "type": "LinearLayout",
+                                "weight": "0",
+                                "height": "match_parent",
+                                "width": "match_parent",
+                                "orientation": "vertical",
+                                "Elements": [
+                                    {
+                                        "type": "TextView",
+                                        "height": "wrap_content",
+                                        "width": "wrap_content",
+                                        "weight": "0",
+                                        "Value": "@nom",
+                                        "Variable": ""
+                                    },
+                                    {
+                                        "type": "LinearLayout",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "",
+                                        "Variable": "",
+                                        "orientation": "horizontal",
+                                        "Elements": [
+                                            {
+                                                "type": "TextView",
+                                                "height": "wrap_content",
+                                                "width": "match_parent",
+                                                "weight": "1",
+                                                "Value": "Кол.:",
+                                                "Variable": ""
+                                            },
+                                            {
+                                                "type": "EditTextNumeric",
+                                                "height": "wrap_content",
+                                                "width": "match_parent",
+                                                "weight": "1",
+                                                "Value": "",
+                                                "Variable": "qty"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ],
+                        "Timer": false,
+                        "hideToolBarScreen": false,
+                        "noScroll": false,
+                        "handleKeyUp": false,
+                        "hideBottomBarScreen": true,
+                        "onlineOnStart": false,
+                        "onlineOnInput": false,
+                        "onlineOnAfterStart": false
+                    },
+                    {
+                        "Name": "Инвентаризация Результаты",
+                        "type": "Operation",
+                        "Elements": [
+                            {
+                                "Value": "",
+                                "Variable": "",
+                                "type": "LinearLayout",
+                                "weight": "0",
+                                "height": "match_parent",
+                                "width": "match_parent",
+                                "orientation": "vertical",
+                                "Elements": [
+                                    {
+                                        "type": "TextView",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "@inv",
+                                        "Variable": "",
+                                        "TextSize": "18"
+                                    },
+                                    {
+                                        "type": "Button",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "Начать сканирование",
+                                        "Variable": "btn_run"
+                                    },
+                                    {
+                                        "type": "TableLayout",
+                                        "height": "match_parent",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "@table",
+                                        "Variable": ""
+                                    }
+                                ],
+                                "BackgroundColor": "",
+                                "StrokeWidth": "",
+                                "Padding": ""
+                            }
+                        ],
+                        "Timer": false,
+                        "hideToolBarScreen": false,
+                        "noScroll": false,
+                        "handleKeyUp": false,
+                        "hideBottomBarScreen": true,
+                        "onlineOnStart": false,
+                        "onlineOnInput": false,
+                        "DefOnCreate": "_invres_on_start",
+                        "DefOnInput": "_invres_input",
+                        "send_when_opened": true,
+                        "onlineOnAfterStart": false
+                    }
+                ],
+                "hidden": false
+            },
+            {
+                "CVOperationName": "ИнвCV",
+                "type": "CVOperation",
+                "CVFrames": [
+                    {
+                        "Name": "Выбор ячейки",
+                        "type": "CVFrame",
+                        "CVOnline": false,
+                        "CVDetector": "Barcode",
+                        "CVResolution": "HD720",
+                        "CVMode": "green_and_grey",
+                        "CVActionButtons": "",
+                        "CVAction": "Сканируйте Штрихкод ячейки",
+                        "CVInfo": "@inv",
+                        "CVCameraDevice": "Back",
+                        "CVDetectorMode": "train",
+                        "CVFrameDefOnCreate": "_invcv_cell_on_start",
+                        "CVFrameDefOnNewObject": "_invcv_cell_on_new_object",
+                        "VisionSettings": "{\n    \"name\": \"Распознавание артикула\",\n    \"TypeRecognition\": \"Распознавание текста\",\n    \"mesure_qty\": \"1\",\n    \"min_freq\": \"1\",\n    \"min_length\": \"3\",\n    \"max_length\": \"15\",\n    \"query\": \"c2VsZWN0ICogZnJvbSBTV19Hb29kcyB3aGVyZSBwcm9kdWN0X251bWJlciBsaWtlICA/\",\n    \"ReplaceO\": true,\n    \"ToUpcase\": false,\n    \"control_field\": \"product_number\",\n    \"result_field\": \"id\",\n    \"cursor\": [\n        {\n            \"title\": \"id\",\n            \"var\": \"_nom_id\",\n            \"field\": \"id\"\n        }\n    ],\n    \"result_var\": \"_nom_id\"\n}",
+                        "RecognitionTemplate": "Распознавание артикула"
+                    },
+                    {
+                        "Name": "Товары ячейки",
+                        "type": "CVFrame",
+                        "CVOnline": false,
+                        "CVDetector": "Barcode",
+                        "CVResolution": "HD720",
+                        "CVMode": "list_and_grey",
+                        "CVActionButtons": "К ЯЧЕЙКЕ",
+                        "CVAction": "Сканируйте штрихкоды товара",
+                        "CVInfo": "@inv",
+                        "CVCameraDevice": "Back",
+                        "CVDetectorMode": "train",
+                        "CVFrameDefOnNewObject": "_invcv_goods_on_new_object",
+                        "CVFrameDefAction": "_invcv_goods_action",
+                        "VisionSettings": "{\n    \"name\": \"Распознавание артикула\",\n    \"TypeRecognition\": \"Распознавание текста\",\n    \"mesure_qty\": \"1\",\n    \"min_freq\": \"1\",\n    \"min_length\": \"3\",\n    \"max_length\": \"15\",\n    \"query\": \"c2VsZWN0ICogZnJvbSBTV19Hb29kcyB3aGVyZSBwcm9kdWN0X251bWJlciBsaWtlICA/\",\n    \"ReplaceO\": true,\n    \"ToUpcase\": false,\n    \"control_field\": \"product_number\",\n    \"result_field\": \"id\",\n    \"cursor\": [\n        {\n            \"title\": \"id\",\n            \"var\": \"_nom_id\",\n            \"field\": \"id\"\n        }\n    ],\n    \"result_var\": \"_nom_id\"\n}",
+                        "RecognitionTemplate": "Распознавание артикула",
+                        "CVRecognitionSettings": "{\n    \"name\": \"Распознавание артикула\",\n    \"TypeRecognition\": \"Распознавание текста\",\n    \"mesure_qty\": \"1\",\n    \"min_freq\": \"1\",\n    \"min_length\": \"3\",\n    \"max_length\": \"15\",\n    \"query\": \"c2VsZWN0ICogZnJvbSBTV19Hb29kcyB3aGVyZSBwcm9kdWN0X251bWJlciBsaWtlICA/\",\n    \"ReplaceO\": true,\n    \"ToUpcase\": false,\n    \"control_field\": \"product_number\",\n    \"result_field\": \"id\",\n    \"cursor\": [\n        {\n            \"title\": \"id\",\n            \"var\": \"_nom_id\",\n            \"field\": \"id\"\n        }\n    ],\n    \"result_var\": \"_nom_id\"\n}"
+                    }
+                ],
+                "hidden": true
+            }
+        ],
+        "ConfigurationSettings": {
+            "uid": "f164e78e7f8f480da045102a42812cdb"
+        },
+        "ConfigurationTags": "Py,off-line,ActiveCV®",
+        "RunPython": true,
+        "PyHandlers": "aW1wb3J0IG9zCmltcG9ydCBzcWxpdGUzICAjIFRoaXMgaXMgYW5vdGhlciB3YXkgdG8gd29yayB3aXRoIFNRTApmcm9tIHNxbGl0ZTMuZGJhcGkyIGltcG9ydCBFcnJvcgpmcm9tIGRhdGV0aW1lIGltcG9ydCBkYXRldGltZQpmcm9tIFBJTCBpbXBvcnQgSW1hZ2UKZnJvbSBmbGFzayBpbXBvcnQgRmxhc2sKZnJvbSBmbGFzayBpbXBvcnQgcmVxdWVzdAppbXBvcnQganNvbgpmcm9tIHBvbnkub3JtIGltcG9ydCBzZWxlY3QsIGRiX3Nlc3Npb24sIGNvbW1pdAppbXBvcnQgdWlfZ2xvYmFsCgoKYXBwID0gRmxhc2soX19uYW1lX18pCgoKIyAtQkVHSU4gQ1VTVE9NIEhBTkRMRVJTCgpEQl9QQVRIX2RlYnVnID0gJ2RiLmRiJyAgICAjREJfUEFUSCA9ICdkYi5kYicgI25ldzIg0LfQsNC80LXQvdCwINC/0LXRgNC10LzQtdC90L3QvtC5Cgp1bml0X2lkID0gLTEKX25vbV9pZCA9IC0xCl9jZWxsX2lkID0gLTEKX2NlbGxzID0ge30KX2NlbGxpZCA9IE5vbmUKZm91bmQgPSBbXQpfZ3JlZW5fc2l6ZSA9IDAKX3llbGxvd19zaXplID0gMAoKCiNmdW5jID0gbWV0aG9kLnJlcGxhY2UoJ18nLCAnJywgMSkKCmRlZiBpbml0X29uX3N0YXJ0KCk6I2hhc2hNYXAsIF9maWxlcz1Ob25lLCBfZGF0YT1Ob25lKToKICAgIHVpX2dsb2JhbC5pbml0KCkKICAgIHJldHVybiBoYXNoTWFwCgoKZGVmIG1lbnVfaW5wdXQoaGFzaE1hcCwgX2ZpbGVzPU5vbmUsIF9kYXRhPU5vbmUpOgogICAgaWYgaGFzaE1hcC5nZXQoImxpc3RlbmVyIikgPT0gIm1lbnUiOgogICAgICAgIGlmIGhhc2hNYXAuZ2V0KCJtZW51IikgPT0gItCU0L7QsdCw0LLQuNGC0Ywg0YLQvtCy0LDRgCI6CiAgICAgICAgICAgIGhhc2hNYXAucHV0KCJTaG93U2NyZWVuIiwgItCU0L7QsdCw0LLQuNGC0Ywg0YLQvtCy0LDRgCIpCiAgICAgICAgaWYgaGFzaE1hcC5nZXQoIm1lbnUiKSA9PSAi0JTQvtCx0LDQstC40YLRjCDRj9GH0LXQudC60YMiOgogICAgICAgICAgICBoYXNoTWFwLnB1dCgiU2hvd1NjcmVlbiIsICLQlNC+0LHQsNCy0LjRgtGMINGP0YfQtdC50LrRgyIpCiAgICAgICAgaWYgaGFzaE1hcC5nZXQoIm1lbnUiKSA9PSAi0JTQvtCx0LDQstC40YLRjCDQs9GA0YPQv9C/0YMg0YLQvtCy0LDRgNC+0LIiOgogICAgICAgICAgICBoYXNoTWFwLnB1dCgiU2hvd1NjcmVlbiIsICLQlNC+0LHQsNCy0LjRgtGMINCz0YDRg9C/0L/RgyDRgtC+0LLQsNGA0L7QsiIpCgogICAgICAgIGVsaWYgaGFzaE1hcC5nZXQoIm1lbnUiKSA9PSAi0JTQvtCx0LDQstC40YLRjCDQtdC00LjQvdC40YbRgyDQuNC30LzQtdGA0LXQvdC40Y8iOgogICAgICAgICAgICBoYXNoTWFwLnB1dCgiU2hvd1NjcmVlbiIsICLQlNC+0LHQsNCy0LjRgtGMINC10LTQuNC90LjRhtGDINC40LfQvNC10YDQtdC90LjRjyIpCiAgICBlbGlmIGhhc2hNYXAuZ2V0KCJsaXN0ZW5lciIpID09ICdPTl9CQUNLX1BSRVNTRUQnOgogICAgICAgIGhhc2hNYXAucHV0KCJGaW5pc2hQcm9jZXNzIiwgIiIpCiAgICByZXR1cm4gaGFzaE1hcAoKCmRlZiBtZW51X29uX3N0YXJ0KGhhc2hNYXAsIF9maWxlcz1Ob25lLCBfZGF0YT1Ob25lKToKICAgICMgaGFzaE1hcC5wdXQoImdldGZpbGVzIiwiIikKICAgICMgaGFzaE1hcC5wdXQoInRvYXN0IiwidGVzdDEiKQogICAgcmV0dXJuIGhhc2hNYXAKCgojIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLdC00L7QvyDRhNGD0L3QutGG0LjQuApkZWYgZ2V0X3RhYmxlX2J5X2NlbGwoaWQpOgogICAgdGFibGUgPSB7CiAgICAgICAgInR5cGUiOiAidGFibGUiLAogICAgICAgICJ0ZXh0c2l6ZSI6ICIxNyIsCgogICAgICAgICJjb2x1bW5zIjogWwogICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAibmFtZSI6ICJjZWxsIiwKICAgICAgICAgICAgICAgICJoZWFkZXIiOiAi0K/Rh9C10LnQutCwIiwKICAgICAgICAgICAgICAgICJ3ZWlnaHQiOiAiMSIKICAgICAgICAgICAgfSwKICAgICAgICAgICAgewogICAgICAgICAgICAgICAgIm5hbWUiOiAibm9tIiwKICAgICAgICAgICAgICAgICJoZWFkZXIiOiAi0KLQvtCy0LDRgCIsCiAgICAgICAgICAgICAgICAid2VpZ2h0IjogIjIiCiAgICAgICAgICAgIH0sCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICJuYW1lIjogInF0eSIsCiAgICAgICAgICAgICAgICAiaGVhZGVyIjogItCe0YHRgtCw0YLQvtC6IiwKICAgICAgICAgICAgICAgICJ3ZWlnaHQiOiAiMSIKICAgICAgICAgICAgfQogICAgICAgIF0KICAgIH0KCiAgICBjb25uID0gTm9uZQogICAgdHJ5OgogICAgICAgIGNvbm4gPSBzcWxpdGUzLmNvbm5lY3QoREJfUEFUSF9kZWJ1ZykKICAgIGV4Y2VwdCBFcnJvciBhcyBlOgogICAgICAgIHJhaXNlIFZhbHVlRXJyb3IoJ9Cd0LXRgiDRgdC+0LXQtNC40L3QtdC90LjRjyDRgSDQsdCw0LfQvtC5IScpCgogICAgY3Vyc29yID0gY29ubi5jdXJzb3IoKQogICAgY3Vyc29yLmV4ZWN1dGUoCiAgICAgICAgIlNFTEVDVCBTV19DZWxscy5uYW1lIGFzIGNlbGwsU1dfR29vZHMubmFtZSBhcyBub20sIGlmbnVsbChzdW0ocXR5KSwwKSBhcyBxdHkgRlJPTSBTV19BY2NvdW50IExFRlQgSk9JTiBTV19Hb29kcyBPTiBTV19BY2NvdW50LnNrdT1TV19Hb29kcy5pZCBMRUZUIEpPSU4gU1dfQ2VsbHMgT04gU1dfQWNjb3VudC5jZWxsPVNXX0NlbGxzLmlkIFdIRVJFIFNXX0FjY291bnQuY2VsbCA9ICIgKyBzdHIoCiAgICAgICAgICAgIGlkKSArICIgR1JPVVAgQlkgU1dfR29vZHMubmFtZSAsU1dfQ2VsbHMubmFtZSBIQVZJTkcgaWZudWxsKHN1bShxdHkpLDApPD4wIikKCiAgICByZXN1bHRzID0gY3Vyc29yLmZldGNoYWxsKCkKCiAgICByb3dzID0gW10KICAgIGZvciByZWNvcmQgaW4gcmVzdWx0czoKICAgICAgICByb3dzLmFwcGVuZCh7ImNlbGwiOiByZWNvcmRbMF0sICJub20iOiByZWNvcmRbMV0sICJxdHkiOiByZWNvcmRbMl19KQoKICAgIHRhYmxlWydyb3dzJ10gPSByb3dzCgogICAgcmV0dXJuIGpzb24uZHVtcHModGFibGUpCgoKCgoKIyAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS3QlNC+0LHQsNCy0LjRgtGMINC10LTQuNC90LjRhtGDINC40LfQvNC10YDQtdC90LjRjwpkZWYgdW5pdHNfb25fc3RhcnQoaGFzaE1hcCwgX2ZpbGVzPU5vbmUsIF9kYXRhPU5vbmUpOgogICAgdGFibGUgPSB7CiAgICAgICAgInR5cGUiOiAidGFibGUiLAogICAgICAgICJ0ZXh0c2l6ZSI6ICIyMCIsCgogICAgICAgICJjb2x1bW5zIjogWwogICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAibmFtZSI6ICJuYW1lIiwKICAgICAgICAgICAgICAgICJoZWFkZXIiOiAi0J3QsNC40LzQtdC90L7QstCw0L3QuNC1IiwKICAgICAgICAgICAgICAgICJ3ZWlnaHQiOiAiMSIKICAgICAgICAgICAgfQogICAgICAgIF0KICAgIH0KICAgICMgd29yayB3aXRoIFNRTCB2aWEgUG9ueSBPUk0KICAgIHdpdGggZGJfc2Vzc2lvbjojINCX0LDQvNC10L3QuNC7ISEhCiAgICAgICAgcXVlcnkgPSBzZWxlY3QoYyBmb3IgYyBpbiB1aV9nbG9iYWwuU1dfVW5pdHMpCiAgICAgICAgcm93cyA9IFtdCiAgICAgICAgZm9yIHJlY29yZCBpbiBxdWVyeToKICAgICAgICAgICAgcm93cy5hcHBlbmQoeyJuYW1lIjogcmVjb3JkLm5hbWUsICJpZCI6IHJlY29yZC5pZH0pCgogICAgdGFibGVbJ3Jvd3MnXSA9IHJvd3MKICAgIGhhc2hNYXAucHV0KCJsaXN0IiwganNvbi5kdW1wcyh0YWJsZSkpCgogICAgcmV0dXJuIGhhc2hNYXAKCgpkZWYgdW5pdHNfaW5wdXQoaGFzaE1hcCwgX2ZpbGVzPU5vbmUsIF9kYXRhPU5vbmUpOgogICAgZ2xvYmFsIHVuaXRfaWQKCiAgICBpZiBoYXNoTWFwLmdldCgibGlzdGVuZXIiKSA9PSAnT05fQkFDS19QUkVTU0VEJzoKICAgICAgICBoYXNoTWFwLnB1dCgiU2hvd1NjcmVlbiIsICLQnNC10L3RjiDQndCh0JgiKQoKICAgIGVsaWYgaGFzaE1hcC5nZXQoImxpc3RlbmVyIikgPT0gImJ0bl9hZGQiOgogICAgICAgIGhhc2hNYXAucHV0KCJuYW1lIiwgIiIpCiAgICAgICAgdW5pdF9pZCA9IC0xCiAgICAgICAgaGFzaE1hcC5wdXQoIlNob3dEaWFsb2ciLCAi0JTQuNCw0LvQvtCz0JXQtNC40L3QuNGG0YsiKQogICAgICAgIGhhc2hNYXAucHV0KCJTaG93RGlhbG9nU3R5bGUiLCBqc29uLmR1bXBzKHsidGl0bGUiOiAi0JTQvtCx0LDQstC70LXQvdC40LUg0LfQsNC/0LjRgdC4IiwgInllcyI6ICLQodC+0YXRgNCw0L3QuNGC0YwiLCAibm8iOiAi0J7RgtC80LXQvdCwIn0pKQoKICAgIGVsaWYgaGFzaE1hcC5nZXQoImxpc3RlbmVyIikgPT0gIlRhYmxlQ2xpY2siOgoKICAgICAgICBqcmVjb3JkID0ganNvbi5sb2FkcyhoYXNoTWFwLmdldCgic2VsZWN0ZWRfbGluZSIpKQogICAgICAgICMgaGFzaE1hcC5wdXQoInRvYXN0IixzdHIoanJlY29yZFsnaWQnXSkpCiAgICAgICAgdW5pdF9pZCA9IGpyZWNvcmRbJ2lkJ10KICAgICAgICBoYXNoTWFwLnB1dCgibmFtZSIsIGpyZWNvcmRbJ25hbWUnXSkKCiAgICAgICAgaGFzaE1hcC5wdXQoIlNob3dEaWFsb2ciLCAi0JTQuNCw0LvQvtCz0JXQtNC40L3QuNGG0YsiKQogICAgICAgIGhhc2hNYXAucHV0KCJTaG93RGlhbG9nU3R5bGUiLCBqc29uLmR1bXBzKHsidGl0bGUiOiAi0JTQvtCx0LDQstC70LXQvdC40LUg0LfQsNC/0LjRgdC4IiwgInllcyI6ICLQodC+0YXRgNCw0L3QuNGC0YwiLCAibm8iOiAi0J7RgtC80LXQvdCwIn0pKQogICAgZWxpZiBoYXNoTWFwLmdldCgiZXZlbnQiKSA9PSAib25SZXN1bHRQb3NpdGl2ZSI6CiAgICAgICAgIyBoYXNoTWFwLnB1dCgidG9hc3QiLHN0cih1bml0X2lkKSkKICAgICAgICBpZiB1bml0X2lkIDwgMDoKICAgICAgICAgICAgd2l0aCBkYl9zZXNzaW9uOgogICAgICAgICAgICAgICAgciA9IHVpX2dsb2JhbC5TV19Vbml0cyhuYW1lPWhhc2hNYXAuZ2V0KCduYW1lJykpCiAgICAgICAgICAgICAgICBjb21taXQoKQogICAgICAgIGVsc2U6CiAgICAgICAgICAgIHdpdGggZGJfc2Vzc2lvbjoKICAgICAgICAgICAgICAgIGlmIGhhc2hNYXAuZ2V0KCduYW1lJykgPT0gIiI6ICAjINGD0LTQsNC70LXQvdC40LUKICAgICAgICAgICAgICAgICAgICByID0gdWlfZ2xvYmFsLlNXX1VuaXRzW3VuaXRfaWRdCiAgICAgICAgICAgICAgICAgICAgci5kZWxldGUoKQogICAgICAgICAgICAgICAgZWxzZTogICMg0YDQtdC00LDQutGC0LjRgNC+0LLQsNC90LjQtQogICAgICAgICAgICAgICAgICAgIHIgPSB1aV9nbG9iYWwuU1dfVW5pdHNbdW5pdF9pZF0KICAgICAgICAgICAgICAgICAgICByLm5hbWUgPSBoYXNoTWFwLmdldCgnbmFtZScpCgogICAgICAgICAgICAgICAgY29tbWl0KCkKCiAgICByZXR1cm4gaGFzaE1hcAoKCiMgLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t0JTQvtCx0LDQstC40YLRjCDQs9GA0YPQv9C/0YMg0YLQvtCy0LDRgNC+0LIKZGVmIGdyb3Vwc19vbl9zdGFydChoYXNoTWFwLCBfZmlsZXM9Tm9uZSwgX2RhdGE9Tm9uZSk6CiAgICB0YWJsZSA9IHsKICAgICAgICAidHlwZSI6ICJ0YWJsZSIsCiAgICAgICAgInRleHRzaXplIjogIjIwIiwKCiAgICAgICAgImNvbHVtbnMiOiBbCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICJuYW1lIjogIm5hbWUiLAogICAgICAgICAgICAgICAgImhlYWRlciI6ICLQndCw0LjQvNC10L3QvtCy0LDQvdC40LUiLAogICAgICAgICAgICAgICAgIndlaWdodCI6ICIxIgogICAgICAgICAgICB9CiAgICAgICAgXQogICAgfQogICAgIyB3b3JrIHdpdGggU1FMIHZpYSBQb255IE9STQogICAgd2l0aCBkYl9zZXNzaW9uOiMg0JfQsNC80LXQvdC40LshISEKICAgICAgICBxdWVyeSA9IHNlbGVjdChjIGZvciBjIGluIHVpX2dsb2JhbC5TV19Hcm91cHMpCiAgICAgICAgcm93cyA9IFtdCiAgICAgICAgZm9yIHJlY29yZCBpbiBxdWVyeToKICAgICAgICAgICAgcm93cy5hcHBlbmQoeyJuYW1lIjogcmVjb3JkLm5hbWUsICJpZCI6IHJlY29yZC5pZH0pCgogICAgdGFibGVbJ3Jvd3MnXSA9IHJvd3MKICAgIGhhc2hNYXAucHV0KCJsaXN0IiwganNvbi5kdW1wcyh0YWJsZSkpCgogICAgcmV0dXJuIGhhc2hNYXAKCgpkZWYgZ3JvdXBzX2lucHV0KGhhc2hNYXAsIF9maWxlcz1Ob25lLCBfZGF0YT1Ob25lKToKICAgIGdsb2JhbCB1bml0X2lkCgogICAgaWYgaGFzaE1hcC5nZXQoImxpc3RlbmVyIikgPT0gJ09OX0JBQ0tfUFJFU1NFRCc6CiAgICAgICAgaGFzaE1hcC5wdXQoIlNob3dTY3JlZW4iLCAi0JzQtdC90Y4g0J3QodCYIikKICAgIGVsaWYgaGFzaE1hcC5nZXQoImxpc3RlbmVyIikgPT0gImJ0bl9hZGQiOgogICAgICAgIGhhc2hNYXAucHV0KCJuYW1lIiwgIiIpCiAgICAgICAgdW5pdF9pZCA9IC0xCiAgICAgICAgaGFzaE1hcC5wdXQoIlNob3dEaWFsb2ciLCAi0JTQuNCw0LvQvtCz0JPRgNGD0L/Qv9GLIikKICAgICAgICBoYXNoTWFwLnB1dCgiU2hvd0RpYWxvZ1N0eWxlIiwganNvbi5kdW1wcyh7InRpdGxlIjogItCU0L7QsdCw0LLQu9C10L3QuNC1INC30LDQv9C40YHQuCIsICJ5ZXMiOiAi0KHQvtGF0YDQsNC90LjRgtGMIiwgIm5vIjogItCe0YLQvNC10L3QsCJ9KSkKCiAgICBlbGlmIGhhc2hNYXAuZ2V0KCJsaXN0ZW5lciIpID09ICJUYWJsZUNsaWNrIjoKCiAgICAgICAganJlY29yZCA9IGpzb24ubG9hZHMoaGFzaE1hcC5nZXQoInNlbGVjdGVkX2xpbmUiKSkKICAgICAgICAjIGhhc2hNYXAucHV0KCJ0b2FzdCIsc3RyKGpyZWNvcmRbJ2lkJ10pKQogICAgICAgIHVuaXRfaWQgPSBqcmVjb3JkWydpZCddCiAgICAgICAgaGFzaE1hcC5wdXQoIm5hbWUiLCBqcmVjb3JkWyduYW1lJ10pCgogICAgICAgIGhhc2hNYXAucHV0KCJTaG93RGlhbG9nIiwgItCU0LjQsNC70L7Qs9CT0YDRg9C/0L/RiyIpCiAgICAgICAgaGFzaE1hcC5wdXQoIlNob3dEaWFsb2dTdHlsZSIsIGpzb24uZHVtcHMoeyJ0aXRsZSI6ICLQlNC+0LHQsNCy0LvQtdC90LjQtSDQt9Cw0L/QuNGB0LgiLCAieWVzIjogItCh0L7RhdGA0LDQvdC40YLRjCIsICJubyI6ICLQntGC0LzQtdC90LAifSkpCiAgICBlbGlmIGhhc2hNYXAuZ2V0KCJldmVudCIpID09ICJvblJlc3VsdFBvc2l0aXZlIjoKICAgICAgICAjIGhhc2hNYXAucHV0KCJ0b2FzdCIsc3RyKHVuaXRfaWQpKQogICAgICAgIGlmIHVuaXRfaWQgPCAwOgogICAgICAgICAgICB3aXRoIGRiX3Nlc3Npb246CiAgICAgICAgICAgICAgICByID0gdWlfZ2xvYmFsLlNXX0dyb3VwcyhuYW1lPWhhc2hNYXAuZ2V0KCduYW1lJykpCiAgICAgICAgICAgICAgICBjb21taXQoKQogICAgICAgIGVsc2U6CiAgICAgICAgICAgIHdpdGggZGJfc2Vzc2lvbjoKICAgICAgICAgICAgICAgIGlmIGhhc2hNYXAuZ2V0KCduYW1lJykgPT0gIiI6ICAjINGD0LTQsNC70LXQvdC40LUKICAgICAgICAgICAgICAgICAgICByID0gdWlfZ2xvYmFsLlNXX0dyb3Vwc1t1bml0X2lkXQogICAgICAgICAgICAgICAgICAgIHIuZGVsZXRlKCkKICAgICAgICAgICAgICAgIGVsc2U6ICAjINGA0LXQtNCw0LrRgtC40YDQvtCy0LDQvdC40LUKICAgICAgICAgICAgICAgICAgICByID0gdWlfZ2xvYmFsLlNXX0dyb3Vwc1t1bml0X2lkXQogICAgICAgICAgICAgICAgICAgIHIubmFtZSA9IGhhc2hNYXAuZ2V0KCduYW1lJykKCiAgICAgICAgICAgICAgICBjb21taXQoKQoKICAgIHJldHVybiBoYXNoTWFwCgoKIyAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLdCU0L7QsdCw0LLQuNGC0Ywg0YLQvtCy0LDRgApkZWYgZ29vZHNfb25fc3RhcnQoaGFzaE1hcCwgX2ZpbGVzPU5vbmUsIF9kYXRhPU5vbmUpOgogICAgaGFzaE1hcC5wdXQoIm1tX2xvY2FsIiwgIiIpCiAgICBoYXNoTWFwLnB1dCgibW1fY29tcHJlc3Npb24iLCAiNzAiKQogICAgaGFzaE1hcC5wdXQoIm1tX3NpemUiLCAiNjUiKQoKICAgIGxpc3QgPSB7ImN1c3RvbWNhcmRzIjogewoKICAgICAgICAibGF5b3V0IjogewogICAgICAgICAgICAidHlwZSI6ICJMaW5lYXJMYXlvdXQiLAogICAgICAgICAgICAib3JpZW50YXRpb24iOiAidmVydGljYWwiLAogICAgICAgICAgICAiaGVpZ2h0IjogIm1hdGNoX3BhcmVudCIsCiAgICAgICAgICAgICJ3aWR0aCI6ICJtYXRjaF9wYXJlbnQiLAogICAgICAgICAgICAid2VpZ2h0IjogIjAiLAogICAgICAgICAgICAiRWxlbWVudHMiOiBbCiAgICAgICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAgICAgInR5cGUiOiAiTGluZWFyTGF5b3V0IiwKICAgICAgICAgICAgICAgICAgICAib3JpZW50YXRpb24iOiAiaG9yaXpvbnRhbCIsCiAgICAgICAgICAgICAgICAgICAgImhlaWdodCI6ICJ3cmFwX2NvbnRlbnQiLAogICAgICAgICAgICAgICAgICAgICJ3aWR0aCI6ICJtYXRjaF9wYXJlbnQiLAogICAgICAgICAgICAgICAgICAgICJ3ZWlnaHQiOiAiMCIsCiAgICAgICAgICAgICAgICAgICAgIkVsZW1lbnRzIjogWwogICAgICAgICAgICAgICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAidHlwZSI6ICJQaWN0dXJlIiwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICJzaG93X2J5X2NvbmRpdGlvbiI6ICIiLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgIlZhbHVlIjogIkBwaWMiLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgIk5vUmVmcmVzaCI6IEZhbHNlLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgImRvY3VtZW50X3R5cGUiOiAiIiwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICJtYXNrIjogIiIsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAiVmFyaWFibGUiOiAiIiwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICJUZXh0U2l6ZSI6ICIxNiIsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAiVGV4dENvbG9yIjogIiNEQjcwOTMiLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgIlRleHRCb2xkIjogVHJ1ZSwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICJUZXh0SXRhbGljIjogRmFsc2UsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAiQmFja2dyb3VuZENvbG9yIjogIiIsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAid2lkdGgiOiAiNzUiLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgImhlaWdodCI6ICI3NSIsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAid2VpZ2h0IjogMAogICAgICAgICAgICAgICAgICAgICAgICB9LAogICAgICAgICAgICAgICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAidHlwZSI6ICJMaW5lYXJMYXlvdXQiLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgIm9yaWVudGF0aW9uIjogInZlcnRpY2FsIiwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICJoZWlnaHQiOiAid3JhcF9jb250ZW50IiwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICJ3aWR0aCI6ICJtYXRjaF9wYXJlbnQiLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgIndlaWdodCI6ICIxIiwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICJFbGVtZW50cyI6IFsKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICJ0eXBlIjogIlRleHRWaWV3IiwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgInNob3dfYnlfY29uZGl0aW9uIjogIiIsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICJWYWx1ZSI6ICJAbmFtZSIsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICJOb1JlZnJlc2giOiBGYWxzZSwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgImRvY3VtZW50X3R5cGUiOiAiIiwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIm1hc2siOiAiIiwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIlZhcmlhYmxlIjogIiIKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB9LAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgInR5cGUiOiAiVGV4dFZpZXciLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAic2hvd19ieV9jb25kaXRpb24iOiAiIiwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIlZhbHVlIjogIkBwcm9kdWN0X251bWJlciIsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICJOb1JlZnJlc2giOiBGYWxzZSwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgImRvY3VtZW50X3R5cGUiOiAiIiwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIm1hc2siOiAiIiwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIlZhcmlhYmxlIjogIiIKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB9LAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgInR5cGUiOiAiVGV4dFZpZXciLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAic2hvd19ieV9jb25kaXRpb24iOiAiIiwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIlZhbHVlIjogIkBiYXJjb2RlIiwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIk5vUmVmcmVzaCI6IEZhbHNlLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAiZG9jdW1lbnRfdHlwZSI6ICIiLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAibWFzayI6ICIiLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAiVmFyaWFibGUiOiAiIgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgICAgICAgICAgIF0KICAgICAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgICAgIF0KICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgXQogICAgICAgIH0KCiAgICB9CiAgICB9CgogICAgIyBfZmlsZXMgPSBqc29uLmxvYWRzKGhhc2hNYXAuZ2V0KCJfZmlsZXMiKSkKICAgIHdpdGggZGJfc2Vzc2lvbjojINCX0LDQvNC10L3QuNC7ISEhCiAgICAgICAgcXVlcnkgPSBzZWxlY3QoYyBmb3IgYyBpbiB1aV9nbG9iYWwuU1dfR29vZHMpCiAgICAgICAgbGlzdFsiY3VzdG9tY2FyZHMiXVsiY2FyZHNkYXRhIl0gPSBbXQoKICAgICAgICBmb3IgcmVjb3JkIGluIHF1ZXJ5OgoKICAgICAgICAgICAgcGljID0gIiIKICAgICAgICAgICAgaWYgJ3Bob3RvJyBpbiByZWNvcmQucGljdHVyZXM6CgogICAgICAgICAgICAgICAgcCA9IHJlY29yZC5waWN0dXJlc1sncGhvdG8nXQoKICAgICAgICAgICAgICAgIGlmIGxlbihwKSA+IDA6CgogICAgICAgICAgICAgICAgICAgIGZvciBqZiBpbiBfZmlsZXM6IyDQvdCw0YXQvtC00LjQvCDQv9GD0YLRjCDQuiDRhNCw0LnQu9GDINC/0L4g0LjQtNC10L3RgtC40YTQuNC60LDRgtC+0YDRgwogICAgICAgICAgICAgICAgICAgICAgICBpZiBqZlsnaWQnXSA9PSBwWzBdOgogICAgICAgICAgICAgICAgICAgICAgICAgICAgaWYgb3MucGF0aC5leGlzdHMoamZbJ3BhdGgnXSk6CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgcGljID0gIn4iICsgamZbJ3BhdGgnXQogICAgICAgICAgICAgICAgICAgICAgICAgICAgYnJlYWsKCiAgICAgICAgICAgIGxpc3RbImN1c3RvbWNhcmRzIl1bImNhcmRzZGF0YSJdLmFwcGVuZCgKICAgICAgICAgICAgICAgIHsibmFtZSI6IHJlY29yZC5uYW1lLCAia2V5IjogcmVjb3JkLmlkLCAicHJvZHVjdF9udW1iZXIiOiBzdHIocmVjb3JkLnByb2R1Y3RfbnVtYmVyKSwKICAgICAgICAgICAgICAgICAiYmFyY29kZSI6IHN0cihyZWNvcmQuYmFyY29kZSksICJ1bml0Ijogc3RyKHJlY29yZC51bml0KSwgInNrdWdyb3VwIjogc3RyKHJlY29yZC5ncm91cCksCiAgICAgICAgICAgICAgICAgInByaWNlIjogcmVjb3JkLnByaWNlLCAidW5pcXVlIjogcmVjb3JkLnVuaXF1ZSwgInBpY3R1cmVzIjoganNvbi5kdW1wcyhyZWNvcmQucGljdHVyZXMpLCAicGljIjogcGljfSkKICAgIGhhc2hNYXAucHV0KCJsaXN0IiwganNvbi5kdW1wcyhsaXN0KSkKCiAgICByZXR1cm4gaGFzaE1hcAoKCmRlZiBvcGVuX25vbShoYXNoTWFwLCBrZXkpOiMsIF9ub21faWQsIGtleSk6CiAgICBqbGlzdCA9IGpzb24ubG9hZHMoaGFzaE1hcC5nZXQoImxpc3QiKSkKICAgIGdvb2RzYXJyYXkgPSBqbGlzdFsiY3VzdG9tY2FyZHMiXVsnY2FyZHNkYXRhJ10KCiAgICBqcmVjb3JkID0gbmV4dChpdGVtIGZvciBpdGVtIGluIGdvb2RzYXJyYXkgaWYgc3RyKGl0ZW1bImtleSJdKSA9PSBrZXkpCgogICAgaGFzaE1hcC5wdXQoJ19ub21faWQnLCBzdHIoanJlY29yZFsna2V5J10pKSMg0LLQstC+0LQgX25vbV9pZAogICAgaGFzaE1hcC5wdXQoIm5hbWUiLCBqcmVjb3JkWyduYW1lJ10pCiAgICBoYXNoTWFwLnB1dCgiYmFyY29kZSIsIGpyZWNvcmRbJ2JhcmNvZGUnXSkKICAgIGhhc2hNYXAucHV0KCJ1bml0IiwganJlY29yZFsndW5pdCddKQogICAgaGFzaE1hcC5wdXQoImdyb3VwIiwganJlY29yZFsnc2t1Z3JvdXAnXSkKICAgIGhhc2hNYXAucHV0KCJwcmljZSIsIHN0cihqcmVjb3JkWydwcmljZSddKSkKICAgIGhhc2hNYXAucHV0KCJwcm9kdWN0X251bWJlciIsIGpyZWNvcmRbJ3Byb2R1Y3RfbnVtYmVyJ10pCgogICAgaWYganJlY29yZFsndW5pcXVlJ10gPT0gMToKICAgICAgICBoYXNoTWFwLnB1dCgidW5pcXVlIiwgInRydWUiKQogICAgZWxzZToKICAgICAgICBoYXNoTWFwLnB1dCgidW5pcXVlIiwgImZhbHNlIikKCiAgICAjIGlmIGxlbihzdHIoanJlY29yZFsncGljdHVyZXMnXSkpPjA6CiAgICBqZyA9IGpzb24ubG9hZHMoanJlY29yZFsncGljdHVyZXMnXSkKICAgIGlmICdwaG90bycgaW4gamc6CiAgICAgICAgaGFzaE1hcC5wdXQoInBob3RvR2FsbGVyeSIsIGpzb24uZHVtcHMoamdbJ3Bob3RvJ10pKQogICAgZWxzZToKICAgICAgICBoYXNoTWFwLnB1dCgicGhvdG9HYWxsZXJ5IiwganNvbi5kdW1wcyhbXSkpCiAgICBoYXNoTWFwLnB1dCgiU2hvd1NjcmVlbiIsICLQotC+0LLQsNGA0YvQl9Cw0L/QuNGB0YwiKQoKICAgIHJldHVybiBoYXNoTWFwIywgX25vbV9pZAoKCmRlZiBnb29kc19pbnB1dChoYXNoTWFwLCBfZmlsZXM9Tm9uZSwgX2RhdGE9Tm9uZSk6CiAgICAjZ2xvYmFsIF9ub21faWQKCiAgICBpZiBoYXNoTWFwLmdldCgibGlzdGVuZXIiKSA9PSAiYnRuX2FkZCI6CiAgICAgICAgaGFzaE1hcC5wdXQoIm5hbWUiLCAiIikKICAgICAgICBoYXNoTWFwLnB1dCgiYmFyY29kZSIsICIiKQogICAgICAgIGhhc2hNYXAucHV0KCJ1bml0IiwgIiIpCiAgICAgICAgaGFzaE1hcC5wdXQoImdyb3VwIiwgIiIpCiAgICAgICAgaGFzaE1hcC5wdXQoInByaWNlIiwgIjAiKQogICAgICAgIGhhc2hNYXAucHV0KCJ1bmlxdWUiLCAiZmFsc2UiKQogICAgICAgIGhhc2hNYXAucHV0KCJwcm9kdWN0X251bWJlciIsICIiKQoKICAgICAgICBoYXNoTWFwLnB1dCgicGhvdG9HYWxsZXJ5IiwganNvbi5kdW1wcyhbXSkpICAjINC/0YPRgdGC0L7QuSDRgdC/0LjRgdC+0Log0L/QvtC0INCz0LDQu9C10YDQtdGOCgogICAgICAgIF9ub21faWQgPSAtMSMg0LjQt9C80LXQvdGP0LXRgtGB0Y8gX25vbV9pZAogICAgICAgIGhhc2hNYXAucHV0KCdfbm9tX2lkJywgc3RyKF9ub21faWQpKSAgIyDQstCy0L7QtCBfbm9tX2lkCiAgICAgICAgaGFzaE1hcC5wdXQoIlNob3dTY3JlZW4iLCAi0KLQvtCy0LDRgNGL0JfQsNC/0LjRgdGMIikKCgogICAgZWxpZiBoYXNoTWFwLmdldCgibGlzdGVuZXIiKSA9PSAiQ2FyZHNDbGljayI6CgogICAgICAgIGhhc2hNYXAgPSBvcGVuX25vbShoYXNoTWFwLCBoYXNoTWFwLmdldCgic2VsZWN0ZWRfY2FyZF9rZXkiKSkjINC40LfQvNC10L3Rj9C10YLRgdGPINC/0LXRgNC10LzQtdC90L3QsNGPCgoKICAgIGVsaWYgaGFzaE1hcC5nZXQoImxpc3RlbmVyIikgPT0gImJhcmNvZGUiOgogICAgICAgICMgaGFzaE1hcC5wdXQoInRvYXN0IixoYXNoTWFwLmdldCgiYmFyY29kZV9pbnB1dCIpKQogICAgICAgIHdpdGggZGJfc2Vzc2lvbjogICMg0JfQsNC80LXQvdC40LshISEKICAgICAgICAgICAgbm9tID0gdWlfZ2xvYmFsLlNXX0dvb2RzLmdldChiYXJjb2RlPWhhc2hNYXAuZ2V0KCJiYXJjb2RlX3NlYXJjaCIpKQogICAgICAgICAgICBpZiBub20gPT0gTm9uZToKICAgICAgICAgICAgICAgIGhhc2hNYXAucHV0KCJ0b2FzdCIsICLQotC+0LLQsNGAINC90LUg0L3QsNC50LTQtdC9IikKICAgICAgICAgICAgZWxzZToKICAgICAgICAgICAgICAgIGhhc2hNYXAgPSBvcGVuX25vbShoYXNoTWFwLCBzdHIobm9tLmlkKSkKCiAgICAgICAgICAgICAgICBoYXNoTWFwLnB1dCgic3BlYWsiLCBub20ubmFtZSkKCgogICAgZWxpZiBoYXNoTWFwLmdldCgibGlzdGVuZXIiKSA9PSAidmlzaW9uIjoKICAgICAgICAjIGhhc2hNYXAucHV0KCJ0b2FzdCIsaGFzaE1hcC5nZXQoIl9ub21faWQiKSkKICAgICAgICB3aXRoIGRiX3Nlc3Npb246ICAjINCX0LDQvNC10L3QuNC7ISEhCiAgICAgICAgICAgIG5vbSA9IHVpX2dsb2JhbC5TV19Hb29kcy5nZXQoaWQ9aW50KGhhc2hNYXAuZ2V0KCJfbm9tX2lkIikpKQogICAgICAgICAgICBpZiBub20gPT0gTm9uZToKICAgICAgICAgICAgICAgIGhhc2hNYXAucHV0KCJ0b2FzdCIsICLQotC+0LLQsNGAINC90LUg0L3QsNC50LTQtdC9IikKICAgICAgICAgICAgZWxzZToKICAgICAgICAgICAgICAgIGhhc2hNYXAgPSBvcGVuX25vbShoYXNoTWFwLCBzdHIobm9tLmlkKSkKICAgICAgICAgICAgICAgIGhhc2hNYXAucHV0KCJzcGVhayIsIG5vbS5uYW1lKQogICAgZWxpZiBoYXNoTWFwLmdldCgibGlzdGVuZXIiKSA9PSAnT05fQkFDS19QUkVTU0VEJzoKICAgICAgICBoYXNoTWFwLnB1dCgiU2hvd1NjcmVlbiIsICLQnNC10L3RjiDQndCh0JgiKQoKICAgIHJldHVybiBoYXNoTWFwCgoKCgpkZWYgZ2V0X2lmX2V4aXN0KGhhc2hNYXAsIGZpZWxkKToKICAgIGlmIGhhc2hNYXAuY29udGFpbnNLZXkoZmllbGQpOgogICAgICAgIHJlcyA9IGhhc2hNYXAuZ2V0KGZpZWxkKQogICAgZWxzZToKICAgICAgICByZXMgPSAiIgogICAgcmV0dXJuIHJlcwoKCmRlZiBnZXRib29sZWFuX2lmX2V4aXN0KGhhc2hNYXAsIGZpZWxkKToKICAgIGlmIG5vdCBoYXNoTWFwLmNvbnRhaW5zS2V5KGZpZWxkKToKICAgICAgICByZXMgPSAwCiAgICBlbHNlOgogICAgICAgIGlmIGhhc2hNYXAuZ2V0KGZpZWxkKSA9PSAidHJ1ZSI6CiAgICAgICAgICAgIHJlcyA9IDEKICAgICAgICBlbHNlOgogICAgICAgICAgICByZXMgPSAwCgogICAgcmV0dXJuIHJlcwoKCmRlZiBnZXRmbG9hdF9pZl9leGlzdChoYXNoTWFwLCBmaWVsZCk6CiAgICBpZiBub3QgaGFzaE1hcC5jb250YWluc0tleShmaWVsZCk6CiAgICAgICAgcmVzID0gMAogICAgZWxzZToKICAgICAgICB0cnk6CiAgICAgICAgICAgIHJlcyA9IGZsb2F0KGhhc2hNYXAuZ2V0KGZpZWxkKSkKCiAgICAgICAgZXhjZXB0OgogICAgICAgICAgICByZXR1cm4gMAogICAgcmV0dXJuIHJlcwoKCmRlZiBzYXZlX25vbShoYXNoTWFwKToKICAgICNnbG9iYWwgX25vbV9pZAogICAgaWYgbm90IGhhc2hNYXAuY29udGFpbnNLZXkoIm5hbWUiKToKICAgICAgICBoYXNoTWFwLnB1dCgidG9hc3QiLCAi0J3QtSDRg9C60LDQt9Cw0L3QviDQvdCw0LjQvNC10L3QvtCy0LDQvdC40LUiKQogICAgICAgIHJldHVybiBoYXNoTWFwLCBGYWxzZQogICAgZWxzZToKICAgICAgICBpZiBsZW4oaGFzaE1hcC5nZXQoIm5hbWUiKSkgPT0gMDoKICAgICAgICAgICAgaGFzaE1hcC5wdXQoInRvYXN0IiwgItCd0LUg0YPQutCw0LfQsNC90L4g0L3QsNC40LzQtdC90L7QstCw0L3QuNC1IikKICAgICAgICAgICAgcmV0dXJuIGhhc2hNYXAsIEZhbHNlCgogICAgaWYgbm90IGhhc2hNYXAuY29udGFpbnNLZXkoInVuaXQiKToKICAgICAgICBoYXNoTWFwLnB1dCgidG9hc3QiLCAi0J3QtSDRg9C60LDQt9Cw0L3QsCDQtdC00LjQvdC40YbQsCIpCiAgICAgICAgcmV0dXJuIGhhc2hNYXAsIEZhbHNlCiAgICBlbHNlOgogICAgICAgIGlmIGxlbihoYXNoTWFwLmdldCgidW5pdCIpKSA9PSAwOgogICAgICAgICAgICBoYXNoTWFwLnB1dCgidG9hc3QiLCAi0J3QtSDRg9C60LDQt9Cw0L3QsCDQtdC00LjQvdC40YbQsCIpCiAgICAgICAgICAgIHJldHVybiBoYXNoTWFwLCBGYWxzZQoKICAgIGlmIGludChoYXNoTWFwLmdldCgnX25vbV9pZCcpKSA8IDA6ICAjINC/0YDQvtGH0LjRgtCw0LvQuCBfbm9tX2lkCgogICAgICAgIHdpdGggZGJfc2Vzc2lvbjoj0YHQvtC30LTQsNC10Lwg0L3QvtCy0YPRjiDQt9Cw0L/QuNGB0YwKICAgICAgICAgICAgciA9IHVpX2dsb2JhbC5TV19Hb29kcyhuYW1lPWdldF9pZl9leGlzdChoYXNoTWFwLCAibmFtZSIpLCBiYXJjb2RlPWdldF9pZl9leGlzdChoYXNoTWFwLCAiYmFyY29kZSIpLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHVuaXQ9Z2V0X2lmX2V4aXN0KGhhc2hNYXAsICJ1bml0IiksIGdyb3VwPWdldF9pZl9leGlzdChoYXNoTWFwLCAiZ3JvdXAiKSwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBwcm9kdWN0X251bWJlcj1nZXRfaWZfZXhpc3QoaGFzaE1hcCwgInByb2R1Y3RfbnVtYmVyIiksCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgcHJpY2U9Z2V0ZmxvYXRfaWZfZXhpc3QoaGFzaE1hcCwgInByaWNlIiksCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdW5pcXVlPWdldGJvb2xlYW5faWZfZXhpc3QoaGFzaE1hcCwgInVuaXF1ZSIpKQogICAgICAgICAgICBfbm9tX2lkID0gci5pZCMg0LjQt9C80LXQvdGP0LXRgtGB0Y8gX25vbV9pZAogICAgICAgICAgICBoYXNoTWFwLnB1dCgnX25vbV9pZCcsIHN0cihfbm9tX2lkKSkgICMg0LLQstC+0LQgX25vbV9pZAogICAgICAgICAgICBjb21taXQoKQogICAgZWxzZTojINC/0LXRgNC10LfQsNC/0LjRgdGL0LLQsNC1bSDRgdGC0LDRgNGD0Y4g0LfQsNC/0LjRgdGMCiAgICAgICAgd2l0aCBkYl9zZXNzaW9uOgoKICAgICAgICAgICAgciA9IHVpX2dsb2JhbC5TV19Hb29kc1tpbnQoaGFzaE1hcC5nZXQoJ19ub21faWQnKSldIyDQv9GA0L7Rh9C40YLQsNC70LggX25vbV9pZAogICAgICAgICAgICByLm5hbWUgPSBnZXRfaWZfZXhpc3QoaGFzaE1hcCwgIm5hbWUiKQogICAgICAgICAgICByLmJhcmNvZGUgPSBnZXRfaWZfZXhpc3QoaGFzaE1hcCwgImJhcmNvZGUiKQogICAgICAgICAgICByLnVuaXQgPSBnZXRfaWZfZXhpc3QoaGFzaE1hcCwgInVuaXQiKQogICAgICAgICAgICByLmdyb3VwID0gZ2V0X2lmX2V4aXN0KGhhc2hNYXAsICJncm91cCIpCiAgICAgICAgICAgIHIucHJvZHVjdF9udW1iZXIgPSBnZXRfaWZfZXhpc3QoaGFzaE1hcCwgInByb2R1Y3RfbnVtYmVyIikKICAgICAgICAgICAgci5wcmljZSA9IGdldGZsb2F0X2lmX2V4aXN0KGhhc2hNYXAsICJwcmljZSIpCiAgICAgICAgICAgIHIudW5pcXVlID0gZ2V0Ym9vbGVhbl9pZl9leGlzdChoYXNoTWFwLCAidW5pcXVlIikKCiAgICAgICAgICAgIGogPSB7fQoKICAgICAgICAgICAgalsncGhvdG8nXSA9IGpzb24ubG9hZHMoaGFzaE1hcC5nZXQoInBob3RvR2FsbGVyeSIpKQogICAgICAgICAgICByLnBpY3R1cmVzID0gagoKICAgICAgICAgICAgY29tbWl0KCkKICAgIHJldHVybiBoYXNoTWFwLCBUcnVlCgoKCmRlZiBnb29kc19yZWNvcmRfb25fc3RhcnQoaGFzaE1hcCwgX2ZpbGVzPU5vbmUsIF9kYXRhPU5vbmUpOgogICAgI2dsb2JhbCBfbm9tX2lkCiAgICBoYXNoTWFwLnB1dCgibW1fbG9jYWwiLCAiIikKICAgIGhhc2hNYXAucHV0KCJtbV9jb21wcmVzc2lvbiIsICI3MCIpCiAgICBoYXNoTWFwLnB1dCgibW1fc2l6ZSIsICI2NSIpCgogICAgaGFzaE1hcC5wdXQoImZpbGxfbmFtZSIsIGpzb24uZHVtcHMoeyJoaW50IjogItCS0LLQtdC00LjRgtC1INC90LDQuNC80LXQvdC+0LLQsNC90LjQtSDRgtC+0LLQsNGA0LAiICsgc3RyKGludChoYXNoTWFwLmdldCgnX25vbV9pZCcpKSksICJkZWZhdWx0X3RleHQiOiBoYXNoTWFwLmdldCgibmFtZSIpfSkpCiAgICBoYXNoTWFwLnB1dCgiZmlsbF9iYXJjb2RlIiwganNvbi5kdW1wcyh7ImhpbnQiOiAi0JLQstC10LTQuNGC0LUv0L7RgtGB0LrQsNC90LjRgNGD0LnRgtC1INGI0YLRgNC40YXQutC+0LQg0YLQvtCy0LDRgNCwIiwgImRlZmF1bHRfdGV4dCI6IGhhc2hNYXAuZ2V0KCJiYXJjb2RlIil9KSkKICAgIGhhc2hNYXAucHV0KCJmaWxsX3Byb2R1Y3RfbnVtYmVyIiwganNvbi5kdW1wcyh7ImhpbnQiOiAi0JLQstC10LTQuNGC0LUg0LDRgNGC0LjQutGD0Lsg0YLQvtCy0LDRgNCwIiwgImRlZmF1bHRfdGV4dCI6IGhhc2hNYXAuZ2V0KCJwcm9kdWN0X251bWJlciIpfSkpCiAgICBoYXNoTWFwLnB1dCgiZmlsbF9wcmljZSIsIGpzb24uZHVtcHMoeyJoaW50IjogItCS0LLQtdC00LjRgtC1INGG0LXQvdGDIiwgImRlZmF1bHRfdGV4dCI6IGhhc2hNYXAuZ2V0KCJwcmljZSIpfSkpCgogICAgdW5pdHMgPSBbXQogICAgdW5pdHMuYXBwZW5kKCI80JLRi9Cx0LXRgNC40YLQtSDQtdC0LdGG0YMg0LjQt9C80LXRgNC10L3QuNGPIC4uLj4iKQoKICAgIHdpdGggZGJfc2Vzc2lvbjojINCX0LDQvNC10L3QuNC7ISEhCiAgICAgICAgcXVlcnkgPSBzZWxlY3QoYyBmb3IgYyBpbiB1aV9nbG9iYWwuU1dfVW5pdHMpCiAgICAgICAgZm9yIHJlY29yZCBpbiBxdWVyeToKICAgICAgICAgICAgdW5pdHMuYXBwZW5kKHJlY29yZC5uYW1lKQoKICAgICAgICBoYXNoTWFwLnB1dCgidW5pdHMiLCAiOyIuam9pbih1bml0cykpCgogICAgICAgIGdyb3VwcyA9IFtdCiAgICAgICAgZ3JvdXBzLmFwcGVuZCgiPNCS0YvQsdC10YDQuNGC0LUg0LPRgNGD0L/Qv9GDINGC0L7QstCw0YDQvtCyIC4uLj4iKQogICAgICAgIHF1ZXJ5ID0gc2VsZWN0KGMgZm9yIGMgaW4gdWlfZ2xvYmFsLlNXX0dyb3VwcykKICAgICAgICBmb3IgcmVjb3JkIGluIHF1ZXJ5OgogICAgICAgICAgICBncm91cHMuYXBwZW5kKHJlY29yZC5uYW1lKQoKICAgICAgICBoYXNoTWFwLnB1dCgiZ3JvdXBzIiwgIjsiLmpvaW4oZ3JvdXBzKSkKCiAgICAgICAgIyBoYXNoTWFwLnB1dCgidG9hc3QiLGhhc2hNYXAuZ2V0KCJwaG90b0dhbGxlcnkiKSkKCiAgICByZXR1cm4gaGFzaE1hcAoKCgpkZWYgZ29vZHNfcmVjb3JkX2lucHV0KGhhc2hNYXAsIF9maWxlcz1Ob25lLCBfZGF0YT1Ob25lKToKICAgIGlmIGhhc2hNYXAuZ2V0KCJsaXN0ZW5lciIpID09ICJidG5fc2F2ZSI6CiAgICAgICAgaGFzaE1hcCwgc3VjY2VzcyA9IHNhdmVfbm9tKGhhc2hNYXApCiAgICAgICAgaWYgc3VjY2VzczoKICAgICAgICAgICAgaGFzaE1hcC5wdXQoIlNob3dTY3JlZW4iLCAi0JTQvtCx0LDQstC40YLRjCDRgtC+0LLQsNGAIikKCiAgICBlbGlmIGhhc2hNYXAuZ2V0KCJsaXN0ZW5lciIpID09ICJiYXJjb2RlIjoKICAgICAgICBoYXNoTWFwLnB1dCgiYmFyY29kZSIsIGhhc2hNYXAuZ2V0KCJiYXJjb2RlX25vbSIpKQoKICAgIGVsaWYgaGFzaE1hcC5nZXQoImxpc3RlbmVyIikgPT0gIkNhcmRzQ2xpY2siOgogICAgICAgIGhhc2hNYXAucHV0KCJ0b2FzdCIsIHN0cihoYXNoTWFwLmdldCgic2VsZWN0ZWRfY2FyZF9rZXkiKSkpCgogICAgZWxpZiBoYXNoTWFwLmdldCgibGlzdGVuZXIiKSA9PSAnT05fQkFDS19QUkVTU0VEJzoKICAgICAgICBoYXNoTWFwLnB1dCgiU2hvd1NjcmVlbiIsICLQlNC+0LHQsNCy0LjRgtGMINGC0L7QstCw0YAiKQoKICAgIGVsaWYgaGFzaE1hcC5nZXQoImxpc3RlbmVyIikgPT0gJ21lbnVfZGVsJzoKICAgICAgICB3aXRoIGRiX3Nlc3Npb246CiAgICAgICAgICAgIHIgPSB1aV9nbG9iYWwuU1dfR29vZHNbaW50KGhhc2hNYXAuZ2V0KCdfbm9tX2lkJykpXQogICAgICAgICAgICByLmRlbGV0ZSgpCiAgICAgICAgaGFzaE1hcC5wdXQoInRvYXN0IiwgItCj0LTQsNC70LXQvdC+Li4uIikKICAgICAgICBoYXNoTWFwLnB1dCgiU2hvd1NjcmVlbiIsICLQlNC+0LHQsNCy0LjRgtGMINGC0L7QstCw0YAiKQoKCiAgICBlbGlmIGhhc2hNYXAuZ2V0KCJsaXN0ZW5lciIpID09ICJwaG90byI6CgogICAgICAgICMg0JzQvtC20L3QviDQstC+0L7QsdGJ0LUg0Y3RgtC+0LPQviDQvdC1INC00LXQu9Cw0YLRjC3QvtGB0YLQsNCy0LvRj9GC0Ywg0LrQsNC6INC10YHRgtGMLiDQrdGC0L4g0LTQu9GPINC/0YDQuNC80LXRgNCwLgogICAgICAgIGltYWdlX2ZpbGUgPSBzdHIoCiAgICAgICAgICAgIGhhc2hNYXAuZ2V0KCJwaG90b19wYXRoIikpICAjICLQv9C10YDQtdC80LXQvdC90LDRjyIrIl9wYXRoIiAtINGB0Y7QtNCwINC/0L7QvNC10YnQsNC10YLRgdGPINC/0YPRgtGMINC6INC/0L7Qu9GD0YfQtdC90L3QvtC5INGE0L7RgtC+0LPRgNCw0YTQuNC4CiAgICAgICAgIyBoYXNoTWFwLnB1dCgidG9hc3QiLHN0cihoYXNoTWFwLmdldCgicGhvdG9fcGF0aCIpKSkKCiAgICAgICAgIyDRgdGA0LDQt9GDINGB0LTQtdC70LDQtdC8INGE0L7RgtC60YMgLSDQutCy0LDQtNGA0LDRgtC90L7QuSAtINGN0YLQviDQv9GA0L7RgdGC0L7QuSDQstCw0YDQuNCw0L3Rgi4g0JzQvtC20L3QviDRgdC00LXQu9Cw0YLRjCDQvdCw0L/RgNC40LzQtdGAINC+0YLQtNC10LvRjNC+INC80LjQvdC40LDRgtGO0YDRiyDQtNC70Y8g0YHQv9C40YHQutCwLCDRjdGC0L4g0L3QtdC80L3QvtCz0L4g0YHQu9C+0LbQvdC10LUKICAgICAgICBpbWFnZSA9IEltYWdlLm9wZW4oaW1hZ2VfZmlsZSkKICAgICAgICBpbSA9IGltYWdlLnJlc2l6ZSgoNTAwLCA1MDApKQogICAgICAgIGltLnNhdmUoaW1hZ2VfZmlsZSkKCiAgICAgICAganBob3RvYXJyID0ganNvbi5sb2FkcyhoYXNoTWFwLmdldCgicGhvdG9HYWxsZXJ5IikpCiAgICAgICAgaGFzaE1hcC5wdXQoInBob3RvR2FsbGVyeSIsIGpzb24uZHVtcHMoanBob3RvYXJyKSkKICAgICAgICAjIGhhc2hNYXAucHV0KCJ0b2FzdCIsanNvbi5kdW1wcyhqcGhvdG9hcnIpKQoKICAgIGVsaWYgaGFzaE1hcC5nZXQoCiAgICAgICAgICAgICJsaXN0ZW5lciIpID09ICJnYWxsZXJ5X2NoYW5nZSI6ICAjINC/0L7Qu9GM0LfQvtCy0LDRgtC10LvRjCDQvNC+0LbQtdGCINGD0LTQsNC70LjRgtGMINGE0L7RgtC+INC40Lcg0LPQsNC70LXRgNC10LguINCd0L7QstGL0Lkg0LzQsNGB0YHQuNCyINC90LDQtNC+INC/0L7QvNC10YHRgtC40YLRjCDQuiDQtNC+0LrRg9C80LXQvdGC0YMKCiAgICAgICAgaWYgaGFzaE1hcC5jb250YWluc0tleSgicGhvdG9HYWxsZXJ5Iik6ICAjINGN0YLQuCAyINC+0LHRgNCw0LHQvtGC0YfQuNC60LAgLSDQsNC90LDQu9C+0LPQuNGH0L3Ri9C1LCDQv9GA0L7RgdGC0L4g0LTQu9GPINGA0LDQt9C90YvRhSDRgdC+0LHRi9GC0LjQuQogICAgICAgICAgICBqcGhvdG9hcnIgPSBqc29uLmxvYWRzKGhhc2hNYXAuZ2V0KCJwaG90b0dhbGxlcnkiKSkKICAgICAgICAgICAgaGFzaE1hcC5wdXQoInBob3RvR2FsbGVyeSIsIGpzb24uZHVtcHMoanBob3RvYXJyKSkKICAgICAgICAgICAgIyBoYXNoTWFwLnB1dCgidG9hc3QiLCIjMiIranNvbi5kdW1wcyhqcGhvdG9hcnIpKQoKICAgIHJldHVybiBoYXNoTWFwCgogICAgIyAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t0JTQvtCx0LDQstC40YLRjCDRj9GH0LXQudC60YMKCgpkZWYgY2VsbHNfb25fc3RhcnQoaGFzaE1hcCwgX2ZpbGVzPU5vbmUsIF9kYXRhPU5vbmUpOgogICAgbGlzdCA9IHsiY3VzdG9tY2FyZHMiOiB7CgogICAgICAgICJsYXlvdXQiOiB7CiAgICAgICAgICAgICJ0eXBlIjogIkxpbmVhckxheW91dCIsCiAgICAgICAgICAgICJvcmllbnRhdGlvbiI6ICJ2ZXJ0aWNhbCIsCiAgICAgICAgICAgICJoZWlnaHQiOiAibWF0Y2hfcGFyZW50IiwKICAgICAgICAgICAgIndpZHRoIjogIm1hdGNoX3BhcmVudCIsCiAgICAgICAgICAgICJ3ZWlnaHQiOiAiMCIsCiAgICAgICAgICAgICJFbGVtZW50cyI6IFsKCiAgICAgICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAgICAgInR5cGUiOiAiVGV4dFZpZXciLAogICAgICAgICAgICAgICAgICAgICJzaG93X2J5X2NvbmRpdGlvbiI6ICIiLAogICAgICAgICAgICAgICAgICAgICJWYWx1ZSI6ICJAbmFtZSIsCiAgICAgICAgICAgICAgICAgICAgIk5vUmVmcmVzaCI6IEZhbHNlLAogICAgICAgICAgICAgICAgICAgICJkb2N1bWVudF90eXBlIjogIiIsCiAgICAgICAgICAgICAgICAgICAgIm1hc2siOiAiIiwKICAgICAgICAgICAgICAgICAgICAiVmFyaWFibGUiOiAiIgogICAgICAgICAgICAgICAgfSwKCiAgICAgICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAgICAgInR5cGUiOiAiVGV4dFZpZXciLAogICAgICAgICAgICAgICAgICAgICJzaG93X2J5X2NvbmRpdGlvbiI6ICIiLAogICAgICAgICAgICAgICAgICAgICJWYWx1ZSI6ICJAYmFyY29kZSIsCiAgICAgICAgICAgICAgICAgICAgIk5vUmVmcmVzaCI6IEZhbHNlLAogICAgICAgICAgICAgICAgICAgICJkb2N1bWVudF90eXBlIjogIiIsCiAgICAgICAgICAgICAgICAgICAgIm1hc2siOiAiIiwKICAgICAgICAgICAgICAgICAgICAiVmFyaWFibGUiOiAiIgogICAgICAgICAgICAgICAgfQogICAgICAgICAgICBdCiAgICAgICAgfQoKICAgIH0KICAgIH0KCiAgICB3aXRoIGRiX3Nlc3Npb246IyDQl9Cw0LzQtdC90LjQuyEhIQogICAgICAgIHF1ZXJ5ID0gc2VsZWN0KGMgZm9yIGMgaW4gdWlfZ2xvYmFsLlNXX0NlbGxzKQogICAgICAgIGxpc3RbImN1c3RvbWNhcmRzIl1bImNhcmRzZGF0YSJdID0gW10KCiAgICAgICAgZm9yIHJlY29yZCBpbiBxdWVyeToKICAgICAgICAgICAgbGlzdFsiY3VzdG9tY2FyZHMiXVsiY2FyZHNkYXRhIl0uYXBwZW5kKHsibmFtZSI6IHJlY29yZC5uYW1lLCAia2V5IjogcmVjb3JkLmlkLCAiYmFyY29kZSI6IHN0cihyZWNvcmQuYmFyY29kZSl9KQogICAgICAgIGhhc2hNYXAucHV0KCJsaXN0IiwganNvbi5kdW1wcyhsaXN0KSkKCiAgICByZXR1cm4gaGFzaE1hcAoKCmRlZiBjZWxsc19pbnB1dChoYXNoTWFwLCBfZmlsZXM9Tm9uZSwgX2RhdGE9Tm9uZSk6CiAgICAjZ2xvYmFsIF9jZWxsX2lkCgogICAgaWYgaGFzaE1hcC5nZXQoImxpc3RlbmVyIikgPT0gImJ0bl9hZGQiOgogICAgICAgIGhhc2hNYXAucHV0KCJuYW1lIiwgIiIpCiAgICAgICAgaGFzaE1hcC5wdXQoImJhcmNvZGUiLCAiIikKCiAgICAgICAgX2NlbGxfaWQgPSAtMQogICAgICAgIGhhc2hNYXAucHV0KCdfY2VsbF9pZCcsIHN0cihfY2VsbF9pZCkpICAjINCy0LLQvtC0IF9jZWxsX2lkIFRpbWUhISEKICAgICAgICBoYXNoTWFwLnB1dCgiU2hvd1NjcmVlbiIsICLQr9GH0LXQudC60LjQl9Cw0L/QuNGB0YwiKQoKCiAgICBlbGlmIGhhc2hNYXAuZ2V0KCJsaXN0ZW5lciIpID09ICJDYXJkc0NsaWNrIjoKCiAgICAgICAgamxpc3QgPSBqc29uLmxvYWRzKGhhc2hNYXAuZ2V0KCJsaXN0IikpCiAgICAgICAgZ29vZHNhcnJheSA9IGpsaXN0WyJjdXN0b21jYXJkcyJdWydjYXJkc2RhdGEnXQoKICAgICAgICBqcmVjb3JkID0gbmV4dChpdGVtIGZvciBpdGVtIGluIGdvb2RzYXJyYXkgaWYgc3RyKGl0ZW1bImtleSJdKSA9PSBoYXNoTWFwLmdldCgic2VsZWN0ZWRfY2FyZF9rZXkiKSkKCiAgICAgICAgX2NlbGxfaWQgPSBqcmVjb3JkWydrZXknXQogICAgICAgIGhhc2hNYXAucHV0KCdfY2VsbF9pZCcsIHN0cihfY2VsbF9pZCkpICAjINCy0LLQvtC0IF9jZWxsX2lkCiAgICAgICAgaGFzaE1hcC5wdXQoIm5hbWUiLCBqcmVjb3JkWyduYW1lJ10pCiAgICAgICAgaGFzaE1hcC5wdXQoImJhcmNvZGUiLCBqcmVjb3JkWydiYXJjb2RlJ10pCgogICAgICAgIGhhc2hNYXAucHV0KCJTaG93U2NyZWVuIiwgItCv0YfQtdC50LrQuNCX0LDQv9C40YHRjCIpCgogICAgZWxpZiBoYXNoTWFwLmdldCgibGlzdGVuZXIiKSA9PSAnT05fQkFDS19QUkVTU0VEJzoKICAgICAgICBoYXNoTWFwLnB1dCgiU2hvd1NjcmVlbiIsICLQnNC10L3RjiDQndCh0JgiKQoKICAgIHJldHVybiBoYXNoTWFwIyBUaW1lISEhIDEgRXJyICdObyBtb2R1bGUgbmFtZWQgJ2ZsYXNrJycKCgpkZWYgY2VsbHNfcmVjb3JkX29uX3N0YXJ0KGhhc2hNYXAsIF9maWxlcz1Ob25lLCBfZGF0YT1Ob25lKToKICAgIGhhc2hNYXAucHV0KCJmaWxsX25hbWUiLCBqc29uLmR1bXBzKHsiaGludCI6ICLQndCw0LjQvNC10L3QvtCy0LDQvdC40LUiLCAiZGVmYXVsdF90ZXh0IjogaGFzaE1hcC5nZXQoIm5hbWUiKX0pKQogICAgaGFzaE1hcC5wdXQoImZpbGxfYmFyY29kZSIsIGpzb24uZHVtcHMoeyJoaW50IjogItCo0YLRgNC40YXQutC+0LQiLCAiZGVmYXVsdF90ZXh0IjogaGFzaE1hcC5nZXQoImJhcmNvZGUiKX0pKQoKICAgIHJldHVybiBoYXNoTWFwCgoKZGVmIGNlbGxzX3JlY29yZF9pbnB1dChoYXNoTWFwLCBfZmlsZXM9Tm9uZSwgX2RhdGE9Tm9uZSk6CiAgICAjZ2xvYmFsIGNlbGxfaWQKCiAgICBpZiBoYXNoTWFwLmdldCgibGlzdGVuZXIiKSA9PSAiYnRuX3NhdmUiOgogICAgICAgICMgaGFzaE1hcC5wdXQoInRvYXN0IixzdHIoY2VsbF9pZCkpCgogICAgICAgIGlmIG5vdCBoYXNoTWFwLmNvbnRhaW5zS2V5KCJuYW1lIik6CiAgICAgICAgICAgIGhhc2hNYXAucHV0KCJ0b2FzdCIsICLQndC1INGD0LrQsNC30LDQvdC+INC90LDQuNC80LXQvdC+0LLQsNC90LjQtSIpCiAgICAgICAgICAgIHJldHVybiBoYXNoTWFwCiAgICAgICAgZWxzZToKICAgICAgICAgICAgaWYgbGVuKGhhc2hNYXAuZ2V0KCJuYW1lIikpID09IDA6CiAgICAgICAgICAgICAgICBoYXNoTWFwLnB1dCgidG9hc3QiLCAi0J3QtSDRg9C60LDQt9Cw0L3QviDQvdCw0LjQvNC10L3QvtCy0LDQvdC40LUiKQogICAgICAgICAgICAgICAgcmV0dXJuIGhhc2hNYXAKCiAgICAgICAgI2lmIF9jZWxsX2lkIDwgMDoKICAgICAgICBpZiBpbnQoaGFzaE1hcC5nZXQoJ19jZWxsX2lkJykpIDwgMDogIyDQv9GA0L7Rh9C40YLQsNC70LggX2NlbGxfaWQKCiAgICAgICAgICAgIHdpdGggZGJfc2Vzc2lvbjoKICAgICAgICAgICAgICAgIHIgPSB1aV9nbG9iYWwuU1dfQ2VsbHMobmFtZT1nZXRfaWZfZXhpc3QoaGFzaE1hcCwgIm5hbWUiKSwgYmFyY29kZT1nZXRfaWZfZXhpc3QoaGFzaE1hcCwgImJhcmNvZGUiKSkKICAgICAgICAgICAgICAgIGNvbW1pdCgpCiAgICAgICAgZWxzZToKICAgICAgICAgICAgd2l0aCBkYl9zZXNzaW9uOgoKICAgICAgICAgICAgICAgIHIgPSB1aV9nbG9iYWwuU1dfQ2VsbHNbaW50KGhhc2hNYXAuZ2V0KCdfY2VsbF9pZCcpKV0jINC/0YDQvtGH0LjRgtCw0LvQuCBfY2VsbF9pZAogICAgICAgICAgICAgICAgci5uYW1lID0gZ2V0X2lmX2V4aXN0KGhhc2hNYXAsICJuYW1lIikKICAgICAgICAgICAgICAgIHIuYmFyY29kZSA9IGdldF9pZl9leGlzdChoYXNoTWFwLCAiYmFyY29kZSIpCgogICAgICAgICAgICAgICAgY29tbWl0KCkKICAgICAgICBoYXNoTWFwLnB1dCgiU2hvd1NjcmVlbiIsICLQlNC+0LHQsNCy0LjRgtGMINGP0YfQtdC50LrRgyIpCgogICAgZWxpZiBoYXNoTWFwLmdldCgibGlzdGVuZXIiKSA9PSAiYmFyY29kZSI6CiAgICAgICAgaGFzaE1hcC5wdXQoImJhcmNvZGUiLCBoYXNoTWFwLmdldCgiYmFyY29kZV9jZWxsIikpCgogICAgZWxpZiBoYXNoTWFwLmdldCgibGlzdGVuZXIiKSA9PSAiQ2FyZHNDbGljayI6CiAgICAgICAgYSA9IFRydWUKICAgICAgICAjIGhhc2hNYXAucHV0KCJ0b2FzdCIsc3RyKGhhc2hNYXAuZ2V0KCJzZWxlY3RlZF9jYXJkX2tleSIpKSkKCiAgICBlbGlmIGhhc2hNYXAuZ2V0KCJsaXN0ZW5lciIpID09ICdPTl9CQUNLX1BSRVNTRUQnOgogICAgICAgIGhhc2hNYXAucHV0KCJTaG93U2NyZWVuIiwgItCc0LXQvdGOINCd0KHQmCIpCiAgICBlbGlmIGhhc2hNYXAuZ2V0KCJsaXN0ZW5lciIpID09ICdtZW51X2RlbCc6CiAgICAgICAgd2l0aCBkYl9zZXNzaW9uOgogICAgICAgICAgICByID0gdWlfZ2xvYmFsLlNXX0NlbGxzW2ludChoYXNoTWFwLmdldCgnX2NlbGxfaWQnKSldIyDQv9GA0L7Rh9C40YLQsNC70LggX2NlbGxfaWQKICAgICAgICAgICAgci5kZWxldGUoKQogICAgICAgIGhhc2hNYXAucHV0KCJTaG93U2NyZWVuIiwgItCU0L7QsdCw0LLQuNGC0Ywg0Y/Rh9C10LnQutGDIikKICAgICAgICBoYXNoTWFwLnB1dCgidG9hc3QiLCAi0KPQtNCw0LvQtdC90L4uLi4iKQoKICAgIHJldHVybiBoYXNoTWFwCgoKZGVmIGluY29tZV9jZWxsX29uX3N0YXJ0KGhhc2hNYXAsIF9maWxlcz1Ob25lLCBfZGF0YT1Ob25lKToKICAgIGp0ID0gewogICAgICAgICJ0eXBlIjogInRhYmxlIiwKICAgICAgICAidGV4dHNpemUiOiAiMjUiLAogICAgICAgICJoaWRlY2FwdGlvbiI6ICJmYWxzZSIsCiAgICAgICAgImhpZGVpbnRlcmxpbmUiOiAiZmFsc2UiLAogICAgICAgICJjb2x1bW5zIjogWwogICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAibmFtZSI6ICJjZWxsIiwKICAgICAgICAgICAgICAgICJoZWFkZXIiOiAi0K/Rh9C10LnQutCwIiwKICAgICAgICAgICAgICAgICJ3ZWlnaHQiOiAiMSIKICAgICAgICAgICAgfSwKICAgICAgICAgICAgewogICAgICAgICAgICAgICAgIm5hbWUiOiAibm9tIiwKICAgICAgICAgICAgICAgICJoZWFkZXIiOiAi0KLQvtCy0LDRgCIsCiAgICAgICAgICAgICAgICAid2VpZ2h0IjogIjIiCiAgICAgICAgICAgIH0sCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICJuYW1lIjogInF0eSIsCiAgICAgICAgICAgICAgICAiaGVhZGVyIjogItCa0L7Quy3QstC+IiwKICAgICAgICAgICAgICAgICJ3ZWlnaHQiOiAiMSIKICAgICAgICAgICAgfQogICAgICAgIF0sCiAgICAgICAgInJvd3MiOiBbXQogICAgfQoKICAgIGlmIG5vdCBoYXNoTWFwLmNvbnRhaW5zS2V5KCJwZiIpOgogICAgICAgICMgaGFzaE1hcC5wdXQoInRvYXN0Iiwi0J3QvtCy0YvQuSIpCiAgICAgICAgaGFzaE1hcC5wdXQoInBmIiwgIjEiKSAgIyDRhNC70LDQsyDQtNC70Y8g0L7Qv9GA0LXQtNC10LvQtdC90LjRjyDQvdCw0YfQsNC70LAg0L/RgNC+0YbQtdGB0YHQsAogICAgICAgIGhhc2hNYXAucHV0KCJjZW50cmFsX3RhYmxlIiwganNvbi5kdW1wcyhqdCkpCgogICAgY2VsbHMgPSBbXQogICAgY2VsbHMuYXBwZW5kKCI80LLRi9Cx0LXRgNC40YLQtSDRj9GH0LXQudC60YMuLi4+IikKICAgIHdpdGggZGJfc2Vzc2lvbjojINCX0LDQvNC10L3QuNC7ISEhCiAgICAgICAgcXVlcnkgPSBzZWxlY3QoYyBmb3IgYyBpbiB1aV9nbG9iYWwuU1dfQ2VsbHMpCiAgICAgICAgZm9yIHJlY29yZCBpbiBxdWVyeToKICAgICAgICAgICAgY2VsbHMuYXBwZW5kKHJlY29yZC5uYW1lKQoKICAgIGhhc2hNYXAucHV0KCJjZWxscyIsICI7Ii5qb2luKGNlbGxzKSkKCiAgICByZXR1cm4gaGFzaE1hcAoKCmRlZiBpbmNvbWVfY2VsbF9vbl9pbnB1dChoYXNoTWFwLCBfZmlsZXM9Tm9uZSwgX2RhdGE9Tm9uZSk6CiAgICAjIGhhc2hNYXAucHV0KCJ0b2FzdCIsaGFzaE1hcC5nZXQoImxpc3RlbmVyIikpCgogICAgaWYgaGFzaE1hcC5nZXQoImxpc3RlbmVyIikgPT0gIiI6CiAgICAgICAgIyBoYXNoTWFwLnB1dCgidG9hc3QiLCLQktGL0LHQvtGAINGC0L7QstCw0YDQsC0tIikKCiAgICAgICAgaWYgbm90IGhhc2hNYXAuY29udGFpbnNLZXkoImNlbGwiKToKICAgICAgICAgICAgaGFzaE1hcC5wdXQoInRvYXN0IiwgItCd0LUg0YPQutCw0LfQsNC90LAg0Y/Rh9C10LnQutCwIikKICAgICAgICAgICAgcmV0dXJuIGhhc2hNYXAKICAgICAgICBlbHNlOgogICAgICAgICAgICBpZiBsZW4oaGFzaE1hcC5nZXQoImNlbGwiKSkgPT0gMDoKICAgICAgICAgICAgICAgIGhhc2hNYXAucHV0KCJ0b2FzdCIsICLQndC1INGD0LrQsNC30LDQvdCwINGP0YfQtdC50LrQsCIpCiAgICAgICAgICAgICAgICByZXR1cm4gaGFzaE1hcAoKICAgICAgICBoYXNoTWFwLnB1dCgiU2hvd1NjcmVlbiIsICLQktGL0LHQvtGAINGC0L7QstCw0YDQsCIpCgogICAgZWxpZiBoYXNoTWFwLmdldCgibGlzdGVuZXIiKSA9PSAiYmFyY29kZSI6CiAgICAgICAgd2l0aCBkYl9zZXNzaW9uOiAgIyDQl9Cw0LzQtdC90LjQuyEhIQogICAgICAgICAgICBjZWxsID0gdWlfZ2xvYmFsLlNXX0NlbGxzLmdldChiYXJjb2RlPWhhc2hNYXAuZ2V0KCJiYXJjb2RlX2NlbGwiKSkKICAgICAgICBpZiBjZWxsID09IE5vbmU6CiAgICAgICAgICAgIGhhc2hNYXAucHV0KCJ0b2FzdCIsICLQr9GH0LXQudC60LAg0L3QtSDQvdCw0LnQtNC10L3QsCIpCiAgICAgICAgZWxzZToKICAgICAgICAgICAgaGFzaE1hcC5wdXQoImNlbGwiLCBjZWxsLm5hbWUpCiAgICAgICAgICAgIGhhc2hNYXAucHV0KCJfY2VsbF9pZCIsIHN0cihjZWxsLmlkKSkjINCy0LLQvtC0IF9jZWxsX2lkCiAgICAgICAgICAgIGhhc2hNYXAucHV0KCJ0YWJsZV9vYmplY3QiLCBnZXRfdGFibGVfYnlfY2VsbChjZWxsLmlkKSkjbmV3INC00L7QsdCw0LLQuNC7INGC0LDQsdC70LjRhtGDINC00LvRjyDQvtGB0YLQsNGC0LrQvtCyINGC0L7QstCw0YDQsCDQsiDRjdGC0L7QuSDRj9GH0LXQudC60LUKICAgICAgICAgICAgaGFzaE1hcC5wdXQoIlNob3dTY3JlZW4iLCAi0JLRi9Cx0L7RgCDRgtC+0LLQsNGA0LAiKQoKICAgIGVsaWYgaGFzaE1hcC5nZXQoImxpc3RlbmVyIikgPT0gJ2NlbGwnOgogICAgICAgIHdpdGggZGJfc2Vzc2lvbjogICMg0JfQsNC80LXQvdC40LshISEKICAgICAgICAgICAgY2VsbCA9IHVpX2dsb2JhbC5TV19DZWxscy5nZXQobmFtZT1oYXNoTWFwLmdldCgiY2VsbCIpKQogICAgICAgIGlmIGNlbGwgPT0gTm9uZToKICAgICAgICAgICAgaGFzaE1hcC5wdXQoInRvYXN0IiwgItCv0YfQtdC50LrQsCDQvdC1INC90LDQudC00LXQvdCwIikKICAgICAgICBlbHNlOgogICAgICAgICAgICBoYXNoTWFwLnB1dCgiY2VsbCIsIGNlbGwubmFtZSkKICAgICAgICAgICAgaGFzaE1hcC5wdXQoIl9jZWxsX2lkIiwgc3RyKGNlbGwuaWQpKSMg0LLQstC+0LQgX2NlbGxfaWQKICAgICAgICAgICAgaGFzaE1hcC5wdXQoInRhYmxlX29iamVjdCIsZ2V0X3RhYmxlX2J5X2NlbGwoY2VsbC5pZCkpICAjbmV3INC00L7QsdCw0LLQuNC7INGC0LDQsdC70LjRhtGDINC00LvRjyDQvtGB0YLQsNGC0LrQvtCyINGC0L7QstCw0YDQsCDQsiDRjdGC0L7QuSDRj9GH0LXQudC60LUKICAgICAgICAgICAgaGFzaE1hcC5wdXQoIlNob3dTY3JlZW4iLCAi0JLRi9Cx0L7RgCDRgtC+0LLQsNGA0LAiKQoKICAgIHJldHVybiBoYXNoTWFwCgoKZGVmIGluY29tZV9ub21faW5wdXQoaGFzaE1hcCwgX2ZpbGVzPU5vbmUsIF9kYXRhPU5vbmUpOgogICAgIyBoYXNoTWFwLnB1dCgidG9hc3QiLGhhc2hNYXAuZ2V0KCJsaXN0ZW5lciIpKQoKICAgIGlmIGhhc2hNYXAuZ2V0KCJsaXN0ZW5lciIpID09ICIiOgoKICAgICAgICBpZiBub3QgaGFzaE1hcC5jb250YWluc0tleSgibm9tIik6CiAgICAgICAgICAgIGhhc2hNYXAucHV0KCJ0b2FzdCIsICLQndC1INGD0LrQsNC30LDQvSDRgtC+0LLQsNGAIikKICAgICAgICAgICAgcmV0dXJuIGhhc2hNYXAKICAgICAgICBlbHNlOgogICAgICAgICAgICBpZiBsZW4oaGFzaE1hcC5nZXQoImNlbGwiKSkgPT0gMDoKICAgICAgICAgICAgICAgIGhhc2hNYXAucHV0KCJ0b2FzdCIsICLQndC1INGD0LrQsNC30LDQvSDRgtC+0LLQsNGAIikKICAgICAgICAgICAgICAgIHJldHVybiBoYXNoTWFwCgogICAgICAgIGhhc2hNYXAucHV0KCJTaG93U2NyZWVuIiwgItCS0LLQvtC0INC60L7Qu9C40YfQtdGB0YLQstCwIikKICAgIGVsaWYgaGFzaE1hcC5nZXQoImxpc3RlbmVyIikgPT0gIkJBQ0tfQlVUVE9OIjoKICAgICAgICBoYXNoTWFwLnB1dCgiU2hvd1NjcmVlbiIsICLQktGL0LHQvtGAINGP0YfQtdC50LrQuCIpCiAgICBlbGlmIGhhc2hNYXAuZ2V0KCJsaXN0ZW5lciIpID09ICJiYXJjb2RlIjoKICAgICAgICB3aXRoIGRiX3Nlc3Npb246ICAjINCX0LDQvNC10L3QuNC7ISEhCiAgICAgICAgICAgIG5vbSA9IHVpX2dsb2JhbC5TV19Hb29kcy5nZXQoYmFyY29kZT1oYXNoTWFwLmdldCgiYmFyY29kZSIpKQogICAgICAgIGlmIG5vbSA9PSBOb25lOgogICAgICAgICAgICBoYXNoTWFwLnB1dCgidG9hc3QiLCAi0KLQvtCy0LDRgCDQvdC1INC90LDQudC00LXQvSIpCiAgICAgICAgZWxzZToKICAgICAgICAgICAgaGFzaE1hcC5wdXQoIm5vbSIsIG5vbS5uYW1lKQogICAgICAgICAgICBoYXNoTWFwLnB1dCgiX25vbV9pZCIsIHN0cihub20uaWQpKQogICAgICAgICAgICBoYXNoTWFwLnB1dCgic3BlYWsiLCBub20ubmFtZSkKICAgICAgICAgICAgaGFzaE1hcC5wdXQoIlNob3dTY3JlZW4iLCAi0JLQstC+0LQg0LrQvtC70LjRh9C10YHRgtCy0LAiKQogICAgICAgICAgICBoYXNoTWFwLnB1dCgicXR5IiwgIjEiKQoKICAgIGVsaWYgaGFzaE1hcC5nZXQoImxpc3RlbmVyIikgPT0gInZpc2lvbiI6CiAgICAgICAgIyBoYXNoTWFwLnB1dCgidG9hc3QiLGhhc2hNYXAuZ2V0KCJub21faWQiKSkKICAgICAgICB3aXRoIGRiX3Nlc3Npb246ICAjINCX0LDQvNC10L3QuNC7ISEhCiAgICAgICAgICAgIG5vbSA9IHVpX2dsb2JhbC5TV19Hb29kcy5nZXQoaWQ9aW50KGhhc2hNYXAuZ2V0KCJfbm9tX2lkIikpKQogICAgICAgIGlmIG5vbSA9PSBOb25lOgogICAgICAgICAgICBoYXNoTWFwLnB1dCgidG9hc3QiLCAi0KLQvtCy0LDRgCDQvdC1INC90LDQudC00LXQvSIpCiAgICAgICAgZWxzZToKICAgICAgICAgICAgaGFzaE1hcC5wdXQoIm5vbSIsIG5vbS5uYW1lKQogICAgICAgICAgICBoYXNoTWFwLnB1dCgiX25vbV9pZCIsIHN0cihub20uaWQpKQogICAgICAgICAgICBoYXNoTWFwLnB1dCgic3BlYWsiLCBub20ubmFtZSkKICAgICAgICAgICAgaGFzaE1hcC5wdXQoIlNob3dTY3JlZW4iLCAi0JLQstC+0LQg0LrQvtC70LjRh9C10YHRgtCy0LAiKQogICAgICAgICAgICBoYXNoTWFwLnB1dCgicXR5IiwgIjEiKQoKICAgIHJldHVybiBoYXNoTWFwCgoKZGVmIGluY29tZV9xdHlfaW5wdXQoaGFzaE1hcCwgX2ZpbGVzPU5vbmUsIF9kYXRhPU5vbmUpOgogICAgaWYgaGFzaE1hcC5nZXQoImxpc3RlbmVyIikgPT0gIiI6CgogICAgICAgIGlmIGdldGZsb2F0X2lmX2V4aXN0KGhhc2hNYXAsICJxdHkiKSA+IDA6CiAgICAgICAgICAgIHdpdGggZGJfc2Vzc2lvbjoKICAgICAgICAgICAgICAgIHIgPSB1aV9nbG9iYWwuU1dfQWNjb3VudChxdHk9Z2V0ZmxvYXRfaWZfZXhpc3QoaGFzaE1hcCwgInF0eSIpLCBza3U9aW50KGhhc2hNYXAuZ2V0KCJfbm9tX2lkIikpLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNlbGw9aW50KGhhc2hNYXAuZ2V0KCJfY2VsbF9pZCIpKSkKICAgICAgICAgICAgICAgIGNvbW1pdCgpCgoKICAgICAgICBlbHNlOgoKICAgICAgICAgICAgaGFzaE1hcC5wdXQoInRvYXN0IiwgItCd0LUg0YPQutCw0LfQsNC90L4g0LrQvtC7LdCy0L4iKQogICAgICAgICAgICByZXR1cm4gaGFzaE1hcAoKICAgIGp0ID0ganNvbi5sb2FkcyhoYXNoTWFwLmdldCgiY2VudHJhbF90YWJsZSIpKQogICAganRbJ3Jvd3MnXS5hcHBlbmQoeyJjZWxsIjogaGFzaE1hcC5nZXQoImNlbGwiKSwgIm5vbSI6IGhhc2hNYXAuZ2V0KCJub20iKSwgInF0eSI6IGhhc2hNYXAuZ2V0KCJxdHkiKX0pCgogICAgaGFzaE1hcC5wdXQoImNlbnRyYWxfdGFibGUiLCBqc29uLmR1bXBzKGp0KSkKICAgIGhhc2hNYXAucHV0KCJ0YWJsZV9vYmplY3QiLCBnZXRfdGFibGVfYnlfY2VsbChpbnQoaGFzaE1hcC5nZXQoJ19jZWxsX2lkJykpKSkgICMgbmV3INC00L7QsdCw0LLQuNC7INGC0LDQsdC70LjRhtGDINC00LvRjyDQvtGB0YLQsNGC0LrQvtCyINGC0L7QstCw0YDQsCDQsiDRjdGC0L7QuSDRj9GH0LXQudC60LUKICAgIGhhc2hNYXAucHV0KCJTaG93U2NyZWVuIiwgItCS0YvQsdC+0YAg0YLQvtCy0LDRgNCwIikKCiAgICByZXR1cm4gaGFzaE1hcAoKCmRlZiBvdXRjb21lX3F0eV9pbnB1dChoYXNoTWFwLCBfZmlsZXM9Tm9uZSwgX2RhdGE9Tm9uZSk6CiAgICBpZiBoYXNoTWFwLmdldCgibGlzdGVuZXIiKSA9PSAiIjoKCiAgICAgICAgaWYgZ2V0ZmxvYXRfaWZfZXhpc3QoaGFzaE1hcCwgInF0eSIpID4gMDoKICAgICAgICAgICAgd2l0aCBkYl9zZXNzaW9uOgogICAgICAgICAgICAgICAgc2VsZWN0X2dvb2RzID0gc2VsZWN0KGcucXR5IGZvciBnIGluIHVpX2dsb2JhbC5TV19BY2NvdW50IGlmIGcuc2t1PT1pbnQoaGFzaE1hcC5nZXQoIl9ub21faWQiKSkgYW5kIGcuY2VsbD09aW50KGhhc2hNYXAuZ2V0KCJfY2VsbF9pZCIpKSlbOl0KCiAgICAgICAgICAgICAgICBpZiBzdW0oc2VsZWN0X2dvb2RzKSArICgtMSAqIGdldGZsb2F0X2lmX2V4aXN0KGhhc2hNYXAsICJxdHkiKSkgPCAwOgogICAgICAgICAgICAgICAgICAgIGhhc2hNYXAucHV0KCJ0b2FzdCIsICLQntGC0LPRgNGD0LbQtdC90L4g0LHQvtC70YzRiNC1INGH0LXQvCDQsdGL0LvQviDQsiDQvdCw0LvQuNGH0LjQuCEhISIpCiAgICAgICAgICAgICAgICBlbHNlOgogICAgICAgICAgICAgICAgICAgIHIgPSB1aV9nbG9iYWwuU1dfQWNjb3VudChxdHk9LTEgKiBnZXRmbG9hdF9pZl9leGlzdChoYXNoTWFwLCAicXR5IiksIHNrdT1pbnQoaGFzaE1hcC5nZXQoIl9ub21faWQiKSksCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNlbGw9aW50KGhhc2hNYXAuZ2V0KCJfY2VsbF9pZCIpKSkKICAgICAgICAgICAgICAgICAgICBjb21taXQoKQoKICAgICAgICBlbHNlOgoKICAgICAgICAgICAgaGFzaE1hcC5wdXQoInRvYXN0IiwgItCd0LUg0YPQutCw0LfQsNC90L4g0LrQvtC7LdCy0L4iKQogICAgICAgICAgICByZXR1cm4gaGFzaE1hcAoKICAgIGp0ID0ganNvbi5sb2FkcyhoYXNoTWFwLmdldCgiY2VudHJhbF90YWJsZSIpKQogICAganRbJ3Jvd3MnXS5hcHBlbmQoeyJjZWxsIjogaGFzaE1hcC5nZXQoImNlbGwiKSwgIm5vbSI6IGhhc2hNYXAuZ2V0KCJub20iKSwgInF0eSI6IGhhc2hNYXAuZ2V0KCJxdHkiKX0pCgogICAgaGFzaE1hcC5wdXQoImNlbnRyYWxfdGFibGUiLCBqc29uLmR1bXBzKGp0KSkKICAgIGhhc2hNYXAucHV0KCJ0YWJsZV9vYmplY3QiLCBnZXRfdGFibGVfYnlfY2VsbChpbnQoaGFzaE1hcC5nZXQoJ19jZWxsX2lkJykpKSkgICMgbmV3INC00L7QsdCw0LLQuNC7INGC0LDQsdC70LjRhtGDINC00LvRjyDQvtGB0YLQsNGC0LrQvtCyINGC0L7QstCw0YDQsCDQsiDRjdGC0L7QuSDRj9GH0LXQudC60LUKICAgIGhhc2hNYXAucHV0KCJTaG93U2NyZWVuIiwgItCS0YvQsdC+0YAg0YLQvtCy0LDRgNCwIikKCiAgICByZXR1cm4gaGFzaE1hcAoKCmRlZiBzdG9ja19vbl9jcmVhdGUoaGFzaE1hcCwgX2ZpbGVzPU5vbmUsIF9kYXRhPU5vbmUpOgogICAgdGFibGUgPSB7CiAgICAgICAgInR5cGUiOiAidGFibGUiLAogICAgICAgICJ0ZXh0c2l6ZSI6ICIxNyIsCgogICAgICAgICJjb2x1bW5zIjogWwogICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAibmFtZSI6ICJjZWxsIiwKICAgICAgICAgICAgICAgICJoZWFkZXIiOiAi0K/Rh9C10LnQutCwIiwKICAgICAgICAgICAgICAgICJ3ZWlnaHQiOiAiMSIKICAgICAgICAgICAgfSwKICAgICAgICAgICAgewogICAgICAgICAgICAgICAgIm5hbWUiOiAibm9tIiwKICAgICAgICAgICAgICAgICJoZWFkZXIiOiAi0KLQvtCy0LDRgCIsCiAgICAgICAgICAgICAgICAid2VpZ2h0IjogIjIiCiAgICAgICAgICAgIH0sCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICJuYW1lIjogInF0eSIsCiAgICAgICAgICAgICAgICAiaGVhZGVyIjogItCe0YHRgtCw0YLQvtC6IiwKICAgICAgICAgICAgICAgICJ3ZWlnaHQiOiAiMSIKICAgICAgICAgICAgfSwKICAgICAgICAgICAgewogICAgICAgICAgICAgICAgIm5hbWUiOiAidW5pdCIsCiAgICAgICAgICAgICAgICAiaGVhZGVyIjogItCV0LQu0JjQt9C8IiwKICAgICAgICAgICAgICAgICJ3ZWlnaHQiOiAiMSIKICAgICAgICAgICAgfQogICAgICAgIF0KICAgIH0KCiAgICBjb25uID0gTm9uZQogICAgdHJ5OgogICAgICAgIGNvbm4gPSBzcWxpdGUzLmNvbm5lY3QoREJfUEFUSF9kZWJ1ZykKICAgIGV4Y2VwdCBFcnJvciBhcyBlOgogICAgICAgIHJhaXNlIFZhbHVlRXJyb3IoJ9Cd0LXRgiDRgdC+0LXQtNC40L3QtdC90LjRjyDRgSDQsdCw0LfQvtC5IScpCiAgICB3aXRoIGRiX3Nlc3Npb246ICAjINCX0LDQvNC10L3QuNC7ISEhCiAgICAgICAgY3Vyc29yID0gY29ubi5jdXJzb3IoKQogICAgICAgIGN1cnNvci5leGVjdXRlKAogICAgICAgICAgICAnJydTRUxFQ1QgU1dfQ2VsbHMubmFtZSBhcyBjZWxsLCBTV19Hb29kcy5uYW1lIGFzIG5vbSwgaWZudWxsKHN1bShxdHkpLDApIGFzIHF0eSwgU1dfR29vZHMudW5pdCBhcyB1bml0CiAgICAgICAgICAgIEZST00gU1dfQWNjb3VudCBMRUZUIEpPSU4gU1dfR29vZHMgT04gU1dfQWNjb3VudC5za3U9U1dfR29vZHMuaWQgTEVGVCBKT0lOIFNXX0NlbGxzIE9OIFNXX0FjY291bnQuY2VsbD1TV19DZWxscy5pZCBHUk9VUCBCWSBTV19Hb29kcy5uYW1lICxTV19DZWxscy5uYW1lIEhBVklORyBpZm51bGwoc3VtKHF0eSksMCk8PjAnJycpCgogICAgICAgIHJlc3VsdHMgPSBjdXJzb3IuZmV0Y2hhbGwoKQoKICAgICAgICByb3dzID0gW10KICAgICAgICBmb3IgcmVjb3JkIGluIHJlc3VsdHM6CiAgICAgICAgICAgIHJvd3MuYXBwZW5kKHsiY2VsbCI6IHJlY29yZFswXSwgIm5vbSI6IHJlY29yZFsxXSwgInF0eSI6IHJlY29yZFsyXSwgInVuaXQiOiByZWNvcmRbM119KQoKICAgIHRhYmxlWydyb3dzJ10gPSByb3dzCiAgICBoYXNoTWFwLnB1dCgidGFibGUiLCBqc29uLmR1bXBzKHRhYmxlKSkKCiAgICByZXR1cm4gaGFzaE1hcAoKCgpkZWYgZ2V0X3RhYmxlX2J5X25vbShpZCk6CiAgICB0YWJsZSA9IHsKICAgICAgICAidHlwZSI6ICJ0YWJsZSIsCiAgICAgICAgInRleHRzaXplIjogIjE3IiwKCiAgICAgICAgImNvbHVtbnMiOiBbCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICJuYW1lIjogImNlbGwiLAogICAgICAgICAgICAgICAgImhlYWRlciI6ICLQr9GH0LXQudC60LAiLAogICAgICAgICAgICAgICAgIndlaWdodCI6ICIxIgogICAgICAgICAgICB9LAogICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAibmFtZSI6ICJub20iLAogICAgICAgICAgICAgICAgImhlYWRlciI6ICLQotC+0LLQsNGAIiwKICAgICAgICAgICAgICAgICJ3ZWlnaHQiOiAiMiIKICAgICAgICAgICAgfSwKICAgICAgICAgICAgewogICAgICAgICAgICAgICAgIm5hbWUiOiAicXR5IiwKICAgICAgICAgICAgICAgICJoZWFkZXIiOiAi0J7RgdGC0LDRgtC+0LoiLAogICAgICAgICAgICAgICAgIndlaWdodCI6ICIxIgogICAgICAgICAgICB9CiAgICAgICAgXQogICAgfQoKICAgIGNvbm4gPSBOb25lCiAgICB0cnk6CiAgICAgICAgY29ubiA9IHNxbGl0ZTMuY29ubmVjdChEQl9QQVRIX2RlYnVnKQogICAgZXhjZXB0IEVycm9yIGFzIGU6CiAgICAgICAgcmFpc2UgVmFsdWVFcnJvcign0J3QtdGCINGB0L7QtdC00LjQvdC10L3QuNGPINGBINCx0LDQt9C+0LkhJykKCiAgICBjdXJzb3IgPSBjb25uLmN1cnNvcigpCiAgICBjdXJzb3IuZXhlY3V0ZSgKICAgICAgICAiU0VMRUNUIFNXX0NlbGxzLm5hbWUgYXMgY2VsbCxTV19Hb29kcy5uYW1lIGFzIG5vbSwgaWZudWxsKHN1bShxdHkpLDApIGFzIHF0eSBGUk9NIFNXX0FjY291bnQgTEVGVCBKT0lOIFNXX0dvb2RzIE9OIFNXX0FjY291bnQuc2t1PVNXX0dvb2RzLmlkIExFRlQgSk9JTiBTV19DZWxscyBPTiBTV19BY2NvdW50LmNlbGw9U1dfQ2VsbHMuaWQgV0hFUkUgU1dfQWNjb3VudC5za3UgPSAiICsgc3RyKAogICAgICAgICAgICBpZCkgKyAiIEdST1VQIEJZIFNXX0dvb2RzLm5hbWUgLFNXX0NlbGxzLm5hbWUgSEFWSU5HIGlmbnVsbChzdW0ocXR5KSwwKTw+MCIpCgogICAgcmVzdWx0cyA9IGN1cnNvci5mZXRjaGFsbCgpCgogICAgcm93cyA9IFtdCiAgICBmb3IgcmVjb3JkIGluIHJlc3VsdHM6CiAgICAgICAgcm93cy5hcHBlbmQoeyJjZWxsIjogcmVjb3JkWzBdLCAibm9tIjogcmVjb3JkWzFdLCAicXR5IjogcmVjb3JkWzJdfSkKCiAgICB0YWJsZVsncm93cyddID0gcm93cwoKICAgIHJldHVybiBqc29uLmR1bXBzKHRhYmxlKQoKCmRlZiBzdG9ja19pbnB1dChoYXNoTWFwLCBfZmlsZXM9Tm9uZSwgX2RhdGE9Tm9uZSk6CiAgICBpZiBoYXNoTWFwLmdldCgibGlzdGVuZXIiKSA9PSAiYmFyY29kZSI6CiAgICAgICAgd2l0aCBkYl9zZXNzaW9uOiAgIyDQl9Cw0LzQtdC90LjQuyEhIQogICAgICAgICAgICBub20gPSB1aV9nbG9iYWwuU1dfR29vZHMuZ2V0KGJhcmNvZGU9aGFzaE1hcC5nZXQoImJhcmNvZGUiKSkKICAgICAgICBpc19ub20gPSBGYWxzZQoKICAgICAgICBvYmplY3QgPSAiIgoKICAgICAgICBpZiBub20gPT0gTm9uZToKICAgICAgICAgICAgaXNfbm9tID0gRmFsc2UKICAgICAgICBlbHNlOgogICAgICAgICAgICBpc19ub20gPSBUcnVlCiAgICAgICAgICAgIGhhc2hNYXAucHV0KCJvYmplY3QiLCBub20ubmFtZSkKICAgICAgICAgICAgaGFzaE1hcC5wdXQoInRhYmxlX29iamVjdCIsIGdldF90YWJsZV9ieV9ub20obm9tLmlkKSkKICAgICAgICAgICAgaGFzaE1hcC5wdXQoIlNob3dTY3JlZW4iLCAi0J7RgdGC0LDRgtC60Lgg0L/QviDQvtCx0YrQtdC60YLRgyIpCgogICAgICAgIGlmIG5vdCBpc19ub206CiAgICAgICAgICAgIHdpdGggZGJfc2Vzc2lvbjogICMg0JfQsNC80LXQvdC40LshISEKICAgICAgICAgICAgICAgIGNlbGwgPSB1aV9nbG9iYWwuU1dfQ2VsbHMuZ2V0KGJhcmNvZGU9aGFzaE1hcC5nZXQoImJhcmNvZGUiKSkKICAgICAgICAgICAgaWYgY2VsbCA9PSBOb25lOgogICAgICAgICAgICAgICAgaGFzaE1hcC5wdXQoInRvYXN0IiwgItCo0YLRgNC40YXQutC+0LQg0L3QuCDRj9GH0LXQudC60Lgg0L3QuCDRgtC+0LLQsNGA0LAiKQogICAgICAgICAgICBlbHNlOgogICAgICAgICAgICAgICAgaGFzaE1hcC5wdXQoIm9iamVjdCIsIGNlbGwubmFtZSkKICAgICAgICAgICAgICAgIGhhc2hNYXAucHV0KCJ0YWJsZV9vYmplY3QiLCBnZXRfdGFibGVfYnlfY2VsbChjZWxsLmlkKSkKICAgICAgICAgICAgICAgIGhhc2hNYXAucHV0KCJTaG93U2NyZWVuIiwgItCe0YHRgtCw0YLQutC4INC/0L4g0L7QsdGK0LXQutGC0YMiKQoKICAgIHJldHVybiBoYXNoTWFwCgoKZGVmIHN0b2NrX29iamVjdF9pbnB1dChoYXNoTWFwLCBfZmlsZXM9Tm9uZSwgX2RhdGE9Tm9uZSk6CiAgICBpZiBoYXNoTWFwLmdldCgibGlzdGVuZXIiKSA9PSAiQkFDS19CVVRUT04iOgogICAgICAgIGhhc2hNYXAucHV0KCJTaG93U2NyZWVuIiwgItCe0YHRgtCw0YLQutC4IikKCiAgICByZXR1cm4gaGFzaE1hcAoKCmRlZiBpbnZlbnRvcnlfb25fc3RhcnQoaGFzaE1hcCwgX2ZpbGVzPU5vbmUsIF9kYXRhPU5vbmUpOiPQrdC60YDQsNC9OiDQlNC+0LrRg9C80LXQvdGC0YsgKGludmVudG9yeSkKICAgIGxpc3QgPSB7ImN1c3RvbWNhcmRzIjogewoKICAgICAgICAibGF5b3V0IjogewogICAgICAgICAgICAidHlwZSI6ICJMaW5lYXJMYXlvdXQiLAogICAgICAgICAgICAib3JpZW50YXRpb24iOiAidmVydGljYWwiLAogICAgICAgICAgICAiaGVpZ2h0IjogIm1hdGNoX3BhcmVudCIsCiAgICAgICAgICAgICJ3aWR0aCI6ICJtYXRjaF9wYXJlbnQiLAogICAgICAgICAgICAid2VpZ2h0IjogIjAiLAogICAgICAgICAgICAiRWxlbWVudHMiOiBbCgogICAgICAgICAgICAgICAgewogICAgICAgICAgICAgICAgICAgICJ0eXBlIjogIlRleHRWaWV3IiwKICAgICAgICAgICAgICAgICAgICAic2hvd19ieV9jb25kaXRpb24iOiAiIiwKICAgICAgICAgICAgICAgICAgICAiVmFsdWUiOiAiQGRlc2NyIiwKICAgICAgICAgICAgICAgICAgICAiTm9SZWZyZXNoIjogRmFsc2UsCiAgICAgICAgICAgICAgICAgICAgImRvY3VtZW50X3R5cGUiOiAiIiwKICAgICAgICAgICAgICAgICAgICAibWFzayI6ICIiLAogICAgICAgICAgICAgICAgICAgICJWYXJpYWJsZSI6ICIiCiAgICAgICAgICAgICAgICB9LAoKICAgICAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICAgICAidHlwZSI6ICJUZXh0VmlldyIsCiAgICAgICAgICAgICAgICAgICAgInNob3dfYnlfY29uZGl0aW9uIjogIiIsCiAgICAgICAgICAgICAgICAgICAgIlZhbHVlIjogIkBkYXRlIiwKICAgICAgICAgICAgICAgICAgICAiTm9SZWZyZXNoIjogRmFsc2UsCiAgICAgICAgICAgICAgICAgICAgImRvY3VtZW50X3R5cGUiOiAiIiwKICAgICAgICAgICAgICAgICAgICAibWFzayI6ICIiLAogICAgICAgICAgICAgICAgICAgICJWYXJpYWJsZSI6ICIiCiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgIF0KICAgICAgICB9CgogICAgfQogICAgfQoKICAgIHdpdGggZGJfc2Vzc2lvbjojINCX0LDQvNC10L3QuNC7ISEhCiAgICAgICAgcXVlcnkgPSBzZWxlY3QoYyBmb3IgYyBpbiB1aV9nbG9iYWwuU1dfSW52ZW50b3J5KQogICAgICAgIGxpc3RbImN1c3RvbWNhcmRzIl1bImNhcmRzZGF0YSJdID0gW10KCiAgICAgICAgZm9yIHJlY29yZCBpbiBxdWVyeToKICAgICAgICAgICAgbGlzdFsiY3VzdG9tY2FyZHMiXVsiY2FyZHNkYXRhIl0uYXBwZW5kKAogICAgICAgICAgICAgICAgeyJkZXNjciI6IHJlY29yZC5kZXNjcmlwdGlvbiwgImtleSI6IHJlY29yZC5pZCwgImRhdGUiOiBzdHIocmVjb3JkLmNyZWF0ZWRfYXQpfSkKICAgICAgICBoYXNoTWFwLnB1dCgiaW52ZW50b3J5IiwganNvbi5kdW1wcyhsaXN0KSkKCiAgICByZXR1cm4gaGFzaE1hcAoKCmRlZiBpbnZlbnRvcnlfaW5wdXQoaGFzaE1hcCwgX2ZpbGVzPU5vbmUsIF9kYXRhPU5vbmUpOiPQrdC60YDQsNC9OiDQlNC+0LrRg9C80LXQvdGC0YsgKGludmVudG9yeSkKICAgICNnbG9iYWwgY2VsbF9pZAoKICAgIGlmIGhhc2hNYXAuZ2V0KCJsaXN0ZW5lciIpID09ICJidG5fbmV3IjoKCiAgICAgICAgaGFzaE1hcC5wdXQoIlNob3dTY3JlZW4iLCAi0J3QvtCy0LDRjyDQuNC90LLQtdC90YLQsNGA0LjQt9Cw0YbQuNGPIikKCgogICAgZWxpZiBoYXNoTWFwLmdldCgibGlzdGVuZXIiKSA9PSAiQ2FyZHNDbGljayI6CgogICAgICAgIGpsaXN0ID0ganNvbi5sb2FkcyhoYXNoTWFwLmdldCgiaW52ZW50b3J5IikpCiAgICAgICAgZ29vZHNhcnJheSA9IGpsaXN0WyJjdXN0b21jYXJkcyJdWydjYXJkc2RhdGEnXQoKICAgICAgICBqcmVjb3JkID0gbmV4dChpdGVtIGZvciBpdGVtIGluIGdvb2RzYXJyYXkgaWYgc3RyKGl0ZW1bImtleSJdKSA9PSBoYXNoTWFwLmdldCgic2VsZWN0ZWRfY2FyZF9rZXkiKSkKCiAgICAgICAgaW52X2lkID0ganJlY29yZFsna2V5J10KICAgICAgICBoYXNoTWFwLnB1dCgiaW52X25hbWUiLCBqcmVjb3JkWydkZXNjciddKQogICAgICAgIGhhc2hNYXAucHV0KCJpbnZfaWQiLCBzdHIoaW52X2lkKSkKICAgICAgICBoYXNoTWFwLnB1dCgiaW52X2RhdGUiLCBzdHIoanJlY29yZFsnZGF0ZSddKSkKCiAgICAgICAgaGFzaE1hcC5wdXQoIlNob3dTY3JlZW4iLCAi0JjQvdCy0LXQvdGC0LDRgNC40LfQsNGG0LjRjyDQoNC10LfRg9C70YzRgtCw0YLRiyIpCgogICAgcmV0dXJuIGhhc2hNYXAKCgpkZWYgbmV3aW52X2lucHV0KGhhc2hNYXAsIF9maWxlcz1Ob25lLCBfZGF0YT1Ob25lKToKICAgICNnbG9iYWwgY2VsbF9pZAoKICAgIGlmIGhhc2hNYXAuZ2V0KCJsaXN0ZW5lciIpID09ICIiOgogICAgICAgIHdpdGggZGJfc2Vzc2lvbjoKICAgICAgICAgICAgciA9IHVpX2dsb2JhbC5TV19JbnZlbnRvcnkoZGVzY3JpcHRpb249aGFzaE1hcC5nZXQoJ25hbWUnKSkKICAgICAgICAgICAgY29tbWl0KCkKCiAgICAgICAgICAgIGhhc2hNYXAucHV0KCJpbnZfbmFtZSIsIGhhc2hNYXAuZ2V0KCduYW1lJykpCiAgICAgICAgICAgIGhhc2hNYXAucHV0KCJpbnZfaWQiLCBzdHIoci5pZCkpCiAgICAgICAgICAgIGhhc2hNYXAucHV0KCJpbnZfZGF0ZSIsIHN0cihyLmNyZWF0ZWRfYXQpKQogICAgICAgICAgICAjIGhhc2hNYXAucHV0KCJ0b2FzdCIsc3RyKHIuaWQpKQoKICAgICAgICAgICAgaGFzaE1hcC5wdXQoIlNob3dTY3JlZW4iLCAi0JjQvdCy0LXQvdGC0LDRgNC40LfQsNGG0LjRjyDQoNC10LfRg9C70YzRgtCw0YLRiyIpCgogICAgcmV0dXJuIGhhc2hNYXAKCgpkZWYgaW52cmVzX29uX3N0YXJ0KGhhc2hNYXAsIF9maWxlcz1Ob25lLCBfZGF0YT1Ob25lKToKICAgIGludmRhdGUgPSBkYXRldGltZS5mcm9taXNvZm9ybWF0KHN0cihoYXNoTWFwLmdldCgiaW52X2RhdGUiKSkpCiAgICBoYXNoTWFwLnB1dCgiaW52IiwKICAgICAgICAgICAgICAgICLQmNC90LLQtdC90YLQsNGA0LjQt9Cw0YbQuNGPICIgKyBzdHIoaGFzaE1hcC5nZXQoImludl9uYW1lIikpICsgIiDQvtGCICIgKyBpbnZkYXRlLnN0cmZ0aW1lKCIlbS4lZC4lWSwgJUg6JU06JVMiKSkKCiAgICB0YWJsZSA9IHsKICAgICAgICAidHlwZSI6ICJ0YWJsZSIsCiAgICAgICAgInRleHRzaXplIjogIjE3IiwKCiAgICAgICAgImNvbHVtbnMiOiBbCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICJuYW1lIjogImNlbGwiLAogICAgICAgICAgICAgICAgImhlYWRlciI6ICLQr9GH0LXQudC60LAiLAogICAgICAgICAgICAgICAgIndlaWdodCI6ICIxIgogICAgICAgICAgICB9LAogICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAibmFtZSI6ICJub20iLAogICAgICAgICAgICAgICAgImhlYWRlciI6ICLQotC+0LLQsNGAIiwKICAgICAgICAgICAgICAgICJ3ZWlnaHQiOiAiMiIKICAgICAgICAgICAgfSwKICAgICAgICAgICAgewogICAgICAgICAgICAgICAgIm5hbWUiOiAicXR5cGxhbiIsCiAgICAgICAgICAgICAgICAiaGVhZGVyIjogItCf0LvQsNC9IiwKICAgICAgICAgICAgICAgICJ3ZWlnaHQiOiAiMSIKICAgICAgICAgICAgfSwKICAgICAgICAgICAgewogICAgICAgICAgICAgICAgIm5hbWUiOiAicXR5ZmFjdCIsCiAgICAgICAgICAgICAgICAiaGVhZGVyIjogItCk0LDQutGCIiwKICAgICAgICAgICAgICAgICJ3ZWlnaHQiOiAiMSIKICAgICAgICAgICAgfQogICAgICAgIF0KICAgIH0KCiAgICBjb25uID0gTm9uZQogICAgdHJ5OgogICAgICAgIGNvbm4gPSBzcWxpdGUzLmNvbm5lY3QoREJfUEFUSF9kZWJ1ZykKICAgIGV4Y2VwdCBFcnJvciBhcyBlOgogICAgICAgIHJhaXNlIFZhbHVlRXJyb3IoJ9Cd0LXRgiDRgdC+0LXQtNC40L3QtdC90LjRjyDRgSDQsdCw0LfQvtC5IScpCgogICAgY3Vyc29yID0gY29ubi5jdXJzb3IoKQogICAgY3Vyc29yLmV4ZWN1dGUoCiAgICAgICAgInNlbGVjdCBULmNlbGwsVC5ub20sbWF4KFQucXR5cGxhbikgYXMgcXR5cGxhbiwgaWZudWxsKHN1bShGLnF0eSksMCkgYXMgcXR5ZmFjdCBGUk9NIChTRUxFQ1QgU1dfQ2VsbHMubmFtZSBhcyBjZWxsLFNXX0dvb2RzLm5hbWUgYXMgbm9tLCBpZm51bGwoc3VtKFNXX0FjY291bnQucXR5KSwwKSBhcyBxdHlwbGFuLFNXX0FjY291bnQuc2t1IGFzIHNrdWlkLCBTV19BY2NvdW50LmNlbGwgYXMgY2VsbGlkIEZST00gU1dfQWNjb3VudCBMRUZUIEpPSU4gU1dfR29vZHMgT04gU1dfQWNjb3VudC5za3U9U1dfR29vZHMuaWQgTEVGVCBKT0lOIFNXX0NlbGxzIE9OIFNXX0FjY291bnQuY2VsbD1TV19DZWxscy5pZCAgIEdST1VQIEJZIFNXX0dvb2RzLm5hbWUgLFNXX0NlbGxzLm5hbWUsIFNXX0FjY291bnQuY2VsbCwgU1dfQWNjb3VudC5za3UgSEFWSU5HIGlmbnVsbChzdW0oU1dfQWNjb3VudC5xdHkpLDApPD4wKSBhcyBUIExFRlQgSk9JTiBTV19JbnZlbnRvcnlfbGluZSBBUyBGIE9OIFQuY2VsbGlkPUYuY2VsbCBBTkQgVC5za3VpZD1GIC5za3UgYW5kIEYgLmludmVudG9yeT0iICsgaGFzaE1hcC5nZXQoCiAgICAgICAgICAgICJpbnZfaWQiKSArICIgR1JPVVAgQlkgVC5jZWxsLFQubm9tIikKCiAgICByZXN1bHRzID0gY3Vyc29yLmZldGNoYWxsKCkKCiAgICByb3dzID0gW10KICAgIGNvbG9yY2VsbHMgPSBbXQogICAgcm93ID0gMAogICAgZm9yIHJlY29yZCBpbiByZXN1bHRzOgoKICAgICAgICByb3dzLmFwcGVuZCh7ImNlbGwiOiByZWNvcmRbMF0sICJub20iOiByZWNvcmRbMV0sICJxdHlwbGFuIjogcmVjb3JkWzJdLCAicXR5ZmFjdCI6IHJlY29yZFszXX0pCiAgICAgICAgIyDQv9C+0LTQutGA0LDRiNC40LLQsNC10Lwg0YDQtdC30YPQu9GM0YLQsNGC0Ysg0LIg0LfQtdC70LXQvdGL0Lkg0Lgg0LrRgNCw0YHQvdGL0Lkg0YbQstC10YLQsAogICAgICAgIGlmIHJlY29yZFszXSA+IDA6CiAgICAgICAgICAgIGlmIHJlY29yZFszXSA+PSByZWNvcmRbMl06CiAgICAgICAgICAgICAgICBjb2xvcmNlbGxzLmFwcGVuZCh7InJvdyI6IHJvdywgImNvbHVtbiI6ICIzIiwgImNvbG9yIjogIiMzMmE4NTIifSkKICAgICAgICAgICAgZWxzZToKICAgICAgICAgICAgICAgIGNvbG9yY2VsbHMuYXBwZW5kKHsicm93Ijogcm93LCAiY29sdW1uIjogIjMiLCAiY29sb3IiOiAiI2U2NGM0YyJ9KQogICAgICAgIHJvdyArPSAxCgogICAgdGFibGVbJ3Jvd3MnXSA9IHJvd3MKICAgIHRhYmxlWydjb2xvcmNlbGxzJ10gPSBjb2xvcmNlbGxzCgogICAgaGFzaE1hcC5wdXQoInRhYmxlIiwganNvbi5kdW1wcyh0YWJsZSkpCgogICAgcmV0dXJuIGhhc2hNYXAKCgpkZWYgaW52cmVzX2lucHV0KGhhc2hNYXAsIF9maWxlcz1Ob25lLCBfZGF0YT1Ob25lKToKICAgICNnbG9iYWwgY2VsbF9pZAoKICAgIGlmIGhhc2hNYXAuZ2V0KCJsaXN0ZW5lciIpID09ICJidG5fcnVuIjoKICAgICAgICBoYXNoTWFwLnB1dCgiUnVuQ1YiLCAi0JjQvdCyQ1YiKQoKICAgIHJldHVybiBoYXNoTWFwCgoKZGVmIGludmN2X2NlbGxfb25fc3RhcnQoaGFzaE1hcCwgX2ZpbGVzPU5vbmUsIF9kYXRhPU5vbmUpOgogICAgI2dsb2JhbCBjZWxscwogICAgI2dsb2JhbCBjZWxsaWQKCiAgICBfY2VsbGlkID0gTm9uZSAjIGl0J3Mgbm90IG5lY2Vzc2FyeT8/PwogICAgaGFzaE1hcC5wdXQoJ19jZWxsaWQnLCBzdHIoX2NlbGxpZCkpICAjINCy0LLQvtC0IF9jZWxsaWQgVGltZSEhIQoKICAgIGlmIGhhc2hNYXAuY29udGFpbnNLZXkoInN0b3BfbGlzdGVuZXJfbGlzdCIpOgogICAgICAgIGhhc2hNYXAucmVtb3ZlKCJzdG9wX2xpc3RlbmVyX2xpc3QiKQoKICAgICMgY3JlYXRlIGNvbm5lY3Rpb24gd2l0aCBkYXRhYmFzZQogICAgY29ubiA9IE5vbmUKICAgIHRyeToKICAgICAgICBjb25uID0gc3FsaXRlMy5jb25uZWN0KERCX1BBVEhfZGVidWcpIyDQsdGL0LvQviAtINC30LDQvNC10L3QuNC7KCcvL2RhdGEvZGF0YS9ydS50cmF2ZWxmb29kLnNpbXBsZV91aS9kYXRhYmFzZXMvU2ltcGxlV01TJykKICAgIGV4Y2VwdCBFcnJvciBhcyBlOgogICAgICAgIHJhaXNlIFZhbHVlRXJyb3IoJ9Cd0LXRgiDRgdC+0LXQtNC40L3QtdC90LjRjyDRgSDQsdCw0LfQvtC5IScpCgogICAgY3Vyc29yID0gY29ubi5jdXJzb3IoKQogICAgY3Vyc29yLmV4ZWN1dGUoIlNFTEVDVCBiYXJjb2RlLGlkLG5hbWUgRlJPTSBTV19DZWxscyIpCgogICAgcmVzdWx0cyA9IGN1cnNvci5mZXRjaGFsbCgpCgogICAgZ3JlZW5fbGlzdCA9IFtdCiAgICByZWRfbGlzdCA9IFtdCiAgICBpbmZvX2xpc3QgPSBbXQogICAgX2NlbGxzID0ge30KICAgIGZvciBsaW5rIGluIHJlc3VsdHM6CiAgICAgICAgIyBqb2IgPSB7Im9iamVjdCI6c3RyKGxpbmtbMF0pLCJpbmZvIjpzdHIobGlua1sxXSkrIiA8L24+INCe0YHRgtCw0YLQvtC6OiA8YmlnPiIrc3RyKGxpbmtbMl0pKyI8L2JpZz4ifQogICAgICAgICMgaW5mb19saXN0LmFwcGVuZChqb2IpCiAgICAgICAgZ3JlZW5fbGlzdC5hcHBlbmQobGlua1swXSkKICAgICAgICBfY2VsbHNbbGlua1swXV0gPSBsaW5rWzFdCgogICAgY29ubi5jbG9zZSgpCiAgICBoYXNoTWFwLnB1dCgiX2NlbGxzIiwganNvbi5kdW1wcyhfY2VsbHMsIGVuc3VyZV9hc2NpaT1GYWxzZSkpIyB0aW1lISEhCiAgICBoYXNoTWFwLnB1dCgidG9hc3QiLCBzdHIoaGFzaE1hcC5nZXQoJ19jZWxscycpKSArJyBsaW5lMTI2MycpICAjIHRpbWUhISEKICAgICMgaGFzaE1hcC5wdXQoIm9iamVjdF9pbmZvX2xpc3QiLGpzb24uZHVtcHMoaW5mb19saXN0LGVuc3VyZV9hc2NpaT1GYWxzZSkpCiAgICBoYXNoTWFwLnB1dCgiZ3JlZW5fbGlzdCIsICc7Jy5qb2luKGdyZWVuX2xpc3QpKQogICAgaGFzaE1hcC5wdXQoInRvYXN0Iiwgc3RyKGhhc2hNYXAuZ2V0KCdncmVlbl9saXN0JykpICsnIGxpbmUxMjY1JykgICMgdGltZSEhIQogICAgaGFzaE1hcC5wdXQoInRvYXN0Iiwgc3RyKGhhc2hNYXAuZ2V0KCd5ZWxsb3dfbGlzdCcpKSArICcgbGluZTEyNjYnKSAgIyB0aW1lISEhCgogICAgcmV0dXJuIGhhc2hNYXAKCgpkZWYgaW52Y3ZfY2VsbF9vbl9uZXdfb2JqZWN0KGhhc2hNYXAsIF9maWxlcz1Ob25lLCBfZGF0YT1Ob25lKToKICAgICNnbG9iYWwgY2VsbHMKICAgICNnbG9iYWwgY2VsbGlkCiAgICAjZ2xvYmFsIGdyZWVuX3NpemUsIHllbGxvd19zaXplCgogICAgaWYgbm90IGhhc2hNYXAuZ2V0KCdfZ3JlZW5fc2l6ZScpPT0gTm9uZToKICAgICAgICBfZ3JlZW5fc2l6ZSA9IGludChoYXNoTWFwLmdldCgnX2dyZWVuX3NpemUnKSkgICMg0L/RgNC+0YfQuNGC0LDQu9C4IF9ncmVlbl9zaXplIFRpbWUhISEKICAgIGVsc2U6CiAgICAgICAgX2dyZWVuX3NpemUgPSAwCgogICAgaWYgbm90IGhhc2hNYXAuZ2V0KCdfeWVsbG93X3NpemUnKSA9PSBOb25lOgogICAgICAgIF95ZWxsb3dfc2l6ZSA9IGludChoYXNoTWFwLmdldCgnX3llbGxvd19zaXplJykpICAjINC/0YDQvtGH0LjRgtCw0LvQuCBfeWVsbG93X3NpemUgVGltZSEhIQogICAgZWxzZToKICAgICAgICBfeWVsbG93X3NpemUgPSAwCgogICAgaGFzaE1hcC5wdXQoInZpYnJhdGUiLCAiIikKICAgIF9jZWxscyA9IGpzb24ubG9hZHMoaGFzaE1hcC5nZXQoIl9jZWxscyIpKQogICAgX2NlbGxpZCA9IF9jZWxscy5nZXQoaGFzaE1hcC5nZXQoImN1cnJlbnRfb2JqZWN0IikpI2VudGVyIGVycm9yISEhIFRpbWUhISEKICAgIGhhc2hNYXAucHV0KCdfY2VsbGlkJywgc3RyKF9jZWxsaWQpKSAgIyDQstCy0L7QtCBfY2VsbGlkIFRpbWUhISEKICAgIGhhc2hNYXAucHV0KCJ0b2FzdCIsIHN0cihfY2VsbGlkKSsgc3RyKGhhc2hNYXAuZ2V0KCJjdXJyZW50X29iamVjdCIpKSArICcgbGluZTEyODAnKSAgIyBUaW1lISEhCgogICAgaWYgbm90IF9jZWxsaWQgPT0gTm9uZToKCiAgICAgICAgIyBjcmVhdGUgY29ubmVjdGlvbiB3aXRoIGRhdGFiYXNlCiAgICAgICAgY29ubiA9IE5vbmUKICAgICAgICB0cnk6CiAgICAgICAgICAgIGNvbm4gPSBzcWxpdGUzLmNvbm5lY3QoREJfUEFUSF9kZWJ1ZykKICAgICAgICBleGNlcHQgRXJyb3IgYXMgZToKICAgICAgICAgICAgcmFpc2UgVmFsdWVFcnJvcign0J3QtdGCINGB0L7QtdC00LjQvdC10L3QuNGPINGBINCx0LDQt9C+0LkhJykKCiAgICAgICAgY3Vyc29yID0gY29ubi5jdXJzb3IoKQogICAgICAgIHRyeToKICAgICAgICAgICAgIyDRgtGD0YIg0Y8g0L/QvtC90Y/QuyDRh9GC0L4g0LvQsNC20LDQvdGD0LvRgdGPLCDQuNGB0L/QvtC70YzQt9C+0LLQsNCyIHVuaXF1ZSDQsiDQutCw0YfQtdGB0YLQstC1INC40LzQtdC90LgsINC90L4g0LHRi9C70L4g0YPQttC1INC/0L7Qt9C00L3QvgogICAgICAgICAgICBjdXJzb3IuZXhlY3V0ZSgKICAgICAgICAgICAgICAgICJTRUxFQ1QgU1dfR29vZHMuYmFyY29kZSBhcyBiYXJjb2RlLFNXX0NlbGxzLm5hbWUgYXMgY2VsbCxTV19Hb29kcy5uYW1lIGFzIG5vbSwgaWZudWxsKHN1bShxdHkpLDApIGFzIHF0eSwgXCJ1bmlxdWVcIiBhcyB1bixTV19Hb29kcy5pZCBhcyBfbm9tX2lkICBGUk9NIFNXX0FjY291bnQgTEVGVCBKT0lOIFNXX0dvb2RzIE9OIFNXX0FjY291bnQuc2t1PVNXX0dvb2RzLmlkIExFRlQgSk9JTiBTV19DZWxscyBPTiBTV19BY2NvdW50LmNlbGw9U1dfQ2VsbHMuaWQgV0hFUkUgU1dfQWNjb3VudC5jZWxsID0gIiArIHN0cigKICAgICAgICAgICAgICAgICAgICBfY2VsbGlkKSArICIgR1JPVVAgQlkgU1dfR29vZHMubmFtZSAsU1dfQ2VsbHMubmFtZSBIQVZJTkcgaWZudWxsKHN1bShxdHkpLDApPD4wIikKICAgICAgICBleGNlcHQgRXJyb3IgYXMgZToKICAgICAgICAgICAgcmFpc2UgVmFsdWVFcnJvcihlKQoKICAgICAgICByZXN1bHRzID0gY3Vyc29yLmZldGNoYWxsKCkKCiAgICAgICAgZm91bmQgPSBbXQoKICAgICAgICB5ZWxsb3dfbGlzdCA9IFtdCiAgICAgICAgcmVkX2xpc3QgPSBbXQogICAgICAgIGluZm9fbGlzdCA9IFtdCiAgICAgICAgX3llbGxvd19zaXplID0gMAogICAgICAgIF9ncmVlbl9zaXplID0gMAogICAgICAgICMg0LjRgdC/0L7Qu9GM0LfRg9C10Lwgb2JqZWN0X2luZm9fbGlzdCDQuCDQt9Cw0L/RgNC+0YEg0YfRgtC+0LHRiyDRhdGA0LDQvdC40YLRjCDQt9Cw0L7QtNC90L4g0L3Rg9C20L3Ri9C1INC/0L7Qu9GPLCDQvtC90Lgg0L3Rg9C20L3RiyDQvdC1INC00LvRjyDQvtGC0L7QsdGA0LDQtNCw0LXQvdC40Y8g0LAg0LTQu9GPINC00LDQu9GM0L3QtdC50YjQtdC5INC70L7Qs9C40LrQuCAtIHVuaXF1ZSwgX25vbV9pZAogICAgICAgIGZvciBsaW5rIGluIHJlc3VsdHM6CiAgICAgICAgICAgIGpvYiA9IHsib2JqZWN0Ijogc3RyKGxpbmtbMF0pLCAiaW5mbyI6IHN0cihsaW5rWzJdKSArICIgPC9uPiDQntGB0YLQsNGC0L7QujogPGJpZz4iICsgc3RyKGxpbmtbM10pICsgIjwvYmlnPiIsCiAgICAgICAgICAgICAgICAgICAidW5pcXVlIjogbGlua1s0XSwgIl9ub21faWQiOiBzdHIobGlua1s1XSl9CiAgICAgICAgICAgIGluZm9fbGlzdC5hcHBlbmQoam9iKQogICAgICAgICAgICB5ZWxsb3dfbGlzdC5hcHBlbmQobGlua1swXSkKICAgICAgICAgICAgX3llbGxvd19zaXplICs9IDEKCiAgICAgICAgY29ubi5jbG9zZSgpCgogICAgICAgIGhhc2hNYXAucHV0KCJvYmplY3RfaW5mb19saXN0IiwganNvbi5kdW1wcyhpbmZvX2xpc3QsIGVuc3VyZV9hc2NpaT1GYWxzZSkpCgogICAgICAgIGlmIG5vdCB5ZWxsb3dfbGlzdCA9PSBOb25lOgogICAgICAgICAgICBoYXNoTWFwLnB1dCgieWVsbG93X2xpc3QiLCAnOycuam9pbih5ZWxsb3dfbGlzdCkpCgogICAgICAgIGhhc2hNYXAucHV0KCJ0b2FzdCIsIGhhc2hNYXAuZ2V0KCd5ZWxsb3dfbGlzdCcpKycgbGluZTEzMjQnKSMg0L3QtSDQtNCw0YXQvtC00LjRgiDQsiDQmtC40YLQtSBUaW1lISEhCgogICAgICAgIGludmRhdGUgPSBkYXRldGltZS5mcm9taXNvZm9ybWF0KHN0cihoYXNoTWFwLmdldCgiaW52X2RhdGUiKSkpCiAgICAgICAgaGFzaE1hcC5wdXQoImludiIsICLQmNC90LLQtdC90YLQsNGA0LjQt9Cw0YbQuNGPICIgKyBzdHIoaGFzaE1hcC5nZXQoImludl9uYW1lIikpICsgIiDQvtGCICIgKyBpbnZkYXRlLnN0cmZ0aW1lKAogICAgICAgICAgICAiJW0uJWQuJVksICVIOiVNOiVTIikgKyAiPC9uPiDQndCw0LnQtNC10L3QvjogPGJpZz4iICsgc3RyKF9ncmVlbl9zaXplKSArICI8L2JpZz4iICsgIiDQuNC3ICIgKyAiPGJpZz4iICsgc3RyKAogICAgICAgICAgICBfeWVsbG93X3NpemUpICsgIjwvYmlnPiIpCgogICAgICAgIGhhc2hNYXAucHV0KCJOZXh0U3RlcCIsICLQotC+0LLQsNGA0Ysg0Y/Rh9C10LnQutC4IikKCiAgICBoYXNoTWFwLnB1dCgnX2dyZWVuX3NpemUnLCBzdHIoX2dyZWVuX3NpemUpKSAgIyDQstCy0L7QtCBfZ3JlZW5fc2l6ZSBUaW1lISEhCiAgICBoYXNoTWFwLnB1dCgnX3llbGxvd19zaXplJywgc3RyKF95ZWxsb3dfc2l6ZSkpICAjINCy0LLQvtC0IF95ZWxsb3dfc2l6ZSBUaW1lISEhCgogICAgcmV0dXJuIGhhc2hNYXAKCgpkZWYgaW52Y3ZfZ29vZHNfb25fbmV3X29iamVjdChoYXNoTWFwLCBfZmlsZXM9Tm9uZSwgX2RhdGE9Tm9uZSk6CiAgICAjZ2xvYmFsIGNlbGxzCiAgICAjZ2xvYmFsIGNlbGxpZAogICAgI2dsb2JhbCBncmVlbl9zaXplLCBfeWVsbG93X3NpemUKCiAgICBub21fYmFyY29kZSA9IHN0cihoYXNoTWFwLmdldCgiY3VycmVudF9vYmplY3QiKSkKICAgIGlmIG5vdCBoYXNoTWFwLmdldCgnX2dyZWVuX3NpemUnKT09IE5vbmU6CiAgICAgICAgX2dyZWVuX3NpemUgPSBpbnQoaGFzaE1hcC5nZXQoJ19ncmVlbl9zaXplJykpICAjINC/0YDQvtGH0LjRgtCw0LvQuCBfZ3JlZW5fc2l6ZSBUaW1lISEhCiAgICBlbHNlOgogICAgICAgIF9ncmVlbl9zaXplID0gMAoKICAgIGlmIG5vdCBoYXNoTWFwLmdldCgnX3llbGxvd19zaXplJykgPT0gTm9uZToKICAgICAgICBfeWVsbG93X3NpemUgPSBpbnQoaGFzaE1hcC5nZXQoJ195ZWxsb3dfc2l6ZScpKSAgIyDQv9GA0L7Rh9C40YLQsNC70LggX3llbGxvd19zaXplIFRpbWUhISEKICAgIGVsc2U6CiAgICAgICAgX3llbGxvd19zaXplID0gMAoKICAgIGlmIG5vbV9iYXJjb2RlIGluIGhhc2hNYXAuZ2V0KCJ5ZWxsb3dfbGlzdCIpOgoKICAgICAgICBpZiBoYXNoTWFwLmNvbnRhaW5zS2V5KCJzdG9wX2xpc3RlbmVyX2xpc3QiKTojINC10YHRgtGMINC70Lggc3RvcF9saXN0ZW5lcl9saXN0INCyIGhhc2hNYXAKICAgICAgICAgICAgc3RvcF9saXN0ID0gaGFzaE1hcC5nZXQoInN0b3BfbGlzdGVuZXJfbGlzdCIpLnNwbGl0KCI7IikKICAgICAgICAgICAgc3RvcF9saXN0LmFwcGVuZChub21fYmFyY29kZSkjINC00L7QsdCw0LLQuNGC0Ywgbm9tX2JhcmNvZGUg0LIgc3RvcF9saXN0ZW5lcl9saXN0CiAgICAgICAgICAgIGhhc2hNYXAucHV0KCJzdG9wX2xpc3RlbmVyX2xpc3QiLCAiOyIuam9pbihzdG9wX2xpc3QpKQogICAgICAgIGVsc2U6CiAgICAgICAgICAgIGhhc2hNYXAucHV0KCJzdG9wX2xpc3RlbmVyX2xpc3QiLCBub21fYmFyY29kZSkKCiAgICAgICAgb2JqZWN0X2xpc3QgPSBqc29uLmxvYWRzKGhhc2hNYXAuZ2V0KCJvYmplY3RfaW5mb19saXN0IikpCgogICAgICAgIHRyeToj0L/RgNC+0YXQvtC00LjQvCDQv9C+IG9iamVjdF9saXN0INC/0L7QutCwINC90LUg0L3QsNC50LTQtdC8INC+0LHRitC10LrRgiDRgSDQsdCw0YDQutC+0LTQvtC8INGC0LXQutGD0YnQtdCz0L4g0L7QsdGK0LXQutGC0LAKICAgICAgICAgICAgbm9tX3JlY29yZCA9IG5leHQoaXRlbSBmb3IgaXRlbSBpbiBvYmplY3RfbGlzdCBpZiBzdHIoaXRlbVsib2JqZWN0Il0pID09IHN0cihub21fYmFyY29kZSkpCgogICAgICAgIGV4Y2VwdCBTdG9wSXRlcmF0aW9uOgogICAgICAgICAgICBub21fcmVjb3JkID0gTm9uZQoKICAgICAgICBpZiBub3Qgbm9tX3JlY29yZCA9PSBOb25lOgogICAgICAgICAgICBoYXNoTWFwLnB1dCgiX25vbV9pZCIsIHN0cihub21fcmVjb3JkLmdldCgiX25vbV9pZCIpKSkjINCX0LDQv9C40YHRjCDQvdC+0LzQtdGA0LAgSUQg0YLQvtCy0LDRgNCwCiAgICAgICAgICAgIGlmIGhhc2hNYXAuY29udGFpbnNLZXkoJ3dyaXRlX2lkX2xpc3QnKToKICAgICAgICAgICAgICAgIHdyaXRlX2xpc3QgPSBoYXNoTWFwLmdldCgnd3JpdGVfaWRfbGlzdCcpLnNwbGl0KCc7JykKICAgICAgICAgICAgICAgIHdyaXRlX2xpc3QuYXBwZW5kKHN0cihub21fcmVjb3JkLmdldCgnX25vbV9pZCcpKSkKICAgICAgICAgICAgICAgIGhhc2hNYXAucHV0KCd3cml0ZV9pZF9saXN0JywgJzsnLmpvaW4od3JpdGVfbGlzdCkpCiAgICAgICAgICAgIGVsc2U6CiAgICAgICAgICAgICAgICBoYXNoTWFwLnB1dCgnd3JpdGVfaWRfbGlzdCcsIHN0cihub21fcmVjb3JkLmdldCgnX25vbV9pZCcpKSkKICAgICAgICAgICAgIyBoYXNoTWFwLnB1dCgidG9hc3QiLCJfbm9tX2lkPSIrc3RyKGhhc2hNYXAuZ2V0KCJfbm9tX2lkIikpKyIgaW52X2lkPSIrc3RyKGhhc2hNYXAuZ2V0KCJpbnZfaWQiKSkpCiAgICAgICAgICAgIGlmIG5vbV9yZWNvcmRbJ3VuaXF1ZSddID09IDE6IyDRjdGC0L4g0YPQvdC40LrQsNC70YzQvdGL0Lkg0YjRgtGA0LjRhdC60L7QtD8/PwoKICAgICAgICAgICAgICAgIGhhc2hNYXAucHV0KCJ2aWJyYXRlIiwgIiIpCiAgICAgICAgICAgICAgICBoYXNoTWFwLnB1dCgiYmVlcCIsICI1IikKCiAgICAgICAgICAgICAgICAjINGN0YLQviDRg9C90LjQutCw0LvRjNC90YvQuSDRiNGC0YDQuNGF0LrQvtC0IC0g0LTQvtCx0LDQstC70Y/QtdC8INC10LPQviDQsiDQt9C10LvQtdC90YvQuSDRgdC/0LjRgdC+0Log0YHRgNCw0LfRgyDQuCDRg9Cx0LjRgNCw0LXQvCDQuNC3INC20LXQu9GC0L7Qs9C+CiAgICAgICAgICAgICAgICBfZ3JlZW5fc2l6ZSA9IDAKICAgICAgICAgICAgICAgIGlmIGhhc2hNYXAuY29udGFpbnNLZXkoImdyZWVuX2xpc3QiKToKICAgICAgICAgICAgICAgICAgICBncmVlbl9saXN0ID0gaGFzaE1hcC5nZXQoImdyZWVuX2xpc3QiKS5zcGxpdCgiOyIpCiAgICAgICAgICAgICAgICAgICAgZ3JlZW5fbGlzdC5hcHBlbmQobm9tX2JhcmNvZGUpCiAgICAgICAgICAgICAgICAgICAgaGFzaE1hcC5wdXQoImdyZWVuX2xpc3QiLCAiOyIuam9pbihncmVlbl9saXN0KSkKCiAgICAgICAgICAgICAgICBlbHNlOgogICAgICAgICAgICAgICAgICAgIGhhc2hNYXAucHV0KCJncmVlbl9saXN0IiwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBub21fYmFyY29kZSkKCiAgICAgICAgICAgICAgICBpZiBoYXNoTWFwLmNvbnRhaW5zS2V5KCJ5ZWxsb3dfbGlzdCIpOgogICAgICAgICAgICAgICAgICAgIHllbGxvd19saXN0ID0gaGFzaE1hcC5nZXQoInllbGxvd19saXN0Iikuc3BsaXQoIjsiKQogICAgICAgICAgICAgICAgICAgIHllbGxvd19saXN0LnJlbW92ZShub21fYmFyY29kZSkKICAgICAgICAgICAgICAgICAgICBoYXNoTWFwLnB1dCgieWVsbG93X2xpc3QiLCAiOyIuam9pbih5ZWxsb3dfbGlzdCkpCgogICAgICAgICAgICAgICAgICAgICMg0LTQvtCx0LDQstC70Y/QtdC8INCyINCx0LDQt9GDIC0g0L7QvSDQv9C+0YHRh9C40YLQsNC9CiAgICAgICAgICAgICAgICB3aXRoIGRiX3Nlc3Npb246CiAgICAgICAgICAgICAgICAgICAgZm91bmQuYXBwZW5kKGludChoYXNoTWFwLmdldCgiX25vbV9pZCIpKSkKICAgICAgICAgICAgICAgICAgICBpbnZlbnRvcnkgPSB1aV9nbG9iYWwuU1dfSW52ZW50b3J5W2ludChoYXNoTWFwLmdldCgiaW52X2lkIikpXQogICAgICAgICAgICAgICAgICAgIHIgPSB1aV9nbG9iYWwuU1dfSW52ZW50b3J5X2xpbmUocXR5PTEsIHNrdT1pbnQoaGFzaE1hcC5nZXQoIl9ub21faWQiKSksCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjZWxsPWludChoYXNoTWFwLmdldCgiX2NlbGxpZCIpKSwgaW52ZW50b3J5PWludmVudG9yeSkgIyDQv9GA0L7Rh9C40YLQsNC70LggX2NlbGxpZCBUaW1lISEhCiAgICAgICAgICAgICAgICAgICAgY29tbWl0KCkKCiAgICAgICAgICAgICAgICBfZ3JlZW5fc2l6ZSArPSAxCiAgICAgICAgICAgICAgICBpbnZkYXRlID0gZGF0ZXRpbWUuZnJvbWlzb2Zvcm1hdChzdHIoaGFzaE1hcC5nZXQoImludl9kYXRlIikpKQogICAgICAgICAgICAgICAgaGFzaE1hcC5wdXQoImludiIsICLQmNC90LLQtdC90YLQsNGA0LjQt9Cw0YbQuNGPICIgKyBzdHIoaGFzaE1hcC5nZXQoImludl9uYW1lIikpICsgIiDQvtGCICIgKyBpbnZkYXRlLnN0cmZ0aW1lKAogICAgICAgICAgICAgICAgICAgICIlbS4lZC4lWSwgJUg6JU06JVMiKSArICI8L24+INCd0LDQudC00LXQvdC+OiA8YmlnPiIgKyBzdHIoX2dyZWVuX3NpemUpICsgIjwvYmlnPiIgKyAiINC40LcgIiArICI8YmlnPiIgKyBzdHIoCiAgICAgICAgICAgICAgICAgICAgX3llbGxvd19zaXplKSArICI8L2JpZz4iKQogICAgICAgICAgICBlbHNlOiAgIyDQvdC10YPQvdC40LrQsNC70YzQvdGL0Lkg0YjRgtGA0LjRhdC60L7QtCAtINC/0YDQvtGB0LjQvCDQstCy0LXRgdGC0Lgg0LrQvtC7LdCy0L4KICAgICAgICAgICAgICAgIGhhc2hNYXAucHV0KCJiZWVwIiwgIjUwIikjINC90LDRh9Cw0LvQviBFcnJvciEhISBpbnZhbGlkIGxpdGVyYWwgZm9yIGludCgpIHdpdGggYmFzZSAxMCBub25lCiAgICAgICAgICAgICAgICBpZiBoYXNoTWFwLmNvbnRhaW5zS2V5KCd3cml0ZV9saXN0Jyk6ICAjINC10YHRgtGMINC70Lggd3JpdGVfbGlzdCDQsiBoYXNoTWFwCiAgICAgICAgICAgICAgICAgICAgd3JpdGVfbGlzdCA9IGhhc2hNYXAuZ2V0KCJ3cml0ZV9saXN0Iikuc3BsaXQoIjsiKQogICAgICAgICAgICAgICAgICAgIHdyaXRlX2xpc3QuYXBwZW5kKG5vbV9iYXJjb2RlKSAgIyDQtNC+0LHQsNCy0LjRgtGMIG5vbV9iYXJjb2RlINCyIHdyaXRlX2xpc3QKICAgICAgICAgICAgICAgICAgICBoYXNoTWFwLnB1dCgid3JpdGVfbGlzdCIsICI7Ii5qb2luKHdyaXRlX2xpc3QpKQogICAgICAgICAgICAgICAgZWxzZToKICAgICAgICAgICAgICAgICAgICBoYXNoTWFwLnB1dCgid3JpdGVfbGlzdCIsIG5vbV9iYXJjb2RlKQoKICAgICAgICAgICAgICAgIGhhc2hNYXAucHV0KCJub20iLCBub21fcmVjb3JkLmdldCgiaW5mbyIpKQogICAgICAgICAgICAgICAgaGFzaE1hcC5wdXQoIm5vbV9iYXJjb2RlIiwgbm9tX2JhcmNvZGUpCiAgICAgICAgICAgICAgICBoYXNoTWFwLnB1dCgiU2hvd0RpYWxvZ1Byb2Nlc3MiLCAi0JjQvdCy0LXQvdGC0LDRgNC40LfQsNGG0LjRjyBBY3RpdmUgQ1YiKQogICAgICAgICAgICAgICAgaGFzaE1hcC5wdXQoIlNob3dEaWFsb2ciLCAi0JTQuNCw0LvQvtCz0JLQstC+0LTQmtC+0LvQuNGH0LXRgdGC0LLQsCIpCiAgICAgICAgICAgICAgICBoYXNoTWFwLnB1dCgiU2hvd0RpYWxvZ1N0eWxlIiwKICAgICAgICAgICAgICAgICAgICAgICAgICAgIGpzb24uZHVtcHMoeyJ0aXRsZSI6ICLQktCy0LXQtNC40YLQtSDQutC+0LvQuNGH0LXRgdGC0LLQviDRhNCw0LrRgiIsICJ5ZXMiOiAi0J/QvtC00YLQstC10YDQtNC40YLRjCIsICJubyI6ICLQntGC0LzQtdC90LAifSkpCgogICAgaGFzaE1hcC5wdXQoJ19ncmVlbl9zaXplJywgc3RyKF9ncmVlbl9zaXplKSkgICMg0LLQstC+0LQgX2dyZWVuX3NpemUgVGltZSEhIQogICAgaGFzaE1hcC5wdXQoJ195ZWxsb3dfc2l6ZScsIHN0cihfeWVsbG93X3NpemUpKSAgIyDQstCy0L7QtCBfeWVsbG93X3NpemUgVGltZSEhIQoKCiAgICByZXR1cm4gaGFzaE1hcAoKCmRlZiBpbnZjdl9nb29kc19hY3Rpb24oaGFzaE1hcCwgX2ZpbGVzPU5vbmUsIF9kYXRhPU5vbmUpOgogICAgI2dsb2JhbCBjZWxsaWQKICAgICNnbG9iYWwgZ3JlZW5fc2l6ZSwgeWVsbG93X3NpemUKCiAgICAjIGhhc2hNYXAucHV0KCJ0b2FzdCIsc3RyKGhhc2hNYXAuZ2V0KCJldmVudCIpKSkKICAgIGlmIG5vdCBoYXNoTWFwLmdldCgnX2dyZWVuX3NpemUnKT09IE5vbmU6CiAgICAgICAgX2dyZWVuX3NpemUgPSBpbnQoaGFzaE1hcC5nZXQoJ19ncmVlbl9zaXplJykpICAjINC/0YDQvtGH0LjRgtCw0LvQuCBfZ3JlZW5fc2l6ZSBUaW1lISEhCiAgICBlbHNlOgogICAgICAgIF9ncmVlbl9zaXplID0gMAoKICAgIGlmIG5vdCBoYXNoTWFwLmdldCgnX3llbGxvd19zaXplJykgPT0gTm9uZToKICAgICAgICBfeWVsbG93X3NpemUgPSBpbnQoaGFzaE1hcC5nZXQoJ195ZWxsb3dfc2l6ZScpKSAgIyDQv9GA0L7Rh9C40YLQsNC70LggX3llbGxvd19zaXplIFRpbWUhISEKICAgIGVsc2U6CiAgICAgICAgX3llbGxvd19zaXplID0gMAoKICAgIGlmIGhhc2hNYXAuZ2V0KCJsaXN0ZW5lciIpID09ICJvblJlc3VsdFBvc2l0aXZlIjojINCyINC00LjQsNC70L7Qs9C1INCy0LLQvtC00LAg0LrQvtC70LjRh9C10YHRgtCy0LAgLSAi0J7QuiIKCiAgICAgICAgaGFzaE1hcC5wdXQoInZpYnJhdGUiLCAiIikKCiAgICAgICAgaWYgaGFzaE1hcC5jb250YWluc0tleSgnd3JpdGVfbGlzdCcpOiAgIyDQtdGB0YLRjCDQu9C4IHdyaXRlX2xpc3Qg0LIgaGFzaE1hcAogICAgICAgICAgICB3cml0ZV9saXN0ID0gaGFzaE1hcC5nZXQoIndyaXRlX2xpc3QiKS5zcGxpdCgiOyIpCiAgICAgICAgICAgIG5vbV9iYXJjb2RlX3dyaXRlID0gc3RyKHdyaXRlX2xpc3RbLTFdKQogICAgICAgICAgICB3cml0ZV9saXN0LnJlbW92ZShub21fYmFyY29kZV93cml0ZSkKICAgICAgICAgICAgaGFzaE1hcC5wdXQoIndyaXRlX2xpc3QiLCAiOyIuam9pbih3cml0ZV9saXN0KSkKCiAgICAgICAgZWxzZToKICAgICAgICAgICAgbm9tX2JhcmNvZGVfd3JpdGUgPSBzdHIoaGFzaE1hcC5nZXQoImN1cnJlbnRfb2JqZWN0IikpCiAgICAgICAgIyDQv9C10YDQtdC60YDQsNGI0LjQstCw0LXQvCDQsiDQt9C10LvQtdC90YvQuQoKICAgICAgICBpZiBoYXNoTWFwLmNvbnRhaW5zS2V5KCJncmVlbl9saXN0Iik6CiAgICAgICAgICAgIGdyZWVuX2xpc3QgPSBoYXNoTWFwLmdldCgiZ3JlZW5fbGlzdCIpLnNwbGl0KCI7IikKICAgICAgICAgICAgZ3JlZW5fbGlzdC5hcHBlbmQobm9tX2JhcmNvZGVfd3JpdGUpCiAgICAgICAgICAgIGhhc2hNYXAucHV0KCJncmVlbl9saXN0IiwgIjsiLmpvaW4oZ3JlZW5fbGlzdCkpCgogICAgICAgIGVsc2U6CiAgICAgICAgICAgIGhhc2hNYXAucHV0KCJncmVlbl9saXN0Iiwgbm9tX2JhcmNvZGVfd3JpdGUpCgogICAgICAgIGlmIGhhc2hNYXAuY29udGFpbnNLZXkoInllbGxvd19saXN0IikgYW5kIG5vbV9iYXJjb2RlX3dyaXRlIGluIGhhc2hNYXAuZ2V0KCJ5ZWxsb3dfbGlzdCIpOgogICAgICAgICAgICB5ZWxsb3dfbGlzdCA9IGhhc2hNYXAuZ2V0KCJ5ZWxsb3dfbGlzdCIpLnNwbGl0KCI7IikKICAgICAgICAgICAgeWVsbG93X2xpc3QucmVtb3ZlKG5vbV9iYXJjb2RlX3dyaXRlKSAgIyBWYWx1ZUVycm9yOiBsaXN0LnJlbW92ZSh4KTogeCBub3QgaW4gbGlzdAogICAgICAgICAgICBoYXNoTWFwLnB1dCgieWVsbG93X2xpc3QiLCAiOyIuam9pbih5ZWxsb3dfbGlzdCkpCgogICAgICAgICPQvtC/0YDQtdC00LXQu9GP0LXQvCBJRAogICAgICAgIGlmIGhhc2hNYXAuY29udGFpbnNLZXkoJ3dyaXRlX2lkX2xpc3QnKTogICMg0LXRgdGC0Ywg0LvQuCB3cml0ZV9pZF9saXN0INCyIGhhc2hNYXAKICAgICAgICAgICAgd3JpdGVfaWRfbGlzdCA9IGhhc2hNYXAuZ2V0KCJ3cml0ZV9pZF9saXN0Iikuc3BsaXQoIjsiKQogICAgICAgICAgICBfbm9tX2lkID0gc3RyKHdyaXRlX2lkX2xpc3RbLTFdKQogICAgICAgICAgICB3cml0ZV9pZF9saXN0LnJlbW92ZShfbm9tX2lkKQogICAgICAgICAgICBoYXNoTWFwLnB1dCgid3JpdGVfaWRfbGlzdCIsICI7Ii5qb2luKHdyaXRlX2lkX2xpc3QpKQoKICAgICAgICBlbHNlOgogICAgICAgICAgICBfbm9tX2lkID0gc3RyKGhhc2hNYXAuZ2V0KCdfbm9tX2lkJykpCgogICAgICAgICAgICAjINC00L7QsdCw0LLQu9GP0LXQvCDQsiDQsdCw0LfRgwogICAgICAgIGlmIGdldGZsb2F0X2lmX2V4aXN0KGhhc2hNYXAsICJxdHkiKSA+IDA6CiAgICAgICAgICAgIHdpdGggZGJfc2Vzc2lvbjoKICAgICAgICAgICAgICAgIGludmVudG9yeSA9IHVpX2dsb2JhbC5TV19JbnZlbnRvcnlbaW50KGhhc2hNYXAuZ2V0KCJpbnZfaWQiKSldCiAgICAgICAgICAgICAgICByID0gdWlfZ2xvYmFsLlNXX0ludmVudG9yeV9saW5lKHF0eT1nZXRmbG9hdF9pZl9leGlzdChoYXNoTWFwLCAicXR5IiksIHNrdT1pbnQoX25vbV9pZCksCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNlbGw9aW50KGhhc2hNYXAuZ2V0KCJfY2VsbGlkIikpLCBpbnZlbnRvcnk9aW52ZW50b3J5KSMg0L/RgNC+0YfQuNGC0LDQu9C4IF9jZWxsaWQgVGltZSEhIQogICAgICAgICAgICAgICAgY29tbWl0KCkKICAgICAgICAgICAgICAgIGZvdW5kLmFwcGVuZChpbnQoX25vbV9pZCkpCiAgICAgICAgICAgICAgICBfZ3JlZW5fc2l6ZSArPSAxCiAgICAgICAgICAgICAgICBpbnZkYXRlID0gZGF0ZXRpbWUuZnJvbWlzb2Zvcm1hdChzdHIoaGFzaE1hcC5nZXQoImludl9kYXRlIikpKQogICAgICAgICAgICAgICAgaGFzaE1hcC5wdXQoImludiIsICLQmNC90LLQtdC90YLQsNGA0LjQt9Cw0YbQuNGPICIgKyBzdHIoaGFzaE1hcC5nZXQoImludl9uYW1lIikpICsgIiDQvtGCICIgKyBpbnZkYXRlLnN0cmZ0aW1lKAogICAgICAgICAgICAgICAgICAgICIlbS4lZC4lWSwgJUg6JU06JVMiKSArICI8L24+INCd0LDQudC00LXQvdC+OiA8YmlnPiIgKyBzdHIoCiAgICAgICAgICAgICAgICAgICAgX2dyZWVuX3NpemUpICsgIjwvYmlnPiIgKyAiINC40LcgOiIgKyAiPGJpZz4iICsgc3RyKF95ZWxsb3dfc2l6ZSkgKyAiPC9iaWc+IikKCiAgICBpZiBoYXNoTWFwLmdldCgibGlzdGVuZXIiKSA9PSAi0Jog0K/Qp9CV0JnQmtCVIjoKICAgICAgICBoYXNoTWFwLnB1dCgiTmV4dFN0ZXAiLCAi0JLRi9Cx0L7RgCDRj9GH0LXQudC60LgiKQogICAgICAgIGludmRhdGUgPSBkYXRldGltZS5mcm9taXNvZm9ybWF0KHN0cihoYXNoTWFwLmdldCgiaW52X2RhdGUiKSkpCiAgICAgICAgaGFzaE1hcC5wdXQoImludiIsCiAgICAgICAgICAgICAgICAgICAgItCY0L3QstC10L3RgtCw0YDQuNC30LDRhtC40Y8gIiArIHN0cihoYXNoTWFwLmdldCgiaW52X25hbWUiKSkgKyAiINC+0YIgIiArIGludmRhdGUuc3RyZnRpbWUoIiVtLiVkLiVZLCAlSDolTTolUyIpKQoKICAgIGhhc2hNYXAucHV0KCdfZ3JlZW5fc2l6ZScsIHN0cihfZ3JlZW5fc2l6ZSkpICAjINCy0LLQvtC0IF9ncmVlbl9zaXplIFRpbWUhISEKICAgIGhhc2hNYXAucHV0KCdfeWVsbG93X3NpemUnLCBzdHIoX3llbGxvd19zaXplKSkgICMg0LLQstC+0LQgX3llbGxvd19zaXplIFRpbWUhISEKCiAgICByZXR1cm4gaGFzaE1hcAoKCgojIC1FTkQgQ1VTVE9NIEhBTkRMRVJTCgoKCkBhcHAucm91dGUoJy9zZXRfaW5wdXRfZGlyZWN0LzxtZXRob2Q+JywgbWV0aG9kcz1bJ1BPU1QnXSkKZGVmIHNldF9pbnB1dChtZXRob2QpOgogICAgI2Z1bmMgPSBtZXRob2QKICAgIGZ1bmMgPSBtZXRob2QucmVwbGFjZSgnXycsICcnLCAxKQogICAgamRhdGEgPSBqc29uLmxvYWRzKHJlcXVlc3QuZGF0YS5kZWNvZGUoJ3V0Zi04JykpCiAgICBmID0gZ2xvYmFscygpW2Z1bmNdCiAgICBoYXNoTWFwLmQgPSBqZGF0YVsnaGFzaG1hcCddCiAgICAjIGYoKQogICAgIyBmKCdoYXNobWFwJykKICAgIGYoaGFzaE1hcCkgICMgbmV3CiAgICBqZGF0YVsnaGFzaG1hcCddID0gaGFzaE1hcC5leHBvcnQoKQogICAgamRhdGFbJ3N0b3AnXSA9IEZhbHNlCiAgICBqZGF0YVsnRXJyb3JNZXNzYWdlJ10gPSAnJwogICAgamRhdGFbJ1Jvd3MnXSA9IFtdCgogICAgcmV0dXJuIGpzb24uZHVtcHMoamRhdGEpCgoKQGFwcC5yb3V0ZSgnL3Bvc3Rfc2NyZWVuc2hvdCcsIG1ldGhvZHM9WydQT1NUJ10pCmRlZiBwb3N0X3NjcmVlbnNob3QoKToKICAgIGQgPSByZXF1ZXN0LmRhdGEKICAgIHJldHVybiAnMScKCgpjbGFzcyBoYXNoTWFwOgogICAgZCA9IHt9CgogICAgZGVmIHB1dChrZXksIHZhbCk6CiAgICAgICAgaGFzaE1hcC5kW2tleV0gPSB2YWwKCiAgICBkZWYgZ2V0KGtleSk6CiAgICAgICAgcmV0dXJuIGhhc2hNYXAuZC5nZXQoa2V5KQoKICAgIGRlZiByZW1vdmUoa2V5KToKICAgICAgICBpZiBrZXkgaW4gaGFzaE1hcC5kOgogICAgICAgICAgICBoYXNoTWFwLmQucG9wKGtleSkKCiAgICBkZWYgY29udGFpbnNLZXkoa2V5KToKICAgICAgICByZXR1cm4ga2V5IGluIGhhc2hNYXAuZAoKICAgIGRlZiBleHBvcnQoKTogICMgSXQncyBOT1QgZXJyb3IhISEKICAgICAgICBleF9oYXNoTWFwID0gW10KICAgICAgICBmb3Iga2V5IGluIGhhc2hNYXAuZC5rZXlzKCk6CiAgICAgICAgICAgIGV4X2hhc2hNYXAuYXBwZW5kKHsna2V5Jzoga2V5LCAndmFsdWUnOiBoYXNoTWFwLmRba2V5XX0pCiAgICAgICAgcmV0dXJuIGV4X2hhc2hNYXAKCgppZiBfX25hbWVfXyA9PSAnX19tYWluX18nOgogICAgaW5pdF9vbl9zdGFydCgpICAjIG5ldwogICAgYXBwLnJ1bihob3N0PScwLjAuMC4wJywgcG9ydD0yMDc1LCBkZWJ1Zz1UcnVlKQo=",
+        "PyFiles": [],
+        "PyTimerTask": [],
+        "RecognitionTemplates": [
+            {
+                "name": "Распознавание артикула",
+                "TypeRecognition": "Распознавание текста",
+                "mesure_qty": "1",
+                "min_freq": "1",
+                "min_length": "3",
+                "max_length": "15",
+                "query": "c2VsZWN0ICogZnJvbSBTV19Hb29kcyB3aGVyZSBwcm9kdWN0X251bWJlciBsaWtlICA/",
+                "ReplaceO": true,
+                "ToUpcase": false,
+                "control_field": "product_number",
+                "result_field": "id",
+                "cursor": [
+                    {
+                        "title": "id",
+                        "var": "_nom_id",
+                        "field": "id"
+                    }
+                ],
+                "result_var": "_nom_id"
+            }
+        ],
+        "MainMenu": [
+            {
+                "MenuItem": "1",
+                "MenuTitle": " ",
+                "MenuId": "1",
+                "MenuTop": true
+            }
+        ]
+    }
+}
