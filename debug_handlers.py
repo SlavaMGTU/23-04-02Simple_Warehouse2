@@ -517,9 +517,11 @@ def goods_record_on_start(hashMap, _files=None, _data=None):
     hashMap.put("mm_compression", "70")
     hashMap.put("mm_size", "65")
 
-    hashMap.put("fill_name", json.dumps({"hint": "Введите наименование товара" + str(int(hashMap.get('_nom_id'))), "default_text": hashMap.get("name")}))
-    hashMap.put("fill_barcode", json.dumps({"hint": "Введите/отсканируйте штрихкод товара", "default_text": hashMap.get("barcode")}))
-    hashMap.put("fill_product_number", json.dumps({"hint": "Введите артикул товара", "default_text": hashMap.get("product_number")}))
+    hashMap.put("fill_name", json.dumps({"hint": "Введите наименование товара", "default_text": hashMap.get("name")}))
+    hashMap.put("fill_barcode",
+                json.dumps({"hint": "Введите/отсканируйте штрихкод товара", "default_text": hashMap.get("barcode")}))
+    hashMap.put("fill_product_number",
+                json.dumps({"hint": "Введите артикул товара", "default_text": hashMap.get("product_number")}))
     hashMap.put("fill_price", json.dumps({"hint": "Введите цену", "default_text": hashMap.get("price")}))
 
     units = []
@@ -888,12 +890,15 @@ def outcome_qty_input(hashMap, _files=None, _data=None):
 
         if getfloat_if_exist(hashMap, "qty") > 0:
             with db_session:
-                select_goods = select(g.qty for g in ui_global.SW_Account if g.sku==int(hashMap.get("_nom_id")) and g.cell==int(hashMap.get("_cell_id")))[:]
+                select_goods = select(g.qty for g in ui_global.SW_Account if
+                                      g.sku == int(hashMap.get("_nom_id")) and g.cell == int(hashMap.get("_cell_id")))[
+                               :]
 
                 if sum(select_goods) + (-1 * getfloat_if_exist(hashMap, "qty")) < 0:
                     hashMap.put("toast", "Отгружено больше чем было в наличии!!!")
                 else:
-                    r = ui_global.SW_Account(qty=-1 * getfloat_if_exist(hashMap, "qty"), sku=int(hashMap.get("_nom_id")),
+                    r = ui_global.SW_Account(qty=-1 * getfloat_if_exist(hashMap, "qty"),
+                                             sku=int(hashMap.get("_nom_id")),
                                              cell=int(hashMap.get("_cell_id")))
                     commit()
 
@@ -906,7 +911,8 @@ def outcome_qty_input(hashMap, _files=None, _data=None):
     jt['rows'].append({"cell": hashMap.get("cell"), "nom": hashMap.get("nom"), "qty": hashMap.get("qty")})
 
     hashMap.put("central_table", json.dumps(jt))
-    hashMap.put("table_object", get_table_by_cell(int(hashMap.get('_cell_id'))))  # new добавил таблицу для остатков товара в этой ячейке
+    hashMap.put("table_object", get_table_by_cell(
+        int(hashMap.get('_cell_id'))))  # new добавил таблицу для остатков товара в этой ячейке
     hashMap.put("ShowScreen", "Выбор товара")
 
     return hashMap
@@ -1508,13 +1514,13 @@ def read_good_cv(hashMap, _files=None, _data=None):
     yellow_list = []
     _goods = {}
     for link in results:
-        yellow_list.append(link[0])# записали в yellow_list все товары из базы
-        _goods[link[0]] = link[1]# записали в _goods все баркоды товаров из базы
+        _goods[link[0]] = link[3]# записали в _goods все QR-коды и цены товаров из базы
+        yellow_list.append(link[0])  # записали в yellow_list все QR-коды из базы
+        red_list.append(str(link[3]).split('.')[0])  # записали в red_list все цены из базы
 
     conn.close()
     hashMap.put("_goods", json.dumps(_goods, ensure_ascii=False))# time!!!
-    hashMap.put("toast", str(hashMap.get('_goods')) +' line1592')  # time!!!
-    # hashMap.put("object_info_list",json.dumps(info_list,ensure_ascii=False))
+    hashMap.put("red_list", ';'.join(red_list))
     hashMap.put("yellow_list", ';'.join(yellow_list))
     hashMap.put("toast", str(hashMap.get('yellow_list')) +' line1595')  # time!!!
     hashMap.put("green_list", ';'.join(green_list))
@@ -1525,41 +1531,66 @@ def read_good_cv(hashMap, _files=None, _data=None):
 
 def get_good_cv(hashMap, _files=None, _data=None):
 
-    hashMap.put("toast", 'get_nom_cv' + ' line1605')  # time!!!
-
-
-    invcv_price_on_new_object = str(hashMap.get("current_object"))
-    #if invcv_price_on_new_object in hashMap.get("yellow_list"):#
-    if not hashMap.get('_green_size')== None:
-        _green_size = int(hashMap.get('_green_size'))  # прочитали _green_size Time!!!
-    else:
-        _green_size = 0
-
+    #hashMap.put("toast", str(hashMap.get("current_object")) + ' line1605')  # time!!! Доходим!!!
+    qr_object = str(hashMap.get("current_object"))
+    hashMap.put("qr_object", str(qr_object))
+    #hashMap.put("toast", str(hashMap.get("qr_object")) + ' line1535')  # time!!!
     hashMap.put("vibrate", "")
-    _cells = json.loads(hashMap.get("_cells"))
-    _cellid = _cells.get(hashMap.get("current_object"))  # enter error!!! Time!!!
-    hashMap.put("NextStep", "Проверка цены")
-
-
-    return hashMap
-
-
-def price_found_cv(hashMap, _files=None, _data=None):
-
-    hashMap.put("toast", 'price_found_cv' + ' line1626')  # time!!!
-
-
+    yellow_list = hashMap.get("yellow_list").split(";")# Error sometimes ??!
+    if qr_object in yellow_list:#
+        hashMap.put("NextStep", "Проверка цены")
+    else:
+        hashMap.put("toast", 'Штрихкод в базе не найден!! line1542')  # time!!!
+        #hashMap.put("NextStep", "Поиск товара")
 
     return hashMap
 
-def wrong_price(hashMap, _files=None, _data=None):
+def read_price_cv(hashMap, _files=None, _data=None):# Имя CV-шага: Проверка цены OnCreate
 
-    hashMap.put("toast", 'wrong_price' + ' line1634')  # time!!!
-
-
+    qr_object = str(hashMap.get("qr_object"))
+    hashMap.put("info", qr_object + ' line1626')
 
     return hashMap
 
+def found_price_cv(hashMap, _files=None, _data=None):# Имя CV-шага: Проверка цены OnObjectDetected
+    qr_object = str(hashMap.get("qr_object"))
+    price_object = str(hashMap.get("current_object"))
+    hashMap.put("info", qr_object+' '+price_object + ' line1626')
+    hashMap.put("price_object", str(price_object))
+    hashMap.put("toast", str(hashMap.get("price_object")) +' line1626')  # time!!!
+
+    # перекрашиваем в green
+
+    if hashMap.containsKey("green_list"):
+        green_list = hashMap.get("green_list").split(";")
+        green_list.append(qr_object)
+        green_list.append(price_object)
+        hashMap.put("green_list", ";".join(green_list))
+
+    else:
+        green_list = []
+        green_list.append(qr_object)
+        green_list.append(price_object)
+        hashMap.put("green_list", ";".join(green_list))
+
+    if hashMap.containsKey("yellow_list") and qr_object in hashMap.get("yellow_list"):
+        red_list = hashMap.get("yellow_list").split(";")
+        red_list.remove(qr_object)
+        hashMap.put("yellow_list", ";".join(red_list))
+
+    if hashMap.containsKey("red_list") and price_object in hashMap.get("red_list"):
+        red_list = hashMap.get("red_list").split(";")
+        red_list.remove(price_object)
+        hashMap.put("red_list", ";".join(red_list))
+
+    return hashMap
+
+def wrong_price_cv(hashMap, _files=None, _data=None):# Имя CV-шага: Проверка цены OnInput
+
+    hashMap.put("toast", 'wrong_price_cv line1634')  # time!!!
+
+
+    return hashMap
 
 
 

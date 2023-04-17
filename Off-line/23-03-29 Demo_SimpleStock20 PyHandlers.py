@@ -334,7 +334,7 @@ def goods_on_start(hashMap, _files=None, _data=None):
 
             if len(p) > 0:
 
-                for jf in _files:  # находим путь к файлу по идентификатору
+                for jf in _files:# находим путь к файлу по идентификатору
                     if jf['id'] == p[0]:
                         if os.path.exists(jf['path']):
                             pic = "~" + jf['path']
@@ -349,7 +349,7 @@ def goods_on_start(hashMap, _files=None, _data=None):
     return hashMap
 
 
-def open_nom(hashMap, key):  # , _nom_id, key):
+def open_nom(hashMap, key):#, _nom_id, key):
     jlist = json.loads(hashMap.get("list"))
     goodsarray = jlist["customcards"]['cardsdata']
 
@@ -376,7 +376,7 @@ def open_nom(hashMap, key):  # , _nom_id, key):
         hashMap.put("photoGallery", json.dumps([]))
     hashMap.put("ShowScreen", "ТоварыЗапись")
 
-    return hashMap  # , _nom_id
+    return hashMap#, _nom_id
 
 
 def goods_input(hashMap, _files=None, _data=None):
