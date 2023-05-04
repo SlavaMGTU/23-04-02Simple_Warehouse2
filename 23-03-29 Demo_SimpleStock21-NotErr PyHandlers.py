@@ -1509,7 +1509,7 @@ def invcv_goods_action(hashMap, _files=None, _data=None):
     return hashMap
 
 def read_good_cv(hashMap, _files=None, _data=None):
-    #hashMap.put("toast", 'read_good_cv line15966')  # time!!!
+    hashMap.put("toast", 'read_good_cv line15966')  # time!!!
     if hashMap.containsKey("stop_listener_list"):
         hashMap.remove("stop_listener_list") # очистили stop_listener_list
 
@@ -1531,7 +1531,7 @@ def read_good_cv(hashMap, _files=None, _data=None):
     yellow_list = []
     _goods = {}
     for link in results:
-        _goods[str(link[0])] = str(link[3]).split('.')[0]# записали в _goods все QR-коды и цены товаров из базы
+        _goods[link[0]] = link[3]# записали в _goods все QR-коды и цены товаров из базы
         yellow_list.append(link[0])  # записали в yellow_list все QR-коды из базы
         red_list.append(str(link[3]).split('.')[0])  # записали в red_list все цены из базы
 
@@ -1539,9 +1539,8 @@ def read_good_cv(hashMap, _files=None, _data=None):
     hashMap.put("_goods", json.dumps(_goods, ensure_ascii=False))# time!!!
     hashMap.put("red_list", ';'.join(red_list))
     hashMap.put("yellow_list", ';'.join(yellow_list))
-    #hashMap.put("toast", str(hashMap.get('yellow_list')) +' line1595')  # time!!!
+    hashMap.put("toast", str(hashMap.get('yellow_list')) +' line1595')  # time!!!
     hashMap.put("green_list", ';'.join(green_list))
-    hashMap.put("info", ' База загружена ')# Удалил line ЗАменить  qr_object на NAME into DB
 
     return hashMap
 
@@ -1563,30 +1562,25 @@ def get_good_cv(hashMap, _files=None, _data=None):
 
     return hashMap
 
-# def read_price_cv(hashMap, _files=None, _data=None):# Имя CV-шага: Проверка цены OnCreate
-#
-#     qr_object = str(hashMap.get("qr_object"))
-#     hashMap.put("info", qr_object + ' line1626')
-#
-#     return hashMap
+def read_price_cv(hashMap, _files=None, _data=None):# Имя CV-шага: Проверка цены OnCreate
+
+    qr_object = str(hashMap.get("qr_object"))
+    hashMap.put("info", qr_object + ' line1626')
+
+    return hashMap
 
 def found_price_cv(hashMap, _files=None, _data=None):# Имя CV-шага: Проверка цены OnObjectDetected
 
     qr_object = str(hashMap.get("qr_object"))
     price_object = str(hashMap.get("current_object"))
-    hashMap.put("info", qr_object+' '+price_object)# Удалил line ЗАменить  qr_object на NAME into DB
+    hashMap.put("info", qr_object+' '+price_object + ' line1626')
     hashMap.put("price_object", str(price_object))
-    #hashMap.put("toast", str(hashMap.get("price_object")) +' line1626')  # time!!!
+    hashMap.put("toast", str(hashMap.get("price_object")) +' line1626')  # time!!!
     _goods = json.loads(hashMap.get("_goods"))# читаем словарь - QR:price
-
-    if hashMap.get("listener") == 'ON_BACK_PRESSED':
-        hashMap.put("NextStep", "Поиск товара")
 
     # перекрашиваем в green
 
-    if qr_object in _goods and str(_goods[qr_object]) == str(price_object):# QR соответствует price
-
-        hashMap.put("toast", 'Цена соответствует QR')  # time!!!
+    if qr_object in _goods and _goods[qr_object] == price_object:# QR соответствует price
 
         if hashMap.containsKey("green_list"):# add to green_list
             green_list = hashMap.get("green_list").split(";")
@@ -1609,8 +1603,9 @@ def found_price_cv(hashMap, _files=None, _data=None):# Имя CV-шага: Пр�
             red_list = hashMap.get("red_list").split(";")
             red_list.remove(price_object)
             hashMap.put("red_list", ";".join(red_list))
-
     else: # QR NOT соответствует price - all in red
+
+        hashMap.put("toast", 'Цена не соответствует QR  line1587')  # time!!!
 
         if hashMap.containsKey("red_list"):
             red_list = hashMap.get("red_list").split(";")
@@ -1628,10 +1623,6 @@ def found_price_cv(hashMap, _files=None, _data=None):# Имя CV-шага: Пр�
             red_list.remove(qr_object)
             hashMap.put("yellow_list", ";".join(red_list))
 
-        #hashMap.put("toast", 'Цена не соответствует QR  line1626')  # time!!!
-        hashMap.put("info", 'Цена ' + str(price_object)+ ' не та, что в БД ' + str(_goods[qr_object]))
-        hashMap.put("NextStep", "Проверка цены-Разные цены")
-
     return hashMap
 
 def wrong_price_cv(hashMap, _files=None, _data=None):# Имя CV-шага: Проверка цены OnInput
@@ -1640,11 +1631,6 @@ def wrong_price_cv(hashMap, _files=None, _data=None):# Имя CV-шага: Пр�
     qr_object = str(hashMap.get("qr_object"))
     price_object = str(hashMap.get("price_object"))
     _goods = json.loads(hashMap.get("_goods"))  # читаем словарь - QR:price
-
-    if hashMap.get("listener") == 'ON_BACK_PRESSED':
-        hashMap.put("NextStep", "Поиск товара")
-
-
 
     if hashMap.get("listener") == "Подтвердить разные Цены в базе и ценнике":
 
@@ -1671,8 +1657,6 @@ def wrong_price_cv(hashMap, _files=None, _data=None):# Имя CV-шага: Пр�
             red_list = hashMap.get("red_list").split(";")
             red_list.remove(price_object)
             hashMap.put("red_list", ";".join(red_list))
-
-        hashMap.put("NextStep", "Поиск товара")
 
 
     return hashMap
